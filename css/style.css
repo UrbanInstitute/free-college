@@ -14,7 +14,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 body, html {
     color: #353535;
     font-family: "Lato", sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     /*line-height: 16px;*/
     margin: 0px;
     padding: 0px;
@@ -23,6 +23,8 @@ body, html {
 
 .main {
     max-width: 1100px;
+    margin: 0 auto;
+    padding-top: 51px;
 }
 
 text,
@@ -48,7 +50,18 @@ a:hover {
 p {
     margin-bottom: 24px;
     line-height: 1.56;
-    /*max-width: 700px;*/
+    /*max-width: 726px;*/
+}
+
+h1 {
+    font-size: 40px;
+    font-weight: bold;
+    margin: 100px 0 40px;
+    text-align: center;
+}
+
+hr {
+    border: 0.5px solid #d2d2d2;
 }
 
 .hidden {
@@ -56,31 +69,18 @@ p {
 }
 
 /*********** STRUCTURE ***********/
-
-.wrapper {
-    /*width: 960px;*/
-    margin:0 auto;
-    padding-top: 80px;
-    border-top: 1px solid #eee;
-}
-
-.container {
-    margin-bottom: 80px;
-    padding: 0px 30px;
-}
-
 .content {
-    width: 100%;
+    max-width: 726px;
     margin: 0 auto;
     padding: 0px 30px;
 
 }
 
-.text {
-    width: 500px;
-    margin: 35px 75px;
+.date {
+    text-align: center;
+    font-size: 14px;
+    padding: 20px 0 60px;
 }
-
 
 
 
@@ -133,19 +133,7 @@ p {
 
 footer {
     width: 100%;
-    margin-top: 70px;
-    padding-top: 50px;
     padding-bottom: 25px;
-}
-
-@media screen and (max-height: 880px){
-    footer{
-        margin-top: 50px;
-    }
-}
-
-footer .content{
-    max-width: 700px;
 }
 
 footer h4 {
@@ -178,42 +166,3 @@ footer p {
     margin-bottom: 40px;
 }
 
-
-/*browser windows smaller than 850px*/
-@media (max-width: 1180px) {
-    .wrapper {
-        width:100%;
-        padding-top:100px;
-    }
-
-    .content {
-        width:auto;
-        padding:0px 30px;
-    }
-
-    .container {
-        width:auto;
-        padding:0px 30px;
-        margin-bottom: 40px;
-    }
-}
-
-
-/*browser windows smaller than 850px*/
-@media (max-width: 399px) {
-    .wrapper {
-        padding: 100px 20px 20px;
-    }
-}
-
-@media (max-width: 1100px) and (min-width:400px) {
-    .wrapper {
-        padding: 100px 20px 20px;
-    }
-}
-
-@media screen and (max-width: 500px) {
-    .content {
-        padding: 0;
-    }
-}
