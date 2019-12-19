@@ -1,0 +1,219 @@
+/* tooltip arrows from: http://www.cssarrowplease.com/ */
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    border: 0px none;
+    margin: 0px;
+    padding: 0px;
+    vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body, html {
+    color: #353535;
+    font-family: "Lato", sans-serif;
+    font-size: 18px;
+    /*line-height: 16px;*/
+    margin: 0px;
+    padding: 0px;
+    text-align: left;
+}
+
+.main {
+    max-width: 1100px;
+}
+
+text,
+input {
+    font-family: "Lato", sans-serif;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+a {
+    color:#1696d2;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:hover {
+    color: #000;
+    text-decoration: none;
+}
+
+p {
+    margin-bottom: 24px;
+    line-height: 1.56;
+    /*max-width: 700px;*/
+}
+
+.hidden {
+    display: none;
+}
+
+/*********** STRUCTURE ***********/
+
+.wrapper {
+    /*width: 960px;*/
+    margin:0 auto;
+    padding-top: 80px;
+    border-top: 1px solid #eee;
+}
+
+.container {
+    margin-bottom: 80px;
+    padding: 0px 30px;
+}
+
+.content {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0px 30px;
+
+}
+
+.text {
+    width: 500px;
+    margin: 35px 75px;
+}
+
+
+
+
+/********** LEGEND STYLES **************/
+.legend {
+    width: 100%;
+    /*height: 30px;*/
+    padding: 24px 20px 20px;
+    /*margin-bottom: 20px;*/
+}
+
+.legendEntry {
+    display: inline-block;
+    /*width: 49%;*/
+    margin-right: 40px;
+}
+
+.legendText {
+    font-family: Lato;
+    font-size: 14px;
+    line-height: 20px;
+    float: left;
+    display: inline-block;
+    color: #000;
+    text-transform: uppercase;
+    /*width: calc(100% - 20px);*/
+}
+
+.legendSquare {
+    /*display: inline-block;*/
+    height: 0;
+    width: 0;
+    margin-right: 10px;
+    float: left;
+    border-width: 10px;
+    border-style: solid;
+    border-color: #fff;
+    pointer-events: none;
+}
+
+.legendSquare.county {
+    opacity: 1;
+    border: none;
+    width: 20px;
+    height: 20px;
+}
+
+
+/*********** FOOTER ************/
+
+footer {
+    width: 100%;
+    margin-top: 70px;
+    padding-top: 50px;
+    padding-bottom: 25px;
+}
+
+@media screen and (max-height: 880px){
+    footer{
+        margin-top: 50px;
+    }
+}
+
+footer .content{
+    max-width: 700px;
+}
+
+footer h4 {
+    font-size: 34px;
+    font-weight: 300;
+    margin: 100px 0 25px 0;
+    text-transform: uppercase;
+}
+
+footer p {
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+.credits {
+    font-size: 14px;
+    margin-top: 1em;
+    margin-bottom: 16px;
+}
+
+.job {
+    margin-bottom: 4px;
+    margin-top: 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.urbanStatement {
+    font-style: italic;
+    margin-bottom: 40px;
+}
+
+
+/*browser windows smaller than 850px*/
+@media (max-width: 1180px) {
+    .wrapper {
+        width:100%;
+        padding-top:100px;
+    }
+
+    .content {
+        width:auto;
+        padding:0px 30px;
+    }
+
+    .container {
+        width:auto;
+        padding:0px 30px;
+        margin-bottom: 40px;
+    }
+}
+
+
+/*browser windows smaller than 850px*/
+@media (max-width: 399px) {
+    .wrapper {
+        padding: 100px 20px 20px;
+    }
+}
+
+@media (max-width: 1100px) and (min-width:400px) {
+    .wrapper {
+        padding: 100px 20px 20px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .content {
+        padding: 0;
+    }
+}
