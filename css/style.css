@@ -68,6 +68,8 @@ hr {
     display: none;
 }
 
+
+
 /*********** STRUCTURE ***********/
 .content {
     max-width: 726px;
@@ -83,6 +85,37 @@ hr {
 }
 
 
+
+/********** SCROLLYTELLING STYLES ************/
+#graphic {
+    position: relative;
+    padding-top: 51px;
+    overflow-y: auto;
+}
+
+#sections {
+    position: relative;
+    display: inline-block;
+    width: 350px;
+    top: 0;
+    float: right;
+    z-index: 90;
+}
+
+.step {
+    margin-bottom: 50vh;
+}
+
+#vis {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    margin-left: 0;
+    height: 600px;
+    width: 600px;
+    background-color: #d2d2d2;
+}
 
 /********** LEGEND STYLES **************/
 .legend {
