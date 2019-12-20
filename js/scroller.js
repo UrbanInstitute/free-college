@@ -41,7 +41,7 @@
                     var nextStep = direction === 'down' ? step : Math.max(0, step - 1)
 
                     // tell our graphic to update with a specific step
-                    graphic.update(nextStep)
+                    // graphic.update(nextStep)
                 },
                 offset: '50%',  // trigger halfway up the viewport
             })
@@ -54,6 +54,7 @@
                 var bottom = false
                 toggle(fixed, bottom)
             },
+            offset: 51
         })
         var exitWaypoint = new Waypoint({
             element: graphicEl,
