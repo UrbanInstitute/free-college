@@ -3,7 +3,7 @@
 
 var PCTFORMAT = d3.format(".0%");
 
-var chartDimensions = {width_pg: 130, width_cnty: 220, height: 100, margin: {top: 20, right: 0, bottom: 5, left: 0}};
+// var chartDimensions = {width_pg: 130, width_cnty: 220, height: 100, margin: {top: 20, right: 0, bottom: 5, left: 0}};
 
 // var xScalePG = d3.scaleBand()
 //     .domain(["peer_group", "national"])
@@ -20,35 +20,6 @@ var chartDimensions = {width_pg: 130, width_cnty: 220, height: 100, margin: {top
 
 var isIE = navigator.userAgent.indexOf("MSIE") !== -1 || navigator.userAgent.indexOf("Trident") !== -1;
 
-// function to make selector menus section stick to top of viewport (since IE doesn't support position: sticky)
-$(window).on("load", function() {  // perform calculations only after DOM is fully rendered
-    $(function() {
-        var windowHeight = $(window).height();
-        var visTop = $("#vis")[0].getBoundingClientRect().top + $(window).scrollTop(); //get the offset top of the element
-
-        $(window).scroll(function() {
-            // console.log($(window).scrollTop() - graphicTop, $(".main")[0].getBoundingClientRect().bottom);
-            if($(window).scrollTop() - visTop >= -50) {
-                // if content after the scrolly div appears above the fold, unstick #vis so it scrolls away instead
-                // of remaining fixed over the footer
-                var postScrollyTop = $(".content.afterScroll")[0].getBoundingClientRect().top;
-
-                if(postScrollyTop < windowHeight) {
-                    $('#vis').removeClass("sticky");
-                    $('#vis').addClass("stickToBottom");
-                }
-                // if #vis is at the top but bottom of graphic container div isn't, make #vis sticky
-                else {
-                    $('#vis').addClass("sticky");
-                    $('#vis').removeClass("stickToBottom");
-                }
-            }
-            else {
-                $('#vis').removeClass("sticky stickToBottom");
-            }
-        });
-    });
-})
 
 // d3.csv("data/chart_data.csv", function(d) {
 //     return {

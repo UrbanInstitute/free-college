@@ -88,32 +88,29 @@ hr {
 
 /********** SCROLLYTELLING STYLES ************/
 #graphic {
+    width: 100%;
     position: relative;
-    padding-top: 51px;
-    overflow-y: auto;
+    /*padding-top: 51px;*/
 }
 
 #sections {
     position: relative;
-    display: inline-block;
-    width: 350px;
-    top: 0;
-    float: right;
-    z-index: 90;
+    width: 100%;
+    /*top: 0;*/
 }
 
 .step {
-    margin-bottom: 50vh;
+    margin: 0;
+    margin-left: 720px;
+    padding: 0;
+    min-height: 240px;
 }
 
 #vis {
-    display: inline-block;
     position: absolute;
-    top: 51px;
-    z-index: 1;
-    margin-left: 0;
-    height: 600px;
-    width: 600px;
+    top: 0;
+    height: calc(100vh - 50px);
+    width: 626px;
     background-color: #d2d2d2;
 }
 
@@ -123,7 +120,7 @@ hr {
 }
 
 #vis.stickToBottom {
-    position: absolute;
+    /*position: absolute;*/
     bottom: 0;
     top: auto;
 }
