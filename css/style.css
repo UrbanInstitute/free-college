@@ -109,12 +109,23 @@ hr {
 #vis {
     display: inline-block;
     position: absolute;
-    top: 0;
+    top: 51px;
     z-index: 1;
     margin-left: 0;
     height: 600px;
     width: 600px;
     background-color: #d2d2d2;
+}
+
+#vis.sticky {
+    position: fixed;
+    top: 51px;
+}
+
+#vis.stickToBottom {
+    position: absolute;
+    bottom: 0;
+    top: auto;
 }
 
 /********** LEGEND STYLES **************/
