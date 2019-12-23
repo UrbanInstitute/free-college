@@ -28,6 +28,7 @@ window.createGraphic = function(graphicSelector) {
 
     var margin = 20
     var size = 600
+    var r = 6;
     var chartSize = size - margin * 2
     var scaleX = null
     var scaleR = null
@@ -42,7 +43,7 @@ window.createGraphic = function(graphicSelector) {
                 .attr("cy", size / 2);
         },
         function step1() {
-            console.log("spread out 100 dots");
+            // console.log("spread out 100 dots");
             var t = d3.transition()
                 .duration(800)
                 .ease(d3.easeQuadInOut)
@@ -50,24 +51,31 @@ window.createGraphic = function(graphicSelector) {
             var simulation = d3.forceSimulation(dotsData)
               .force('charge', d3.forceManyBody().strength(-1))
               .force('center', d3.forceCenter(chartSize / 2, chartSize / 2))
-              .force('collision', d3.forceCollide().radius(6))
-              .on('tick', ticked);
+              .force('collision', d3.forceCollide().radius(r))
+              .stop();
+              // .on('tick', ticked);
 
-            function ticked() {
-              var dots = d3.selectAll('.student')
-                .attr('r', 6)
-                .attr('cx', function(d) { return d.x; })
-                .attr('cy', function(d) { return d.y; })
-            }
+            // function ticked() {
+            //   var dots = d3.selectAll('.student')
+            //     .attr('r', r)
+            //     .attr('cx', function(d) { return d.x; })
+            //     .attr('cy', function(d) { return d.y; })
+            // }
+            d3.timeout(function() {
+              // See https://github.com/d3/d3-force/blob/master/README.md#simulation_tick
+              for (var i = 0, n = Math.ceil(Math.log(simulation.alphaMin()) / Math.log(1 - simulation.alphaDecay())); i < n; ++i) {
+                simulation.tick();
+              }
 
-            // var item = graphicVisEl.selectAll('.item')
-
-            // item.transition(t)
-            //     .attr('transform', translate(chartSize / 2, chartSize / 2))
+                d3.selectAll(".student")
+                    .transition(t)
+                  .attr("cx", function(d) { return d.x; })
+                  .attr("cy", function(d) { return d.y; });
+            });
         },
 
         function step2() {
-            console.log("split into two groups: those who have free college and those who don't");
+            // console.log("split into two groups: those who have free college and those who don't");
             // var t = d3.transition()
             //     .duration(800)
             //     .ease(d3.easeQuadInOut)
@@ -90,7 +98,7 @@ window.createGraphic = function(graphicSelector) {
         },
 
         function step3() {
-            console.log("keep groups the same");
+            // console.log("keep groups the same");
             // var t = d3.transition()
             //     .duration(800)
             //     .ease(d3.easeQuadInOut)
@@ -164,7 +172,7 @@ window.createGraphic = function(graphicSelector) {
                 .attr("class", "student")
                 .attr("cx", size / 2)
                 .attr("cy", size / 2)
-                .attr("r", 6);
+                .attr("r", r);
         });
     }
 
