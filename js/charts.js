@@ -3,8 +3,6 @@
 
 var PCTFORMAT = d3.format(".0%");
 
-// var chartDimensions = {width_pg: 130, width_cnty: 220, height: 100, margin: {top: 20, right: 0, bottom: 5, left: 0}};
-
 // var xScalePG = d3.scaleBand()
 //     .domain(["peer_group", "national"])
 //     .range([0, chartDimensions.width_pg])
@@ -32,6 +30,10 @@ window.createGraphic = function(graphicSelector) {
     var chartSize = size - margin * 2
     var titleHeight = d3.select(".chartTitle").node().getBoundingClientRect().height;
     var dotsData;
+
+    var xScale = d3.scaleOrdinal()
+        .domain("no", "yes")
+        .range([size * 0.25, size * 0.75]);
 
     // actions to take on each step of our scroll-driven story
     var steps = [
@@ -101,7 +103,7 @@ window.createGraphic = function(graphicSelector) {
 
             var simulation = d3.forceSimulation(dotsData)
                 .force('charge', d3.forceManyBody().strength(-10))
-                .force('x', d3.forceX().x(function(d) { return d.freecollege === "not free" ? 0.25*size+10 : 0.75*size-15 ; }))
+                .force('x', d3.forceX().x(function(d) { return xScale(d.currentFreeCollege); }))  // seem to need to add an adjustment factor here
                 .force('y', d3.forceY().y((size - titleHeight) / 2))
                 .force('collision', d3.forceCollide().radius(r))
                 .stop();
@@ -119,10 +121,10 @@ window.createGraphic = function(graphicSelector) {
                     .attr("cx", function(d) { return d.x; })
                     .attr("cy", function(d) { return d.y; });
 
-                students.classed("noFreeCollege", function(d) { return d.freecollege === "not free" ? true : false; });
+                students.classed("noFreeCollege", function(d) { return d.currentFreeCollege === "no" ? true : false; });
 
                 // update label below dots
-                var numFreeCollege = students.data().filter(function(d) { return d.freecollege !== "not free"; }).length;
+                var numFreeCollege = students.data().filter(function(d) { return d.currentFreeCollege !== "no"; }).length;
                 var numNoFreeCollege = 100 - numFreeCollege;
 
                 var lowestDotY = d3.max(students.data(), function(d) { return d.y; });
@@ -130,14 +132,14 @@ window.createGraphic = function(graphicSelector) {
                 d3.select("svg g")
                     .append("text")
                     .attr("class", "dotLabel")
-                    .attr("x", 0.75*size)
+                    .attr("x", xScale("yes"))
                     .attr("y", lowestDotY + 40)
                     .text(numFreeCollege + " students");
 
                 d3.select("svg g")
                     .append("text")
                     .attr("class", "dotLabel noFreeCollege")
-                    .attr("x", 0.25*size)
+                    .attr("x", xScale("no"))
                     .attr("y", lowestDotY + 40)
                     .text(numNoFreeCollege + " students");
             });
@@ -161,24 +163,18 @@ window.createGraphic = function(graphicSelector) {
     // }
 
     function setupCharts() {
-        d3.csv("data/source/best_output_final.csv", function(d) {
+        d3.csv("data/final_data.csv", function(d) {
             return {
                 char_id: d.char_id,
-                characteristics: d.characteristics,
-                percent: +d.percent,
-                frequency: +d.frequency,
                 race: d.race,
                 incomegroup: d.incomegroup,
                 loan: d.loan,
                 public: d.public,
                 freecollege: d.freecollege,
                 fpl: d.fpl,
-                total: +d.total,
-                ticket_num: +d.ticket_num,
-                pick: +d.pick,
-                orig_name: d.orig_name,
-                new_name: d.new_name,
-                income: +d.income
+                name: d.name,
+                income: +d.income,
+                currentFreeCollege: d.currentFreeCollege
             };
         }, function(error, data) {
             if (error) throw error;
