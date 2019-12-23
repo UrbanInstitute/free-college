@@ -132,9 +132,15 @@ hr {
     font-weight: bold;
     font-size: 22px;
 }
+
 .student {
     fill: #1696d2;
 }
+
+.student.noFreeCollege {
+    fill: #9d9d9d;
+}
+
 
 /********** LEGEND STYLES **************/
 .legend {

@@ -49,11 +49,13 @@ window.createGraphic = function(graphicSelector) {
                 .ease(d3.easeQuadInOut)
 
             var simulation = d3.forceSimulation(dotsData)
-              .force('charge', d3.forceManyBody().strength(-1))
-              .force('center', d3.forceCenter(chartSize / 2, chartSize / 2))
-              .force('collision', d3.forceCollide().radius(r))
-              .stop();
-              // .on('tick', ticked);
+                .force('charge', d3.forceManyBody().strength(-10))
+                .force('center', d3.forceCenter(chartSize / 2, chartSize / 2))
+                .force('x', d3.forceX().x(chartSize / 2))
+                .force('y', d3.forceY().y(chartSize / 2))
+                .force('collision', d3.forceCollide().radius(r))
+                .stop();
+                // .on('tick', ticked);
 
             // function ticked() {
             //   var dots = d3.selectAll('.student')
@@ -67,34 +69,48 @@ window.createGraphic = function(graphicSelector) {
                 simulation.tick();
               }
 
-                d3.selectAll(".student")
+                var students = d3.selectAll(".student");
+
+                students
                     .transition(t)
-                  .attr("cx", function(d) { return d.x; })
-                  .attr("cy", function(d) { return d.y; });
+                    .attr("cx", function(d) { return d.x; })
+                    .attr("cy", function(d) { return d.y; });
+
+                students.classed("noFreeCollege", false);
+                // TODO: show label below dots
             });
         },
 
         function step2() {
             // console.log("split into two groups: those who have free college and those who don't");
-            // var t = d3.transition()
-            //     .duration(800)
-            //     .ease(d3.easeQuadInOut)
+            var t = d3.transition()
+                .duration(800)
+                .ease(d3.easeQuadInOut)
 
-            // // circles are positioned
-            // var item = graphicVisEl.selectAll('.item')
+            var simulation = d3.forceSimulation(dotsData)
+                .force('charge', d3.forceManyBody().strength(-10))
+                .force('x', d3.forceX().x(function(d) { return d.freecollege === "not free" ? size /4 : (0.75)*size ; }))
+                .force('y', d3.forceY().y(chartSize / 2))
+                .force('collision', d3.forceCollide().radius(r))
+                .stop();
 
-            // item.transition(t)
-            //     .attr('transform', function(d, i) {
-            //         return translate(scaleX(i), chartSize / 2)
-            //     })
+            d3.timeout(function() {
+              // See https://github.com/d3/d3-force/blob/master/README.md#simulation_tick
+              for (var i = 0, n = Math.ceil(Math.log(simulation.alphaMin()) / Math.log(1 - simulation.alphaDecay())); i < n; ++i) {
+                simulation.tick();
+              }
 
-            // item.select('circle')
-            //     .transition(t)
-            //     .attr('r', minR)
+                var students = d3.selectAll(".student");
 
-            // item.select('text')
-            //     .transition(t)
-            //     .style('opacity', 0)
+                students
+                    .transition(t)
+                    .attr("cx", function(d) { return d.x; })
+                    .attr("cy", function(d) { return d.y; });
+
+                students.classed("noFreeCollege", function(d) { return d.freecollege === "not free" ? true : false; });
+
+                // TODO: show label below dots
+            });
         },
 
         function step3() {
