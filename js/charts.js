@@ -20,13 +20,6 @@ var PCTFORMAT = d3.format(".0%");
 
 var isIE = navigator.userAgent.indexOf("MSIE") !== -1 || navigator.userAgent.indexOf("Trident") !== -1;
 
-/*
-    I've created a function here that is a simple d3 chart.
-    This could be anthing that has discrete steps, as simple as changing
-    the background color, or playing/pausing a video.
-    The important part is that it exposes and update function that
-    calls a new thing on a scroll trigger.
-*/
 window.createGraphic = function(graphicSelector) {
     var graphicEl = d3.select('#graphic');
     var graphicVisEl = graphicEl.select('#vis');
@@ -34,37 +27,46 @@ window.createGraphic = function(graphicSelector) {
     var chartTitle = graphicEl.select(".chartTitle");
 
     var margin = 20
-    var size = 400
+    var size = 600
     var chartSize = size - margin * 2
     var scaleX = null
     var scaleR = null
-    var data = [8, 6, 7, 5, 3, 0, 9]
+    var dotsData;
 
     // actions to take on each step of our scroll-driven story
     var steps = [
         function step0() {
+            d3.selectAll(".student")
+                .transition()
+                .attr("cx", size / 2)
+                .attr("cy", size / 2);
+        },
+        function step1() {
             console.log("spread out 100 dots");
-            // // circles are centered and small
-            // var t = d3.transition()
-            //     .duration(800)
-            //     .ease(d3.easeQuadInOut)
+            var t = d3.transition()
+                .duration(800)
+                .ease(d3.easeQuadInOut)
 
+            var simulation = d3.forceSimulation(dotsData)
+              .force('charge', d3.forceManyBody().strength(-1))
+              .force('center', d3.forceCenter(chartSize / 2, chartSize / 2))
+              .force('collision', d3.forceCollide().radius(6))
+              .on('tick', ticked);
+
+            function ticked() {
+              var dots = d3.selectAll('.student')
+                .attr('r', 6)
+                .attr('cx', function(d) { return d.x; })
+                .attr('cy', function(d) { return d.y; })
+            }
 
             // var item = graphicVisEl.selectAll('.item')
 
             // item.transition(t)
             //     .attr('transform', translate(chartSize / 2, chartSize / 2))
-
-            // item.select('circle')
-            //     .transition(t)
-            //     .attr('r', minR)
-
-            // item.select('text')
-            //     .transition(t)
-            //     .style('opacity', 0)
         },
 
-        function step1() {
+        function step2() {
             console.log("split into two groups: those who have free college and those who don't");
             // var t = d3.transition()
             //     .duration(800)
@@ -87,7 +89,7 @@ window.createGraphic = function(graphicSelector) {
             //     .style('opacity', 0)
         },
 
-        function step2() {
+        function step3() {
             console.log("keep groups the same");
             // var t = d3.transition()
             //     .duration(800)
@@ -124,33 +126,46 @@ window.createGraphic = function(graphicSelector) {
     // }
 
     function setupCharts() {
-        var svg = graphicVisEl.append('svg')
-            .attr('width', size + 'px')
-            .attr('height', size + 'px')
+        d3.csv("data/source/best_output_final.csv", function(d) {
+            return {
+                char_id: d.char_id,
+                characteristics: d.characteristics,
+                percent: +d.percent,
+                frequency: +d.frequency,
+                race: d.race,
+                incomegroup: d.incomegroup,
+                loan: d.loan,
+                public: d.public,
+                freecollege: d.freecollege,
+                fpl: d.fpl,
+                total: +d.total,
+                ticket_num: +d.ticket_num,
+                pick: +d.pick,
+                orig_name: d.orig_name,
+                new_name: d.new_name,
+                income: +d.income
+            };
+        }, function(error, data) {
+            if (error) throw error;
+            // console.log(data);
+            dotsData = data;
 
-        var chart = svg.append('g')
-            .classed('chart', true)
-            .attr('transform', 'translate(' + margin + ',' + margin + ')')
+            var svg = graphicVisEl.append('svg')
+                .attr('width', size)
+                .attr('height', size)
 
-        // scaleR = d3.scaleLinear()
-        // scaleX = d3.scaleBand()
+            var chart = svg.append('g')
+                .attr('transform', 'translate(' + margin + ',' + margin + ')')
 
-        // var domainX = d3.range(data.length)
-
-        // scaleX
-        //     .domain(domainX)
-        //     .range([0, chartSize])
-        //     .padding(1)
-
-        // scaleR
-        //     .domain(extent)
-        //     .range([minR, maxR])
-
-        // var item = chart.selectAll('.item')
-        //     .data(data)
-        //     .enter().append('g')
-        //         .classed('item', true)
-        //         .attr('transform', translate(chartSize / 2, chartSize / 2))
+            var item = chart.selectAll('.item')
+                .data(data)
+                .enter()
+                .append('circle')
+                .attr("class", "student")
+                .attr("cx", size / 2)
+                .attr("cy", size / 2)
+                .attr("r", 6);
+        });
     }
 
     // function setupProse() {
@@ -171,36 +186,5 @@ window.createGraphic = function(graphicSelector) {
         update: update,
     }
 }
-
-// d3.csv("data/chart_data.csv", function(d) {
-//     return {
-//         id: d.id,
-//         name: d.name,
-//         food_insecure_all: +d.food_insecure_all,
-//         food_insecure_children: +d.food_insecure_children,
-//         severely_housing_cost_burdened: +d.severely_housing_cost_burdened,
-//         housing_cost_burdened: +d.housing_cost_burdened,
-//         wage_fair_market_rent: +d.wage_fair_market_rent,
-//         disability: +d.disability,
-//         diabetes: +d.diabetes,
-//         low_birthweight: +d.low_birthweight,
-//         credit_score: +d.credit_score,
-//         debt: +d.debt,
-//         median_income: +d.median_income,
-//         below_poverty: +d.below_poverty,
-//         unemployment: +d.unemployment,
-//         no_insurance: +d.no_insurance,
-//         college_less: +d.college_less,
-//         people_color: +d.people_color,
-//         children: +d.children,
-//         seniors: +d.seniors,
-//         rural_population: +d.rural_population,
-//         geography: d.geography
-//     };
-// }, function(error, data) {
-
-//     if (error) throw error;
-
-// });
 
 // })();

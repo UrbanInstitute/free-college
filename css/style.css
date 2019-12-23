@@ -125,6 +125,17 @@ hr {
     top: auto;
 }
 
+
+/********** CHART STYLES ***************/
+.chartTitle {
+    text-align: center;
+    font-weight: bold;
+    font-size: 22px;
+}
+.student {
+    fill: #1696d2;
+}
+
 /********** LEGEND STYLES **************/
 .legend {
     width: 100%;
