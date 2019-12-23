@@ -30,29 +30,32 @@ window.createGraphic = function(graphicSelector) {
     var size = 600
     var r = 6;
     var chartSize = size - margin * 2
-    var scaleX = null
-    var scaleR = null
+    var titleHeight = d3.select(".chartTitle").node().getBoundingClientRect().height;
     var dotsData;
 
     // actions to take on each step of our scroll-driven story
     var steps = [
         function step0() {
+            d3.selectAll(".dotLabel").remove();
+
             d3.selectAll(".student")
                 .transition()
                 .attr("cx", size / 2)
-                .attr("cy", size / 2);
+                .attr("cy", (size - titleHeight) / 2);
         },
         function step1() {
             // console.log("spread out 100 dots");
+            d3.selectAll(".dotLabel").remove();
+
             var t = d3.transition()
                 .duration(800)
                 .ease(d3.easeQuadInOut)
 
             var simulation = d3.forceSimulation(dotsData)
                 .force('charge', d3.forceManyBody().strength(-10))
-                .force('center', d3.forceCenter(chartSize / 2, chartSize / 2))
-                .force('x', d3.forceX().x(chartSize / 2))
-                .force('y', d3.forceY().y(chartSize / 2))
+                .force('center', d3.forceCenter(size / 2, (size - titleHeight)/2))
+                .force('x', d3.forceX().x(size / 2))
+                .force('y', d3.forceY().y((size - titleHeight) / 2))
                 .force('collision', d3.forceCollide().radius(r))
                 .stop();
                 // .on('tick', ticked);
@@ -64,10 +67,10 @@ window.createGraphic = function(graphicSelector) {
             //     .attr('cy', function(d) { return d.y; })
             // }
             d3.timeout(function() {
-              // See https://github.com/d3/d3-force/blob/master/README.md#simulation_tick
-              for (var i = 0, n = Math.ceil(Math.log(simulation.alphaMin()) / Math.log(1 - simulation.alphaDecay())); i < n; ++i) {
-                simulation.tick();
-              }
+                // See https://github.com/d3/d3-force/blob/master/README.md#simulation_tick
+                for (var i = 0, n = Math.ceil(Math.log(simulation.alphaMin()) / Math.log(1 - simulation.alphaDecay())); i < n; ++i) {
+                    simulation.tick();
+                }
 
                 var students = d3.selectAll(".student");
 
@@ -77,20 +80,29 @@ window.createGraphic = function(graphicSelector) {
                     .attr("cy", function(d) { return d.y; });
 
                 students.classed("noFreeCollege", false);
-                // TODO: show label below dots
+
+                // label number of dots
+                var lowestDotY = d3.max(students.data(), function(d) { return d.y; });
+                d3.select("svg g").append("text")
+                    .attr("class", "dotLabel")
+                    .attr("x", size / 2)
+                    .attr("y", lowestDotY + 60)
+                    .text(dotsData.length + " students");
             });
         },
 
         function step2() {
             // console.log("split into two groups: those who have free college and those who don't");
+            d3.selectAll(".dotLabel").remove();
+
             var t = d3.transition()
                 .duration(800)
                 .ease(d3.easeQuadInOut)
 
             var simulation = d3.forceSimulation(dotsData)
                 .force('charge', d3.forceManyBody().strength(-10))
-                .force('x', d3.forceX().x(function(d) { return d.freecollege === "not free" ? size /4 : (0.75)*size ; }))
-                .force('y', d3.forceY().y(chartSize / 2))
+                .force('x', d3.forceX().x(function(d) { return d.freecollege === "not free" ? 0.25*size+10 : 0.75*size-15 ; }))
+                .force('y', d3.forceY().y((size - titleHeight) / 2))
                 .force('collision', d3.forceCollide().radius(r))
                 .stop();
 
@@ -109,32 +121,31 @@ window.createGraphic = function(graphicSelector) {
 
                 students.classed("noFreeCollege", function(d) { return d.freecollege === "not free" ? true : false; });
 
-                // TODO: show label below dots
+                // update label below dots
+                var numFreeCollege = students.data().filter(function(d) { return d.freecollege !== "not free"; }).length;
+                var numNoFreeCollege = 100 - numFreeCollege;
+
+                var lowestDotY = d3.max(students.data(), function(d) { return d.y; });
+
+                d3.select("svg g")
+                    .append("text")
+                    .attr("class", "dotLabel")
+                    .attr("x", 0.75*size)
+                    .attr("y", lowestDotY + 40)
+                    .text(numFreeCollege + " students");
+
+                d3.select("svg g")
+                    .append("text")
+                    .attr("class", "dotLabel noFreeCollege")
+                    .attr("x", 0.25*size)
+                    .attr("y", lowestDotY + 40)
+                    .text(numNoFreeCollege + " students");
             });
         },
 
         function step3() {
-            // console.log("keep groups the same");
-            // var t = d3.transition()
-            //     .duration(800)
-            //     .ease(d3.easeQuadInOut)
-
-            // // circles are sized
-            // var item = graphicVisEl.selectAll('.item')
-
-            // item.select('circle')
-            //     .transition(t)
-            //     .delay(function(d, i) { return i * 200 })
-            //     .attr('r', function(d, i) {
-            //         return scaleR(d)
-            //     })
-
-            // item.select('text')
-            //     .transition(t)
-            //     .delay(function(d, i) { return i * 200 })
-            //     .style('opacity', 1)
         },
-        // function step3() {
+        // function step4() {
         //     console.log()
         // }
     ]
@@ -178,8 +189,8 @@ window.createGraphic = function(graphicSelector) {
                 .attr('width', size)
                 .attr('height', size)
 
-            var chart = svg.append('g')
-                .attr('transform', 'translate(' + margin + ',' + margin + ')')
+            var chart = svg.append('g');
+                // .attr('transform', 'translate(0,' + margin + ')')
 
             var item = chart.selectAll('.item')
                 .data(data)
@@ -187,7 +198,7 @@ window.createGraphic = function(graphicSelector) {
                 .append('circle')
                 .attr("class", "student")
                 .attr("cx", size / 2)
-                .attr("cy", size / 2)
+                .attr("cy", (size - titleHeight) / 2)
                 .attr("r", r);
         });
     }

@@ -101,17 +101,18 @@ hr {
 
 .step {
     margin-left: 720px;
-    margin-bottom: 50vh;
+    /*margin-bottom: 50vh;*/
     padding: 0;
-    min-height: 240px;
+    min-height: 80vh;
 }
 
 #vis {
     position: absolute;
     top: 0;
     height: calc(100vh - 50px);
-    width: 626px;
-    background-color: #d2d2d2;
+    /*width: 626px;*/
+    /*border: 1px solid #d2d2d2;*/
+    /*background-color: #d2d2d2;*/
 }
 
 #vis.sticky {
@@ -125,22 +126,35 @@ hr {
     top: auto;
 }
 
+#vis svg {
+    /*top: 50%;*/
+    /*position: relative;*/
+    /*transform: translateY(-50%);*/
+    /*border: 1px dashed #d2d2d2;*/
+}
 
 /********** CHART STYLES ***************/
 .chartTitle {
     text-align: center;
     font-weight: bold;
     font-size: 22px;
+    padding-top: 40px;
+    height: 67px;
 }
 
 .student {
     fill: #1696d2;
 }
 
-.student.noFreeCollege {
-    fill: #9d9d9d;
+.dotLabel {
+    font-size: 13px;
+    text-anchor: middle;
+    fill: #1696d2;
 }
 
+.noFreeCollege {
+    fill: #9d9d9d;
+}
 
 /********** LEGEND STYLES **************/
 .legend {
