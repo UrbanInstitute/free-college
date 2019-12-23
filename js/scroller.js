@@ -12,14 +12,14 @@
         // select elements
         var graphicEl = document.querySelector('#graphic')
         var graphicVisEl = graphicEl.querySelector('#vis')
-        var triggerEls = selectionToArray(graphicEl.querySelectorAll('#step'))
+        var triggerEls = selectionToArray(graphicEl.querySelectorAll('.step'))
 
         // viewport height
-        var viewportHeight = window.innerHeight - 51;
+        var viewportHeight = window.innerHeight - 51;  // adjust for height of header which is sticky
         var halfViewportHeight = Math.floor(viewportHeight / 2)
 
         // a global function creates and handles all the vis + updates
-        // var graphic = createGraphic('.graphic')
+        var graphic = createGraphic('.graphic')
         // handle the fixed/static position of grahpic
         var toggle = function(fixed, bottom) {
             if (fixed) graphicVisEl.classList.add('sticky')
@@ -41,11 +41,13 @@
                     var nextStep = direction === 'down' ? step : Math.max(0, step - 1)
 
                     // tell our graphic to update with a specific step
-                    // graphic.update(nextStep)
+                    graphic.update(nextStep)
+                    // console.log(step);
                 },
                 offset: '50%',  // trigger halfway up the viewport
             })
         })
+        console.log(waypoints);
         // enter (top) / exit (bottom) graphic (toggle fixed position)
         var enterWaypoint = new Waypoint({
             element: graphicEl,
