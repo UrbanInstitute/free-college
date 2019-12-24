@@ -20,6 +20,7 @@ window.createGraphic = function(graphicSelector) {
     var graphicVisEl = graphicEl.select('#chart');
     var graphicProseEl = graphicEl.select('#sections');
     var chartTitle = graphicEl.select(".chartTitle");
+    // var svg = d3.select("#chart svg g");
 
     var margin = 20;
     var width = 600,
@@ -44,6 +45,9 @@ window.createGraphic = function(graphicSelector) {
     var steps = [
         function step0() {
             d3.selectAll(".dotLabel").remove();
+            d3.selectAll(".catLabel").remove();
+            d3.selectAll(".columnLabel").remove();
+            d3.selectAll(".dividerLine").remove();
             d3.select(".legend").classed("invisible", true);
 
             d3.selectAll(".student")
@@ -54,6 +58,9 @@ window.createGraphic = function(graphicSelector) {
         function step1() {
             // console.log("spread out 100 dots");
             d3.selectAll(".dotLabel").remove();
+            d3.selectAll(".catLabel").remove();
+            d3.selectAll(".columnLabel").remove();
+            d3.selectAll(".dividerLine").remove();
 
             var t = d3.transition()
                 .duration(800)
@@ -104,6 +111,8 @@ window.createGraphic = function(graphicSelector) {
         function step2() {
             // console.log("split into two groups: those who have free college and those who don't");
             d3.selectAll(".dotLabel").remove();
+            d3.selectAll(".catLabel").remove();
+            d3.selectAll(".dividerLine").remove();
 
             var t = d3.transition()
                 .duration(800)
@@ -111,8 +120,8 @@ window.createGraphic = function(graphicSelector) {
 
             var simulation = d3.forceSimulation(dotsData)
                 .force('charge', d3.forceManyBody().strength(-10))
-                .force('x', d3.forceX().x(function(d) { return xScale(d.currentFreeCollege); }))  // seem to need to add an adjustment factor here
-                .force('y', d3.forceY().y((height - titleHeight) / 2))
+                .force('x', d3.forceX().x(function(d) { return xScale(d.currentFreeCollege); }).strength(0.15))  // seem to need to add an adjustment factor here
+                .force('y', d3.forceY().y((height - titleHeight) / 2).strength(0.15))
                 .force('collision', d3.forceCollide().radius(r))
                 .stop();
 
@@ -182,8 +191,8 @@ window.createGraphic = function(graphicSelector) {
 
             var simulation = d3.forceSimulation(dotsData)
                 .force('charge', d3.forceManyBody().strength(-10))
-                .force('x', d3.forceX().x(function(d) { return xScale(d.currentFreeCollege); }))  // seem to need to add an adjustment factor here
-                .force('y', d3.forceY().y(function(d) { return yScale_inc(d.incomegroup); }))
+                .force('x', d3.forceX().x(function(d) { return xScale(d.currentFreeCollege); }).strength(0.2))  // seem to need to add an adjustment factor here
+                .force('y', d3.forceY().y(function(d) { return yScale_inc(d.incomegroup); }).strength(0.2))
                 .force('collision', d3.forceCollide().radius(r))
                 .stop();
 
@@ -202,11 +211,43 @@ window.createGraphic = function(graphicSelector) {
 
                 students.classed("noFreeCollege", function(d) { return d.currentFreeCollege === "no" ? true : false; });
 
-                // update label below dots
-                // var numFreeCollege = students.data().filter(function(d) { return d.currentFreeCollege !== "no"; }).length;
-                // var numNoFreeCollege = 100 - numFreeCollege;
+                // add labels for income groups and divider lines
+                var svg = d3.select("svg g");
 
-                // var lowestDotY = d3.max(students.data(), function(d) { return d.y; });
+                svg.selectAll(".catLabel")
+                    .data(yScale_inc.domain())
+                    .enter()
+                    .append("text")
+                    .attr("class", "catLabel")
+                    .attr("x", width / 2)
+                    .attr("y", function(d) { return yScale_inc(d); })
+                    .text(function(d) { return d; });
+
+                svg.selectAll(".dividerLine")
+                    .data(yScale_inc.domain().slice(0, 5))
+                    .enter()
+                    .append("line")
+                    .attr("class", "dividerLine")
+                    .attr("x1", 0)
+                    .attr("x2", width)
+                    .attr("y1", function(d) { return yScale_inc(d) + yScale_inc.step()/2; })
+                    .attr("y2", function(d) { return yScale_inc(d) + yScale_inc.step()/2; });
+
+                // add labels with group totals
+                var sums = groupBySums("currentFreeCollege", yScale_inc.domain(), "incomegroup");
+                var leftmostDot = d3.min(students.data(), function(d) { return d.x; });
+                var rightmostDot = d3.max(students.data(), function(d) { return d.x; });
+                // console.log(sums)
+
+                svg.selectAll(".dotLabel")
+                    .data(sums)
+                    .enter()
+                    .append("text")
+                    .attr("class", function(d) { return d.freecollege === "yes" ? "dotLabel" : "dotLabel noFreeCollege"; })
+                    .attr("x", function(d) { return d.freecollege === "yes" ? rightmostDot + margin*4.5 : leftmostDot - margin*2; })
+                    .attr("y", function(d) { return yScale_inc(d.group); })
+                    .text(function(d) { return d.sum + " students"; })
+                    .style("text-anchor", "end");
 
                 // d3.select("svg g")
                 //     .append("text")
@@ -280,6 +321,28 @@ window.createGraphic = function(graphicSelector) {
     //     graphicProseEl.selectAll('.step')
     //         .style('height', height + 'px')
     // }
+
+    function groupBySums(freeCollegeScenarioName, group, groupName) {
+        // first set up a shell object with all of the combinations and sum initialized to zero
+        var sums = [];
+        ["yes", "no"].forEach(function(d1) {
+            group.forEach(function(d2) {
+                var obs = {freecollege: d1, group: d2, sum: 0};
+                sums.push(obs);
+            })
+        })
+
+        // loop through data and update the sum for the group the observation falls in
+        dotsData.forEach(function(d) {
+            sums.forEach(function(s) {
+                if(d[freeCollegeScenarioName] === s.freecollege && d[groupName] === s.group) {
+                    s.sum += 1;
+                }
+            });
+        });
+
+        return sums;
+    }
 
     function init() {
         setupCharts()

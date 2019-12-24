@@ -156,15 +156,29 @@ hr {
     fill: #000;
 }
 
+.catLabel {
+    font-size: 14px;
+    text-anchor: middle;
+    alignment-baseline: middle;
+    fill: #000;
+}
+
 .dotLabel {
     font-size: 13px;
     text-anchor: middle;
+    alignment-baseline: middle;
     fill: #1696d2;
+}
+
+.dividerLine {
+    stroke-width: 1px;
+    stroke: #d2d2d2;
 }
 
 .noFreeCollege {
     fill: #9d9d9d;
 }
+
 
 /********** LEGEND STYLES **************/
 .legend {
@@ -183,7 +197,7 @@ hr {
     font-family: Lato;
     font-size: 14px;
     font-weight: bold;
-    line-height: 16px;
+    line-height: 14px;
     float: left;
     display: inline-block;
     color: #000;
@@ -196,7 +210,7 @@ hr {
     width: 0;
     margin-right: 10px;
     float: left;
-    border-width: 8px;
+    border-width: 7px;
     border-style: solid;
     border-color: #fff;
     pointer-events: none;
