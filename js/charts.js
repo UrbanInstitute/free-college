@@ -186,7 +186,7 @@ window.createGraphic = function(graphicSelector) {
         },
         function step4() {
             // console.log("separate into income groups");
-            d3.selectAll(".dotLabel").remove();
+            (d3.selectAll(".dotLabel").nodes().length < 6) && d3.selectAll(".dotLabel").remove();
             d3.selectAll(".student").classed("highlighted1", false);
             d3.selectAll(".student").classed("highlighted2", false);
 
