@@ -48,6 +48,8 @@ window.createGraphic = function(graphicSelector) {
             d3.selectAll(".catLabel").remove();
             d3.selectAll(".columnLabel").remove();
             d3.selectAll(".dividerLine").remove();
+            d3.selectAll(".student").classed("highlighted1", false);
+            d3.selectAll(".student").classed("highlighted2", false);
             d3.select(".legend").classed("invisible", true);
 
             d3.selectAll(".student")
@@ -61,6 +63,8 @@ window.createGraphic = function(graphicSelector) {
             d3.selectAll(".catLabel").remove();
             d3.selectAll(".columnLabel").remove();
             d3.selectAll(".dividerLine").remove();
+            d3.selectAll(".student").classed("highlighted1", false);
+            d3.selectAll(".student").classed("highlighted2", false);
 
             var t = d3.transition()
                 .duration(800)
@@ -113,6 +117,8 @@ window.createGraphic = function(graphicSelector) {
             d3.selectAll(".dotLabel").remove();
             d3.selectAll(".catLabel").remove();
             d3.selectAll(".dividerLine").remove();
+            d3.selectAll(".student").classed("highlighted1", false);
+            d3.selectAll(".student").classed("highlighted2", false);
 
             var t = d3.transition()
                 .duration(800)
@@ -181,6 +187,8 @@ window.createGraphic = function(graphicSelector) {
         function step4() {
             // console.log("separate into income groups");
             d3.selectAll(".dotLabel").remove();
+            d3.selectAll(".student").classed("highlighted1", false);
+            d3.selectAll(".student").classed("highlighted2", false);
 
             d3.select(".chartTitle").text("Current situation");
             d3.select(".legend").classed("invisible", false);
@@ -248,24 +256,11 @@ window.createGraphic = function(graphicSelector) {
                     .attr("y", function(d) { return yScale_inc(d.group); })
                     .text(function(d) { return d.sum + " students"; })
                     .style("text-anchor", "end");
-
-                // d3.select("svg g")
-                //     .append("text")
-                //     .attr("class", "dotLabel")
-                //     .attr("x", xScale("yes"))
-                //     .attr("y", lowestDotY + 40)
-                //     .text(numFreeCollege + " students");
-
-                // d3.select("svg g")
-                //     .append("text")
-                //     .attr("class", "dotLabel noFreeCollege")
-                //     .attr("x", xScale("no"))
-                //     .attr("y", lowestDotY + 40)
-                //     .text(numNoFreeCollege + " students");
             });
         },
-        function step5() {
-
+        function step5() { // highlight Elle and Abed
+            d3.select(".student.Elle").classed("highlighted1", true);
+            d3.select(".student.Abed").classed("highlighted2", true);
         }
     ]
 
@@ -309,7 +304,7 @@ window.createGraphic = function(graphicSelector) {
                 .data(data)
                 .enter()
                 .append('circle')
-                .attr("class", "student")
+                .attr("class", function(d) { return d.name !== "NA" ? d.name + " student" : "student"; })
                 .attr("cx", width / 2)
                 .attr("cy", (height - titleHeight) / 2)
                 .attr("r", r);
