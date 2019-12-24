@@ -68,6 +68,9 @@ hr {
     display: none;
 }
 
+.invisible {
+    visibility: hidden;
+}
 
 
 /*********** STRUCTURE ***********/
@@ -111,7 +114,7 @@ hr {
     top: 0;
     height: calc(100vh - 50px);
     /*width: 626px;*/
-    /*border: 1px solid #d2d2d2;*/
+    border: 1px solid #d2d2d2;
     /*background-color: #d2d2d2;*/
 }
 
@@ -130,7 +133,7 @@ hr {
     /*top: 50%;*/
     /*position: relative;*/
     /*transform: translateY(-50%);*/
-    /*border: 1px dashed #d2d2d2;*/
+    border: 1px dashed #d2d2d2;
 }
 
 /********** CHART STYLES ***************/
@@ -144,6 +147,13 @@ hr {
 
 .student {
     fill: #1696d2;
+}
+
+.columnLabel {
+    text-anchor: middle;
+    font-size: 14px;
+    font-weight: bold;
+    fill: #000;
 }
 
 .dotLabel {
@@ -160,8 +170,7 @@ hr {
 .legend {
     width: 100%;
     /*height: 30px;*/
-    padding: 24px 20px 20px;
-    /*margin-bottom: 20px;*/
+    padding: 10px 20px;
 }
 
 .legendEntry {
@@ -173,11 +182,11 @@ hr {
 .legendText {
     font-family: Lato;
     font-size: 14px;
-    line-height: 20px;
+    font-weight: bold;
+    line-height: 16px;
     float: left;
     display: inline-block;
     color: #000;
-    text-transform: uppercase;
     /*width: calc(100% - 20px);*/
 }
 
@@ -187,19 +196,19 @@ hr {
     width: 0;
     margin-right: 10px;
     float: left;
-    border-width: 10px;
+    border-width: 8px;
     border-style: solid;
     border-color: #fff;
     pointer-events: none;
 }
 
-.legendSquare.county {
-    opacity: 1;
-    border: none;
-    width: 20px;
-    height: 20px;
+.legendSquare.freeCollege {
+    border-color: #1696d2;
 }
 
+.legendSquare.noFreeCollege {
+    border-color: #9d9d9d;
+}
 
 /*********** FOOTER ************/
 
