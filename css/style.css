@@ -238,6 +238,11 @@ hr {
 
 
 /*********** PERSONA STYLES ***********/
+.personaDiv {
+    overflow-y: auto;
+    margin-bottom: 20px;
+}
+
 .persona.image {
     display: inline-block;
     float: left;
@@ -257,6 +262,9 @@ hr {
     fill: #1696d2;
 }
 
+.personaDot.noFreeCollege {
+    fill: #9d9d9d;
+}
 .persona.name {
     color: #000;
     font-size: 22px;
