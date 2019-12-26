@@ -336,80 +336,12 @@ window.createGraphic = function(graphicSelector) {
                     .attr("y", function(d) { return yScale_inc(d.group); })
                     .style("text-anchor", "end");
 
-                labels.text(function(d) { return d.sum + " students"; });
+                labels.text(function(d) { return d.sum + " students"; })
+                    .style("opacity", function(d) { return d.sum === 0 ? 0 : 1; });
             });
         },
         function step8() {
-            d3.select(".chartTitle").text("Free tuition and fees for all");
-
-            var t = d3.transition()
-                .duration(800)
-                .ease(d3.easeQuadInOut)
-
-            var simulation = d3.forceSimulation(dotsData)
-                .force('charge', d3.forceManyBody().strength(-10))
-                .force('x', d3.forceX().x(function(d) { return xScale("yes"); }).strength(0.2))  // seem to need to add an adjustment factor here
-                .force('y', d3.forceY().y(function(d) { return yScale_inc(d.incomegroup); }).strength(0.2))
-                .force('collision', d3.forceCollide().radius(r))
-                .stop();
-
-            d3.timeout(function() {
-              // See https://github.com/d3/d3-force/blob/master/README.md#simulation_tick
-              for (var i = 0, n = Math.ceil(Math.log(simulation.alphaMin()) / Math.log(1 - simulation.alphaDecay())); i < n; ++i) {
-                simulation.tick();
-              }
-
-                var students = d3.selectAll(".student");
-
-                students
-                    .transition(t)
-                    .attr("cx", function(d) { return d.x; })
-                    .attr("cy", function(d) { return d.y; });
-
-                students.classed("noFreeCollege", function(d) { return d.currentFreeCollege === "no" ? true : false; });
-
-                // add labels for income groups and divider lines
-                var svg = d3.select("svg g");
-
-                // svg.selectAll(".catLabel")
-                //     .data(yScale_inc.domain())
-                //     .enter()
-                //     .append("text")
-                //     .attr("class", "catLabel")
-                //     .attr("x", width / 2)
-                //     .attr("y", function(d) { return yScale_inc(d); })
-                //     .text(function(d) { return d; });
-
-                // svg.selectAll(".dividerLine")
-                //     .data(yScale_inc.domain().slice(0, 5))
-                //     .enter()
-                //     .append("line")
-                //     .attr("class", "dividerLine")
-                //     .attr("x1", 0)
-                //     .attr("x2", width)
-                //     .attr("y1", function(d) { return yScale_inc(d) + yScale_inc.step()/2; })
-                //     .attr("y2", function(d) { return yScale_inc(d) + yScale_inc.step()/2; });
-
-                // add labels with group totals
-                var sums = groupBySums("allFreeCollege", yScale_inc.domain(), "incomegroup");
-                // var leftmostDot = d3.min(students.data(), function(d) { return d.x; });
-                var rightmostDot = d3.max(students.data(), function(d) { return d.x; });
-                // console.log(sums)
-
-                var labels = svg.selectAll(".dotLabel")
-                    .data(sums);
-
-                labels.exit().remove();
-
-                labels.enter()
-                    .append("text")
-                    .attr("class", function(d) { return d.freecollege === "yes" ? "dotLabel" : "dotLabel noFreeCollege"; })
-                    .attr("x", function(d) { return d.freecollege === "yes" ? rightmostDot + margin*4.5 : leftmostDot - margin*2; })
-                    .attr("y", function(d) { return yScale_inc(d.group); })
-                    .style("text-anchor", "end");
-
-                labels.text(function(d) { return d.sum + " students"; });
-            });
+            // should be same as step 7
         },
         function step9() {  // implement free college for those below 400% FPL plan
             d3.select(".chartTitle").text("Free tuition and fees for 400% of federal poverty level");
@@ -480,6 +412,82 @@ window.createGraphic = function(graphicSelector) {
                     .attr("y", function(d) { return yScale_inc(d.group); })
                     .style("text-anchor", "end");
 
+                labels.text(function(d) { return d.sum + " students"; })
+                    .style("opacity", 1);
+            });
+        },
+        function step10() {
+            // same as step 9
+        },
+        function step11() {  // grant free college to those less than 400% of FPL and attending public institutions only
+            d3.select(".chartTitle").text("Free tuition and fees for 400% of federal poverty level and attending public institutions only");
+
+            var t = d3.transition()
+                .duration(800)
+                .ease(d3.easeQuadInOut)
+
+            var simulation = d3.forceSimulation(dotsData)
+                .force('charge', d3.forceManyBody().strength(-10))
+                .force('x', d3.forceX().x(function(d) { return xScale(d.freeCollege400FPLPublic); }).strength(0.2))  // seem to need to add an adjustment factor here
+                .force('y', d3.forceY().y(function(d) { return yScale_inc(d.incomegroup); }).strength(0.2))
+                .force('collision', d3.forceCollide().radius(r))
+                .stop();
+
+            d3.timeout(function() {
+              // See https://github.com/d3/d3-force/blob/master/README.md#simulation_tick
+              for (var i = 0, n = Math.ceil(Math.log(simulation.alphaMin()) / Math.log(1 - simulation.alphaDecay())); i < n; ++i) {
+                simulation.tick();
+              }
+
+                var students = d3.selectAll(".student");
+
+                students
+                    .transition(t)
+                    .attr("cx", function(d) { return d.x; })
+                    .attr("cy", function(d) { return d.y; });
+
+                students.classed("noFreeCollege", function(d) { return d.currentFreeCollege === "no" ? true : false; });
+
+                // add labels for income groups and divider lines
+                var svg = d3.select("svg g");
+
+                // svg.selectAll(".catLabel")
+                //     .data(yScale_inc.domain())
+                //     .enter()
+                //     .append("text")
+                //     .attr("class", "catLabel")
+                //     .attr("x", width / 2)
+                //     .attr("y", function(d) { return yScale_inc(d); })
+                //     .text(function(d) { return d; });
+
+                // svg.selectAll(".dividerLine")
+                //     .data(yScale_inc.domain().slice(0, 5))
+                //     .enter()
+                //     .append("line")
+                //     .attr("class", "dividerLine")
+                //     .attr("x1", 0)
+                //     .attr("x2", width)
+                //     .attr("y1", function(d) { return yScale_inc(d) + yScale_inc.step()/2; })
+                //     .attr("y2", function(d) { return yScale_inc(d) + yScale_inc.step()/2; });
+
+                // add labels with group totals
+                var sums = groupBySums("freeCollege400FPLPublic", yScale_inc.domain(), "incomegroup");
+                var leftmostDot = d3.min(students.data(), function(d) { return d.x; });
+                var rightmostDot = d3.max(students.data(), function(d) { return d.x; });
+                // console.log(sums)
+
+                var labels = svg.selectAll(".dotLabel")
+                    .data(sums);
+
+                labels.exit().remove();
+
+                labels.enter()
+                    .append("text")
+                    .attr("class", function(d) { return d.freecollege === "yes" ? "dotLabel" : "dotLabel noFreeCollege"; })
+                    .attr("x", function(d) { return d.freecollege === "yes" ? rightmostDot + margin*4.5 : leftmostDot - margin*2; })
+                    .attr("y", function(d) { return yScale_inc(d.group); })
+                    .style("text-anchor", "end");
+
                 labels.text(function(d) { return d.sum + " students"; });
             });
         }
@@ -509,7 +517,8 @@ window.createGraphic = function(graphicSelector) {
                 income: +d.income,
                 currentFreeCollege: d.currentFreeCollege,
                 allFreeCollege: d.allFreeCollege,
-                freeCollege400FPL: d.freeCollege400FPL
+                freeCollege400FPL: d.freeCollege400FPL,
+                freeCollege400FPLPublic: d.freeCollege400FPLPublic
             };
         }, function(error, data) {
             if (error) throw error;
