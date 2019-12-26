@@ -261,6 +261,10 @@ window.createGraphic = function(graphicSelector) {
         function step5() { // highlight Elle and Abed
             d3.select(".student.Elle").classed("highlighted1", true);
             d3.select(".student.Abed").classed("highlighted2", true);
+        },
+        function step6() {  // back to dots broken out by income, current situation
+            d3.selectAll(".student").classed("highlighted1", false);
+            d3.selectAll(".student").classed("highlighted2", false);
         }
     ]
 

@@ -104,7 +104,7 @@ hr {
 
 .step {
     margin-left: 720px;
-    /*margin-bottom: 50vh;*/
+    margin-bottom: 10vh;
     padding: 0;
     min-height: 80vh;
 }
