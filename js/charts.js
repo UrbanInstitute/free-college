@@ -123,11 +123,6 @@ window.createGraphic = function(graphicSelector) {
 
     function allDotsCentered() {
         d3.selectAll(".dotLabel").remove();
-        d3.selectAll(".catLabel").remove();
-        d3.selectAll(".columnLabel").remove();
-        d3.selectAll(".dividerLine").remove();
-        removeHighlighting();
-        d3.select(".legend").classed("invisible", true);
 
         d3.selectAll(".student")
             .transition()
@@ -138,9 +133,7 @@ window.createGraphic = function(graphicSelector) {
     function spreadOut100Dots() {
         // console.log("spread out 100 dots");
         d3.selectAll(".dotLabel").remove();
-        d3.selectAll(".catLabel").remove();
         d3.selectAll(".columnLabel").remove();
-        d3.selectAll(".dividerLine").remove();
         d3.select(".legend").classed("invisible", true);
         removeHighlighting();
 
@@ -191,7 +184,6 @@ window.createGraphic = function(graphicSelector) {
 
     function splitCurrentFreeCollege() {
         // console.log("split into two groups: those who have free college and those who don't");
-        // d3.selectAll(".dotLabel").remove();
         d3.selectAll(".catLabel").remove();
         d3.selectAll(".dividerLine").remove();
         removeHighlighting();
@@ -383,25 +375,6 @@ window.createGraphic = function(graphicSelector) {
             // add labels for income groups and divider lines
             var svg = d3.select("svg g");
 
-            // svg.selectAll(".catLabel")
-            //     .data(yScale_inc.domain())
-            //     .enter()
-            //     .append("text")
-            //     .attr("class", "catLabel")
-            //     .attr("x", width / 2)
-            //     .attr("y", function(d) { return yScale_inc(d); })
-            //     .text(function(d) { return d; });
-
-            // svg.selectAll(".dividerLine")
-            //     .data(yScale_inc.domain().slice(0, 5))
-            //     .enter()
-            //     .append("line")
-            //     .attr("class", "dividerLine")
-            //     .attr("x1", 0)
-            //     .attr("x2", width)
-            //     .attr("y1", function(d) { return yScale_inc(d) + yScale_inc.step()/2; })
-            //     .attr("y2", function(d) { return yScale_inc(d) + yScale_inc.step()/2; });
-
             // add labels with group totals
             var sums = groupBySums("allFreeCollege", yScale_inc.domain(), "incomegroup");
             // var leftmostDot = d3.min(students.data(), function(d) { return d.x; });
@@ -456,25 +429,6 @@ window.createGraphic = function(graphicSelector) {
 
             // add labels for income groups and divider lines
             var svg = d3.select("svg g");
-
-            // svg.selectAll(".catLabel")
-            //     .data(yScale_inc.domain())
-            //     .enter()
-            //     .append("text")
-            //     .attr("class", "catLabel")
-            //     .attr("x", width / 2)
-            //     .attr("y", function(d) { return yScale_inc(d); })
-            //     .text(function(d) { return d; });
-
-            // svg.selectAll(".dividerLine")
-            //     .data(yScale_inc.domain().slice(0, 5))
-            //     .enter()
-            //     .append("line")
-            //     .attr("class", "dividerLine")
-            //     .attr("x1", 0)
-            //     .attr("x2", width)
-            //     .attr("y1", function(d) { return yScale_inc(d) + yScale_inc.step()/2; })
-            //     .attr("y2", function(d) { return yScale_inc(d) + yScale_inc.step()/2; });
 
             // add labels with group totals
             var sums = groupBySums("freeCollege400FPL", yScale_inc.domain(), "incomegroup");
