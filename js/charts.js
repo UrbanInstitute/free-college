@@ -69,9 +69,19 @@ window.createGraphic = function(graphicSelector) {
         },
         splitFreeCollege400FPLPublic,       // step 12
         splitFreeCollege400FPLPublicByRace, // step 13
-        highlightJustina,                   // step 14
+        function step14() {                 // step 14
+            if(scrollDirection === "up") splitFreeCollege400FPLPublicByRace();
+            highlightJustina();
+        },
         splitFreeCollege400FPLPublic,       // step 15
-        splitFreeCollege400FPLPublicByLoan // step 16
+        function step16() {                 // step 16
+            if(scrollDirection === "up") removeHighlighting();
+            else splitFreeCollege400FPLPublicByLoan();
+        },
+        function highlightAnaDenise() {     // step 17
+            highlightPersonas("Ana", "Denise");
+        },
+        removeHighlighting // step 18
     ]
 
     // update our chart
@@ -141,7 +151,7 @@ window.createGraphic = function(graphicSelector) {
         // console.log("spread out 100 dots");
         d3.selectAll(".dotLabel").remove();
         d3.selectAll(".columnLabel").remove();
-        d3.select(".legend").classed("invisible", true);
+        // d3.select(".legend").classed("invisible", true);
         removeHighlighting();
 
         var t = d3.transition()
@@ -578,8 +588,6 @@ window.createGraphic = function(graphicSelector) {
             simulation.tick();
           }
 
-            d3.select(".legend").classed("invisible", true);
-
             var students = d3.selectAll(".student");
 
             students
@@ -616,7 +624,6 @@ window.createGraphic = function(graphicSelector) {
     function splitFreeCollege400FPLPublicByRace() {
         (d3.selectAll(".dotLabel").nodes().length < 10) && d3.selectAll(".dotLabel").remove();
         removeHighlighting();
-        // d3.select(".legend").classed("invisible", false);
 
         var t = d3.transition()
             .duration(800)
@@ -694,7 +701,6 @@ window.createGraphic = function(graphicSelector) {
     function splitFreeCollege400FPLPublicByLoan() {
         (d3.selectAll(".dotLabel").nodes().length < 4) && d3.selectAll(".dotLabel").remove();
         removeHighlighting();
-        // d3.select(".legend").classed("invisible", false);
 
         var t = d3.transition()
             .duration(800)
@@ -736,7 +742,7 @@ window.createGraphic = function(graphicSelector) {
                 .style("opacity", 1);
 
             svg.selectAll(".dividerLine")
-                .data(yScale_loan.domain().slice(0, 4))
+                .data(yScale_loan.domain().slice(0, 1))
                 .enter()
                 .append("line")
                 .attr("class", "dividerLine")
