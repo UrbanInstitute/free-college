@@ -47,17 +47,15 @@ window.createGraphic = function(graphicSelector) {
         },
         removeHighlighting,       // step 6
         freeCollegeForAll,        // step 7
-        function step8() { },     // step 8
-        freeCollegeBelow400FPL,   // step 9
-        function step10() { },    // step 10
-        freeCollegeBelow400FPLPublic,      // step 11
-        function highlightDevonJustina() { // step 12
+        freeCollegeBelow400FPL,   // step 8
+        function step10() { },    // step 9
+        freeCollegeBelow400FPLPublic,      // step 10
+        function highlightDevonJustina() { // step 11
             highlightPersonas("Devon", "Justina");
         },
-        fadeOut,                           // step 13
-        splitFreeCollege400FPLPublic,      // step 14
-        splitFreeCollege400FPLPublicByRace, // step 15
-        highlightJustina                   // step 16
+        splitFreeCollege400FPLPublic,      // step 12
+        splitFreeCollege400FPLPublicByRace, // step 13
+        highlightJustina                   // step 14
     ]
 
     // update our chart
