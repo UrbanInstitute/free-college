@@ -34,6 +34,11 @@ window.createGraphic = function(graphicSelector) {
         .rangeRound([margin, height - margin])
         .padding(margin);
 
+    var yScale_loan = d3.scaleBand()
+        .domain(["loans", "no loans"])
+        .rangeRound([margin, height - margin])
+        .padding(margin);
+
     var scrollDirection;
 
     // actions to take on each step of our scroll-driven story
@@ -62,9 +67,11 @@ window.createGraphic = function(graphicSelector) {
             (scrollDirection === "up") && freeCollegeBelow400FPLPublic();
             highlightPersonas("Devon", "Justina");
         },
-        splitFreeCollege400FPLPublic,      // step 12
+        splitFreeCollege400FPLPublic,       // step 12
         splitFreeCollege400FPLPublicByRace, // step 13
-        highlightJustina                   // step 14
+        highlightJustina,                   // step 14
+        splitFreeCollege400FPLPublic,       // step 15
+        splitFreeCollege400FPLPublicByLoan // step 16
     ]
 
     // update our chart
@@ -682,6 +689,79 @@ window.createGraphic = function(graphicSelector) {
     function highlightJustina() {
         d3.select(".student.Justina").classed("highlighted1", true);
         // show Danielle's tooltip
+    }
+
+    function splitFreeCollege400FPLPublicByLoan() {
+        (d3.selectAll(".dotLabel").nodes().length < 4) && d3.selectAll(".dotLabel").remove();
+        removeHighlighting();
+        // d3.select(".legend").classed("invisible", false);
+
+        var t = d3.transition()
+            .duration(800)
+            .ease(d3.easeQuadInOut)
+
+        var simulation = d3.forceSimulation(dotsData)
+            .force('charge', d3.forceManyBody().strength(-10))
+            .force('x', d3.forceX().x(function(d) { return xScale(d.freeCollege400FPLPublic); }).strength(0.2))  // seem to need to add an adjustment factor here
+            .force('y', d3.forceY().y(function(d) { return yScale_loan(d.loan); }).strength(0.2))
+            .force('collision', d3.forceCollide().radius(r))
+            .stop();
+
+        d3.timeout(function() {
+          // See https://github.com/d3/d3-force/blob/master/README.md#simulation_tick
+          for (var i = 0, n = Math.ceil(Math.log(simulation.alphaMin()) / Math.log(1 - simulation.alphaDecay())); i < n; ++i) {
+            simulation.tick();
+          }
+
+            var students = d3.selectAll(".student");
+
+            students
+                .transition(t)
+                .attr("cx", function(d) { return d.x; })
+                .attr("cy", function(d) { return d.y; });
+
+            students.classed("noFreeCollege", function(d) { return d.currentFreeCollege === "no" ? true : false; });
+
+            // add labels for income groups and divider lines
+            var svg = d3.select("svg g");
+
+            svg.selectAll(".catLabel")
+                .data(yScale_loan.domain())
+                .enter()
+                .append("text")
+                .attr("class", "catLabel")
+                .attr("x", width / 2)
+                .attr("y", function(d) { return yScale_loan(d); })
+                .text(function(d) { return d; })
+                .style("opacity", 1);
+
+            svg.selectAll(".dividerLine")
+                .data(yScale_loan.domain().slice(0, 4))
+                .enter()
+                .append("line")
+                .attr("class", "dividerLine")
+                .attr("x1", 0)
+                .attr("x2", width)
+                .attr("y1", function(d) { return yScale_loan(d) + yScale_loan.step()/2; })
+                .attr("y2", function(d) { return yScale_loan(d) + yScale_loan.step()/2; })
+                .style("opacity", 1);
+
+            // add labels with group totals
+            var sums = groupBySums("freeCollege400FPLPublic", yScale_loan.domain(), "loan");
+            var leftmostDot = d3.min(students.data(), function(d) { return d.x; });
+            var rightmostDot = d3.max(students.data(), function(d) { return d.x; });
+            // console.log(sums)
+
+            svg.selectAll(".dotLabel")
+                .data(sums)
+                .enter()
+                .append("text")
+                .attr("class", function(d) { return d.freecollege === "yes" ? "dotLabel" : "dotLabel noFreeCollege"; })
+                .attr("x", function(d) { return d.freecollege === "yes" ? rightmostDot + margin*4.5 : leftmostDot - margin*2; })
+                .attr("y", function(d) { return yScale_loan(d.group); })
+                .text(function(d) { return d.sum + " students"; })
+                .style("text-anchor", "end");
+        });
     }
 
     function groupBySums(freeCollegeScenarioName, group, groupName) {
