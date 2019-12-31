@@ -81,7 +81,14 @@ window.createGraphic = function(graphicSelector) {
         function highlightAnaDenise() {     // step 17
             highlightPersonas("Ana", "Denise");
         },
-        removeHighlighting // step 18
+        function step18() {                 // step 18
+            removeHighlighting();
+            d3.selectAll(".student").classed("hasStipend", false);
+            d3.select(".legendEntry.stipend").classed("invisible", true);
+        },
+        showStipend,                        // step 19
+        function step20() {},               // step 20
+        removeHighlighting,                 // step 21
     ]
 
     // update our chart
@@ -768,6 +775,12 @@ window.createGraphic = function(graphicSelector) {
                 .text(function(d) { return d.sum + " students"; })
                 .style("text-anchor", "end");
         });
+    }
+
+    function showStipend() {
+        d3.selectAll(".legendEntry").classed("invisible", false);
+
+        d3.selectAll(".student").classed("hasStipend", function(d) { return d.freecollege === "tuition&stipend" ? true : false; });
     }
 
     function groupBySums(freeCollegeScenarioName, group, groupName) {
