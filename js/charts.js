@@ -89,6 +89,9 @@ window.createGraphic = function(graphicSelector) {
         showStipend,                        // step 19
         function step20() {},               // step 20
         removeHighlighting,                 // step 21
+        function highlightStephenSally() {  // step 22
+            highlightPersonas("Stephen", "Sally");
+        }
     ]
 
     // update our chart
