@@ -40,14 +40,12 @@
                     // else, we want to trigger the previous one
                     var nextStep = direction === 'down' ? step : Math.max(0, step - 1)
 
-                    // tell our graphic to update with a specific step
-                    graphic.update(nextStep)
-                    // console.log(step);
+                    // tell our graphic to update with a specific step and pass in direction of scroll
+                    graphic.update(nextStep, direction)
                 },
-                offset: '50%',  // trigger halfway up the viewport
+                offset: '90%',  // trigger halfway up the viewport
             })
         })
-        console.log(waypoints);
         // enter (top) / exit (bottom) graphic (toggle fixed position)
         var enterWaypoint = new Waypoint({
             element: graphicEl,
