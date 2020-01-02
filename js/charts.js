@@ -97,7 +97,7 @@ window.createGraphic = function(graphicSelector) {
             highlightPersonas("Stephen", "Sally");
         },
         splitFreeCollege400FPLPublic,       // step 23
-        function switchToPublic() {},       // step 24
+        switchToPublic,                     // step 24
         function moreDotsJoin() {}          // step 25
     ]
 
@@ -124,7 +124,8 @@ window.createGraphic = function(graphicSelector) {
                 currentFreeCollege: d.currentFreeCollege,
                 allFreeCollege: d.allFreeCollege,
                 freeCollege400FPL: d.freeCollege400FPL,
-                freeCollege400FPLPublic: d.freeCollege400FPLPublic
+                freeCollege400FPLPublic: d.freeCollege400FPLPublic,
+                switchToPublic: d.switchToPublic
             };
         }, function(error, data) {
             if (error) throw error;
@@ -793,6 +794,64 @@ window.createGraphic = function(graphicSelector) {
         d3.selectAll(".legendEntry").classed("invisible", false);
 
         d3.selectAll(".student").classed("hasStipend", function(d) { return d.freecollege === "tuition&stipend" ? true : false; });
+    }
+
+    function switchToPublic() {
+        d3.select(".student.Justina").classed("highlighted1", true);
+
+        // select a few dots that don't receive free college under the plan and aren't attending a public institution
+        // then transition them over to the free college group
+        var t = d3.transition()
+            .delay(function(d, i) { return i * 100; })
+            .duration(1500)
+            .ease(d3.easeQuadInOut)
+
+        var simulation = d3.forceSimulation(dotsData)
+            .force('charge', d3.forceManyBody().strength(-10))
+            .force('x', d3.forceX().x(function(d) { return xScale(d.switchToPublic); }).strength(0.15))  // seem to need to add an adjustment factor here
+            .force('y', d3.forceY().y((height - titleHeight) / 2).strength(0.15))
+            .force('collision', d3.forceCollide().radius(r))
+            .stop();
+
+        d3.timeout(function() {
+          // See https://github.com/d3/d3-force/blob/master/README.md#simulation_tick
+          for (var i = 0, n = Math.ceil(Math.log(simulation.alphaMin()) / Math.log(1 - simulation.alphaDecay())); i < n; ++i) {
+            simulation.tick();
+          }
+
+            var students = d3.selectAll(".student");
+
+            students
+                .transition()
+                .delay(function(d, i) { return i * 50; })
+                .duration(1000)
+                .ease(d3.easeQuadInOut)
+                .attr("cx", function(d) { return d.x; })
+                .attr("cy", function(d) { return d.y; });
+
+            students.classed("noFreeCollege", function(d) { return d.currentFreeCollege === "no" ? true : false; });
+
+            // label "Free College" and "No free college" columns
+            var svg = d3.select("svg g");
+
+            // update label below dots
+            // var numFreeCollege = students.data().filter(function(d) { return d.freeCollege400FPLPublic !== "no"; }).length;
+            // var numNoFreeCollege = 100 - numFreeCollege;
+
+            // var lowestDotY = d3.max(students.data(), function(d) { return d.y; });
+
+            // svg.append("text")
+            //     .attr("class", "dotLabel")
+            //     .attr("x", xScale("yes"))
+            //     .attr("y", lowestDotY + 40)
+            //     .text(numFreeCollege + " students");
+
+            // svg.append("text")
+            //     .attr("class", "dotLabel noFreeCollege")
+            //     .attr("x", xScale("no"))
+            //     .attr("y", lowestDotY + 40)
+            //     .text(numNoFreeCollege + " students");
+        });
     }
 
     function groupBySums(freeCollegeScenarioName, group, groupName) {
