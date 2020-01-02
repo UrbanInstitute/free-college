@@ -831,16 +831,16 @@ window.createGraphic = function(graphicSelector) {
 
         // create data for new students
         var newStudentsData = [
-            {char_id: "new", currentFreeCollege: "no", freeCollege400FPLPublic: "yes"},
-            {char_id: "new", currentFreeCollege: "no", freeCollege400FPLPublic: "yes"},
-            {char_id: "new", currentFreeCollege: "no", freeCollege400FPLPublic: "no"},
-            {char_id: "new", currentFreeCollege: "no", freeCollege400FPLPublic: "yes"},
-            {char_id: "new", currentFreeCollege: "no", freeCollege400FPLPublic: "no"},
-            {char_id: "new", currentFreeCollege: "no", freeCollege400FPLPublic: "yes"},
-            {char_id: "new", currentFreeCollege: "no", freeCollege400FPLPublic: "yes"},
-            {char_id: "new", currentFreeCollege: "no", freeCollege400FPLPublic: "no"},
-            {char_id: "new", currentFreeCollege: "no", freeCollege400FPLPublic: "yes"},
-            {char_id: "new", currentFreeCollege: "no", freeCollege400FPLPublic: "yes"}
+            {char_id: "new", currentFreeCollege: "no", switchToPublic: "yes"},
+            {char_id: "new", currentFreeCollege: "no", switchToPublic: "yes"},
+            {char_id: "new", currentFreeCollege: "no", switchToPublic: "no"},
+            {char_id: "new", currentFreeCollege: "no", switchToPublic: "yes"},
+            {char_id: "new", currentFreeCollege: "no", switchToPublic: "no"},
+            {char_id: "new", currentFreeCollege: "no", switchToPublic: "yes"},
+            {char_id: "new", currentFreeCollege: "no", switchToPublic: "yes"},
+            {char_id: "new", currentFreeCollege: "no", switchToPublic: "no"},
+            {char_id: "new", currentFreeCollege: "no", switchToPublic: "yes"},
+            {char_id: "new", currentFreeCollege: "no", switchToPublic: "yes"}
         ];
 
         // append new data to existing dataset(?)
@@ -857,9 +857,9 @@ window.createGraphic = function(graphicSelector) {
             .attr("r", r);
 
         // update chart
-        var simulation = d3.forceSimulation(newStudentsData)
+        var simulation = d3.forceSimulation(dotsData.concat(newStudentsData))
             .force('charge', d3.forceManyBody().strength(-10))
-            .force('x', d3.forceX().x(function(d) { return xScale(d.freeCollege400FPLPublic); }).strength(0.15))  // seem to need to add an adjustment factor here
+            .force('x', d3.forceX().x(function(d) { return xScale(d.switchToPublic); }).strength(0.15))  // seem to need to add an adjustment factor here
             .force('y', d3.forceY().y((height - titleHeight) / 2).strength(0.15))
             .force('collision', d3.forceCollide().radius(r))
             .stop();
@@ -870,17 +870,13 @@ window.createGraphic = function(graphicSelector) {
             simulation.tick();
           }
 
-            // var students = d3.selectAll(".student");
-
-            newStudents
+            d3.selectAll(".student")
                 .transition()
-                .delay(function(d, i) { return i * 250; })
+                // .delay(function(d, i) { return i * 30; })
                 .duration(2000)
                 .ease(d3.easeQuadInOut)
                 .attr("cx", function(d) { return d.x; })
                 .attr("cy", function(d) { return d.y; });
-
-            // students.classed("noFreeCollege", function(d) { return d.currentFreeCollege === "no" ? true : false; });
         });
     }
 
