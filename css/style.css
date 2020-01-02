@@ -136,6 +136,11 @@ hr {
     /*border: 1px dashed #d2d2d2;*/
 }
 
+.personaTextHighlight {
+    background-color: rgba(253, 191, 17, 0.8);
+    padding: 1px 4px;
+}
+
 .stipendTextHighlight {
     background-color: rgba(236, 0, 139, 0.3);
     padding: 1px 4px;

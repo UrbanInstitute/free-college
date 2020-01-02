@@ -90,8 +90,15 @@ window.createGraphic = function(graphicSelector) {
         function step20() {},               // step 20
         removeHighlighting,                 // step 21
         function highlightStephenSally() {  // step 22
+            if(scrollDirection === "up") {
+                splitFreeCollege400FPLPublicByLoan();
+                showStipend();
+            }
             highlightPersonas("Stephen", "Sally");
-        }
+        },
+        splitFreeCollege400FPLPublic,       // step 23
+        function switchToPublic() {},       // step 24
+        function moreDotsJoin() {}          // step 25
     ]
 
     // update our chart
@@ -580,6 +587,8 @@ window.createGraphic = function(graphicSelector) {
         d3.selectAll(".dividerLine").remove();
         d3.selectAll(".dotLabel").remove();
         removeHighlighting();
+        d3.selectAll(".student").classed("hasStipend", false);
+        d3.select(".legendEntry.stipend").classed("invisible", true);
 
         var t = d3.transition()
             .duration(800)
