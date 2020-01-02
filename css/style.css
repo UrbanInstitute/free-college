@@ -260,22 +260,34 @@ hr {
 /*********** PERSONA STYLES ***********/
 .personaDiv {
     overflow-y: auto;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 .persona.image {
     display: inline-block;
     float: left;
-    width: 71px;
-    height: 108px;
-    background-color: #d2d2d2;
+    /*width: 71px;*/
+    /*height: 108px;*/
+    /*background-color: #d2d2d2;*/
+}
+
+.persona.image img {
+    width: 95px;
 }
 
 .persona.bio {
     display: inline-block;
     float: left;
-    width: calc(100% - 71px);
-    padding-left: 20px;
+    width: calc(100% - 95px);
+    padding-left: 10px;
+}
+
+.persona.bio p {
+    margin-bottom: 0;
+}
+
+.persona.topRow {
+    padding-top: 15px;
 }
 
 .personaDot {
