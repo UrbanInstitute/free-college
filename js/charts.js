@@ -98,7 +98,9 @@ window.createGraphic = function(graphicSelector) {
         },
         splitFreeCollege400FPLPublic,       // step 23
         switchToPublic,                     // step 24
-        moreDotsJoin                        // step 25
+        moreDotsJoin,                       // step 25
+        freeCollegeBelow400FPLPublic,       // step 26
+        function step27() {}                // step 27
     ]
 
     // update our chart
@@ -379,6 +381,7 @@ window.createGraphic = function(graphicSelector) {
     }
 
    function freeCollegeForAll() {
+        // grant free college to all, by income
         d3.select(".chartTitle").text("Free tuition and fees for all");
 
         var t = d3.transition()
@@ -434,6 +437,7 @@ window.createGraphic = function(graphicSelector) {
     }
 
     function freeCollegeBelow400FPL() {
+        // grant free college to those < 400% of FPL, by income
         d3.select(".chartTitle").text("Free tuition and fees for 400% of federal poverty level");
 
         var t = d3.transition()
@@ -489,8 +493,10 @@ window.createGraphic = function(graphicSelector) {
     }
 
     function freeCollegeBelow400FPLPublic() {
+        // grant free college to those < 400% of FPL and attending public institutions, by income
         d3.select(".chartTitle").text("Free tuition and fees for 400% of federal poverty level and attending public institutions only");
         removeHighlighting();
+        d3.selectAll(".newStudent").remove();
 
         var t = d3.transition()
             .duration(800)
@@ -583,7 +589,9 @@ window.createGraphic = function(graphicSelector) {
     //         .style("opacity", 0);
     // }
 
-    function splitFreeCollege400FPLPublic() {  // split dots into two groups (free college/no free college) under free college for < 400% FPL and attending public school proposal
+    function splitFreeCollege400FPLPublic() {
+        // split dots into two groups (free college/no free college) under free college for < 400% FPL and attending public school proposal
+
         d3.selectAll(".catLabel").remove();
         d3.selectAll(".dividerLine").remove();
         d3.selectAll(".dotLabel").remove();
@@ -642,6 +650,8 @@ window.createGraphic = function(graphicSelector) {
     }
 
     function splitFreeCollege400FPLPublicByRace() {
+        // grant free college to those < 400% of FPL and attending public institutions, by race
+
         (d3.selectAll(".dotLabel").nodes().length < 10) && d3.selectAll(".dotLabel").remove();
         removeHighlighting();
 
@@ -719,6 +729,7 @@ window.createGraphic = function(graphicSelector) {
     }
 
     function splitFreeCollege400FPLPublicByLoan() {
+        // grant free college to those < 400% of FPL and attending public institutions, by loan status
         (d3.selectAll(".dotLabel").nodes().length < 4) && d3.selectAll(".dotLabel").remove();
         removeHighlighting();
 
@@ -791,11 +802,13 @@ window.createGraphic = function(graphicSelector) {
     }
 
     function showStipend() {
+        // highlight students currently receiving a stipend in pink
         d3.selectAll(".legendEntry").classed("invisible", false);
         d3.selectAll(".student").classed("hasStipend", function(d) { return d.freecollege === "tuition&stipend" ? true : false; });
     }
 
-    function switchToPublic() {  // show some dots moving from no free college to free college group, representing them changing the type of school they went to
+    function switchToPublic() {
+        // show some dots moving from no free college to free college group, representing them changing the type of school they went to
         d3.select(".student.Justina").classed("highlighted1", true);
         d3.selectAll(".newStudent").remove();
 
@@ -827,6 +840,11 @@ window.createGraphic = function(graphicSelector) {
     }
 
     function moreDotsJoin() {
+        // more kids decide to attend college
+
+        d3.selectAll(".catLabel").remove();
+        d3.selectAll(".dividerLine").remove();
+        (d3.selectAll(".dotLabel").nodes().length > 2) && d3.selectAll(".dotLabel").remove();
         removeHighlighting();
 
         // create data for new students
