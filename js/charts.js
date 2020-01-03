@@ -141,17 +141,58 @@ window.createGraphic = function(graphicSelector) {
             var chart = svg.append('g');
                 // .attr('transform', 'translate(0,' + margin + ')')
 
-            var item = chart.selectAll('.item')
+            var student = chart.selectAll('.student')
                 .data(data)
                 .enter()
                 .append('circle')
                 .attr("class", function(d) { return d.name !== "NA" ? d.name + " student" : "student"; })
                 .attr("cx", width / 2)
                 .attr("cy", (height - titleHeight) / 2)
-                .attr("r", r);
+                .attr("r", r)
+                .on("mouseover", showTooltip)
+                .on("mouseout", hideTooltip);
         });
     }
 
+    function showTooltip(d) {
+        // populate tooltip
+        if(d.name !== "NA") {
+            d3.select(".tooltip img")
+                .attr("src", "img/" + d.name.toLowerCase() + ".png");
+            d3.select(".tooltip .studentPic").classed("hidden", false);
+            d3.select(".tooltip .studentName").text(d.name);
+        }
+        else {
+            d3.select(".tooltip .studentPic").classed("hidden", true);
+            d3.select(".tooltip .studentName").text("");
+        }
+        d3.select(".tooltip .studentIncome").text(d3.format("$,.0f")(d.income));
+        d3.select(".tooltip .studentPovLevel").text(d.fpl);
+        d3.select(".tooltip .studentInstitutionType").text(d.public);
+        d3.select(".tooltip .studentLoanStatus").text(d.loan);
+
+        // position and show tooltip
+        if(((d.name !== "NA") && (height - d.y < 310)) || ((d.name === "NA") && (height - d.y < 145))) {  // if tooltip won't fit above the bottom of the screen, shift it upwards
+            d3.select(".tooltip")
+                .style("top", "auto")
+                .style("bottom", "50px")
+                .style("left", (d.x + r * 2) + "px")
+                .classed("hidden", false);
+        }
+        else {
+            d3.select(".tooltip")
+                .style("top", (d.y + 51 + r * 2) + "px")
+                .style("bottom", "auto")
+                .style("left", (d.x + r * 2) + "px")
+                .classed("hidden", false);
+        }
+
+        // console.log(d);
+    }
+
+    function hideTooltip() {
+        d3.select(".tooltip").classed("hidden", true);
+    }
     // function setupProse() {
     //     var height = window.innerHeight * 0.5
     //     graphicProseEl.selectAll('.step')

@@ -101,6 +101,7 @@ hr {
 #sections {
     position: relative;
     width: 100%;
+    pointer-events: none;
     /*top: 0;*/
 }
 
@@ -305,6 +306,37 @@ hr {
     vertical-align: top;
     padding-left: 8px;
 }
+
+
+/*********** TOOLTIP STYLES ************/
+.tooltip {
+    background-color: #fff;
+    border: 1px solid #d2d2d2;
+    width: 180px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 15px;
+}
+
+.tooltip .studentPic img {
+    width: 150px;
+}
+
+.tooltip .studentName {
+    color: #000;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+.tooltip p {
+    font-size: 14px;
+    color: #000;
+    margin-bottom: 5px;
+}
+
+
 /*********** FOOTER ************/
 
 footer {
