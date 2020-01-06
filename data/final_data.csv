@@ -1,0 +1,101 @@
+char_id,race,incomegroup,loan,public,freecollege,fpl,name,income,currentFreeCollege,allFreeCollege,freeCollege400FPL,freeCollege400FPLPublic,switchToPublic
+1,White,Dep+80k,no loans,2/4 yr pub,not free,400%,NA,556400,no,yes,no,no,no
+122,White,Dep+80k,no loans,2/4 yr pub,tuition&stipend,400%,NA,280900,yes,yes,yes,yes,yes
+91,Black or African American,Dep+80k,loans,2/4 yr pub,not free,400%,NA,499600,no,yes,no,no,no
+128,Asian,Dep+80k,no loans,not 2/4 yr pub,not free,400%,NA,280000,no,yes,no,no,yes
+99,"American Indian or Alaka Native, Native Hawaiian/other Pacific Islanders, or more than one race",Dep+80k,no loans,2/4 yr pub,not free,400%,NA,199100,no,yes,no,no,no
+2,White,Dep+80k,loans,2/4 yr pub,not free,400%,NA,179200,no,yes,no,no,no
+36,Hispanic or Latino,Dep+80k,no loans,2/4 yr pub,not free,400%,NA,142800,no,yes,no,no,no
+2,White,Dep+80k,loans,2/4 yr pub,not free,400%,NA,140100,no,yes,no,no,no
+2,Asian,Dep+80k,loans,2/4 yr pub,not free,400%,NA,185100,no,yes,no,no,no
+1,White,Dep+80k,no loans,2/4 yr pub,not free,400%,NA,148200,no,yes,no,no,no
+1,White,Dep+80k,no loans,2/4 yr pub,not free,400%,NA,148800,no,yes,no,no,no
+14,White,Dep+80k,no loans,not 2/4 yr pub,not free,400%,NA,151700,no,yes,no,no,no
+2,White,Dep+80k,loans,2/4 yr pub,not free,400%,NA,162800,no,yes,no,no,no
+1,White,Dep+80k,no loans,2/4 yr pub,not free,400%,NA,161100,no,yes,no,no,no
+2,White,Dep+80k,loans,2/4 yr pub,not free,400%,NA,190800,no,yes,no,no,no
+81,Black or African American,Dep+80k,no loans,2/4 yr pub,not free,400%,NA,157400,no,yes,no,no,no
+57,White,Dep+80k,no loans,2/4 yr pub,tuition,400%,Elle,90000,yes,yes,yes,yes,yes
+27,White,Dep+80k,loans,2/4 yr pub,not free,200%-400%,NA,97900,no,yes,yes,yes,yes
+220,Black or African American,Dep+80k,no loans,2/4 yr pub,not free,200%-400%,NA,84100,no,yes,yes,yes,yes
+27,White,Dep+80k,loans,2/4 yr pub,not free,200%-400%,NA,93800,no,yes,yes,yes,yes
+59,White,Dep+80k,loans,not 2/4 yr pub,not free,200%-400%,NA,80400,no,yes,yes,no,yes
+71,Hispanic or Latino,Dep+80k,no loans,not 2/4 yr pub,not free,200%-400%,NA,87700,no,yes,yes,no,no
+1,White,Dep40k-80k,no loans,2/4 yr pub,not free,400%,NA,70800,no,yes,no,no,no
+221,Hispanic or Latino,Dep40k-80k,loans,2/4 yr pub,tuition&stipend,200%-400%,NA,62100,yes,yes,yes,yes,yes
+6,White,Dep40k-80k,no loans,2/4 yr pub,not free,200%-400%,NA,64700,no,yes,yes,yes,yes
+75,Black or African American,Dep40k-80k,loans,2/4 yr pub,not free,200%-400%,NA,58100,no,yes,yes,yes,yes
+6,White,Dep40k-80k,no loans,2/4 yr pub,not free,200%-400%,NA,78400,no,yes,yes,yes,yes
+344,White,Dep40k-80k,loans,2/4 yr pub,tuition,200%-400%,NA,51300,yes,yes,yes,yes,yes
+343,Black or African American,Dep40k-80k,loans,2/4 yr pub,tuition&stipend,200%-400%,NA,73000,yes,yes,yes,yes,yes
+6,White,Dep40k-80k,no loans,2/4 yr pub,not free,200%-400%,NA,71800,no,yes,yes,yes,yes
+139,Black or African American,Dep40k-80k,loans,not 2/4 yr pub,not free,200%-400%,NA,66400,no,yes,yes,no,yes
+9,Hispanic or Latino,Dep40k-80k,no loans,2/4 yr pub,tuition,<200%,NA,41800,yes,yes,yes,yes,yes
+66,White,Dep40k-80k,no loans,2/4 yr pub,not free,<200%,NA,54000,no,yes,yes,yes,yes
+75,Black or African American,Dep40k-80k,loans,2/4 yr pub,not free,<200%,Devon,75000,no,yes,yes,yes,yes
+78,Hispanic or Latino,Dep40k-80k,no loans,2/4 yr pub,not free,<200%,NA,40500,no,yes,yes,yes,yes
+192,"American Indian or Alaka Native, Native Hawaiian/other Pacific Islanders, or more than one race",Dep<=40k,loans,not 2/4 yr pub,not free,<200%,NA,16200,no,yes,yes,no,no
+70,White,Dep<=40k,loans,2/4 yr pub,tuition,<200%,NA,10700,yes,yes,yes,yes,yes
+29,Black or African American,Dep<=40k,no loans,2/4 yr pub,not free,<200%,NA,27900,no,yes,yes,yes,yes
+64,White,Dep<=40k,no loans,2/4 yr pub,tuition&stipend,<200%,NA,19600,yes,yes,yes,yes,yes
+108,Hispanic or Latino,Dep<=40k,loans,2/4 yr pub,tuition&stipend,<200%,NA,14900,yes,yes,yes,yes,yes
+255,Hispanic or Latino,Dep<=40k,loans,not 2/4 yr pub,tuition,<200%,NA,24700,yes,yes,yes,yes,yes
+113,"American Indian or Alaka Native, Native Hawaiian/other Pacific Islanders, or more than one race",Dep<=40k,loans,2/4 yr pub,tuition,<200%,NA,26700,yes,yes,yes,yes,yes
+199,White,Dep<=40k,loans,not 2/4 yr pub,tuition,<200%,NA,38300,yes,yes,yes,yes,yes
+40,White,Dep<=40k,loans,2/4 yr pub,tuition,<200%,NA,15600,yes,yes,yes,yes,yes
+33,White,Dep<=40k,loans,not 2/4 yr pub,not free,<200%,NA,23000,no,yes,yes,no,no
+48,Asian,Dep<=40k,loans,2/4 yr pub,not free,<200%,Sally,28800,no,yes,yes,yes,yes
+9,Hispanic or Latino,Dep<=40k,no loans,2/4 yr pub,tuition,<200%,NA,12900,yes,yes,yes,yes,yes
+9,Hispanic or Latino,Dep<=40k,no loans,2/4 yr pub,not free,<200%,NA,19900,no,yes,yes,yes,yes
+3,White,Dep<=40k,no loans,2/4 yr pub,not free,<200%,NA,38600,no,yes,yes,yes,yes
+9,Hispanic or Latino,Dep<=40k,no loans,2/4 yr pub,tuition,<200%,NA,26100,yes,yes,yes,yes,yes
+47,Hispanic or Latino,Dep<=40k,loans,not 2/4 yr pub,not free,<200%,Justina,10000,no,yes,yes,no,yes
+13,Hispanic or Latino,Dep<=40k,no loans,2/4 yr pub,not free,<200%,Ana,30000,no,yes,yes,yes,yes
+100,Asian,Ind+30k,no loans,2/4 yr pub,not free,400%,NA,74700,no,yes,no,no,no
+92,White,Ind+30k,loans,2/4 yr pub,not free,400%,NA,74500,no,yes,no,no,no
+5,White,Ind+30k,no loans,2/4 yr pub,not free,400%,NA,64300,no,yes,no,no,no
+4,White,Ind+30k,no loans,2/4 yr pub,not free,200%-400%,Stephen,40800,no,yes,yes,yes,yes
+4,White,Ind+30k,no loans,2/4 yr pub,not free,200%-400%,NA,53300,no,yes,yes,yes,yes
+37,White,Ind+30k,loans,not 2/4 yr pub,not free,200%-400%,NA,64100,no,yes,yes,no,no
+4,White,Ind+30k,no loans,2/4 yr pub,not free,200%-400%,NA,65200,no,yes,yes,yes,yes
+51,White,Ind+30k,no loans,2/4 yr pub,tuition,200%-400%,NA,31700,yes,yes,yes,yes,yes
+37,White,Ind+30k,loans,not 2/4 yr pub,not free,200%-400%,NA,66600,no,yes,yes,no,no
+140,Hispanic or Latino,Ind+30k,loans,not 2/4 yr pub,not free,200%-400%,NA,65000,no,yes,yes,no,no
+156,Black or African American,Ind+30k,no loans,2/4 yr pub,tuition,200%-400%,NA,48400,yes,yes,yes,yes,yes
+112,Hispanic or Latino,Ind+30k,no loans,2/4 yr pub,tuition,200%-400%,NA,51300,yes,yes,yes,yes,yes
+141,Black or African American,Ind+30k,no loans,2/4 yr pub,not free,<200%,NA,43000,no,yes,yes,yes,yes
+398,Asian,Ind+30k,no loans,not 2/4 yr pub,not free,<200%,NA,50800,no,yes,yes,no,no
+132,White,Ind+30k,no loans,not 2/4 yr pub,not free,<200%,NA,48400,no,yes,yes,no,no
+4,White,Ind+30k,no loans,2/4 yr pub,not free,<200%,NA,59800,no,yes,yes,yes,yes
+403,"American Indian or Alaka Native, Native Hawaiian/other Pacific Islanders, or more than one race",Ind+30k,loans,2/4 yr pub,tuition,<200%,Abed,35000,yes,yes,yes,yes,yes
+168,Black or African American,Ind15k-30k,no loans,2/4 yr pub,not free,200%-400%,NA,22000,no,yes,yes,yes,yes
+49,White,Ind15k-30k,no loans,2/4 yr pub,not free,200%-400%,NA,30000,no,yes,yes,yes,yes
+168,Asian,Ind15k-30k,no loans,2/4 yr pub,tuition,200%-400%,NA,25100,yes,yes,yes,yes,yes
+49,White,Ind15k-30k,no loans,2/4 yr pub,not free,200%-400%,NA,26200,no,yes,yes,yes,yes
+11,White,Ind15k-30k,no loans,2/4 yr pub,not free,<200%,NA,23800,no,yes,yes,yes,yes
+94,Black or African American,Ind15k-30k,loans,2/4 yr pub,not free,<200%,Denise,20000,no,yes,yes,yes,yes
+136,Asian,Ind15k-30k,no loans,2/4 yr pub,not free,<200%,NA,17900,no,yes,yes,yes,yes
+32,White,Ind15k-30k,no loans,2/4 yr pub,tuition,<200%,NA,21400,yes,yes,yes,yes,yes
+89,White,Ind15k-30k,no loans,not 2/4 yr pub,not free,<200%,NA,15400,no,yes,yes,no,no
+117,Black or African American,Ind15k-30k,no loans,not 2/4 yr pub,not free,<200%,NA,21500,no,yes,yes,no,yes
+35,White,Ind15k-30k,loans,not 2/4 yr pub,tuition,<200%,NA,21000,yes,yes,yes,yes,yes
+125,Hispanic or Latino,Ind15k-30k,loans,2/4 yr pub,not free,<200%,NA,22600,no,yes,yes,yes,yes
+3,White,Ind<=15k,no loans,2/4 yr pub,not free,<200%,NA,9300,no,yes,yes,yes,yes
+23,White,Ind<=15k,no loans,2/4 yr pub,not free,<200%,NA,6200,no,yes,yes,yes,yes
+21,White,Ind<=15k,loans,2/4 yr pub,not free,<200%,NA,10700,no,yes,yes,yes,yes
+10,White,Ind<=15k,no loans,2/4 yr pub,tuition,<200%,NA,10400,yes,yes,yes,yes,yes
+87,Hispanic or Latino,Ind<=15k,loans,2/4 yr pub,not free,<200%,NA,9400,no,yes,yes,yes,yes
+23,White,Ind<=15k,no loans,2/4 yr pub,not free,<200%,NA,6300,no,yes,yes,yes,yes
+13,Hispanic or Latino,Ind<=15k,no loans,2/4 yr pub,not free,<200%,NA,13600,no,yes,yes,yes,yes
+54,Black or African American,Ind<=15k,loans,2/4 yr pub,tuition,<200%,NA,10100,yes,yes,yes,yes,yes
+17,White,Ind<=15k,loans,not 2/4 yr pub,not free,<200%,NA,10900,no,yes,yes,no,no
+3,White,Ind<=15k,no loans,2/4 yr pub,not free,<200%,NA,11500,no,yes,yes,yes,yes
+17,White,Ind<=15k,loans,not 2/4 yr pub,not free,<200%,NA,8500,no,yes,yes,no,no
+13,Hispanic or Latino,Ind<=15k,no loans,2/4 yr pub,not free,<200%,NA,14000,no,yes,yes,yes,yes
+289,White,Ind<=15k,no loans,not 2/4 yr pub,tuition&stipend,<200%,NA,6100,yes,yes,yes,yes,yes
+25,Hispanic or Latino,Ind<=15k,no loans,2/4 yr pub,tuition,<200%,NA,12900,yes,yes,yes,yes,yes
+19,Black or African American,Ind<=15k,loans,not 2/4 yr pub,not free,<200%,NA,7500,no,yes,yes,no,no
+3,White,Ind<=15k,no loans,2/4 yr pub,not free,<200%,NA,7800,no,yes,yes,yes,yes
+54,Black or African American,Ind<=15k,loans,2/4 yr pub,tuition,<200%,NA,9800,yes,yes,yes,yes,yes
+13,Hispanic or Latino,Ind<=15k,no loans,2/4 yr pub,not free,<200%,NA,11600,no,yes,yes,yes,yes
+3,White,Ind<=15k,no loans,2/4 yr pub,not free,<200%,NA,6400,no,yes,yes,yes,yes

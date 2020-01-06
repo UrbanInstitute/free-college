@@ -83,7 +83,7 @@
         </div>
 
         <div class="main">
-            <div class="content">
+            <div class="content" style="margin-bottom: 25vh;">
                 <h1>You get free college! And you get free college! And you!</h1>
                 <hr>
                 <div class="date">February XX, 2020</div>
@@ -94,12 +94,241 @@
             </div>
 
             <div id="graphic">
-                <div id="vis"></div>
+                <div id="vis">
+                    <h3 class="chartTitle"></h3>
+                    <div id="chart"></div>
+                    <div class="tooltip hidden">
+                        <div class="studentPic">
+                            <img src="img/abed.png">
+                        </div>
+                        <h5 class="studentName">Abed</h5>
+                        <p class="studentIncome">$xxx,xxx</p>
+                        <p class="studentPovLevel">400% FPL</p>
+                        <p class="studentInstitutionType">Public</p>
+                        <p class="studentLoanStatus">Has loans</p>
+                    </div>
+                    <div class="legend invisible">
+                        <div class="legendEntry">
+                            <span class="legendSquare noFreeCollege"></span><span class="legendText"> No free college currently</span>
+                        </div>
+                        <div class="legendEntry">
+                            <span class="legendSquare freeCollege"></span><span class="legendText"> Free college currently</span>
+                        </div>
+                        <div class="legendEntry stipend invisible">
+                            <span class="legendSquare hasStipend"></span><span class="legendText"> Has stipend</span>
+                        </div>
+                    </div>
+                </div>
                 <div id="sections">
-                    <section class="step"><p>These hundred dots represent the population of undergraduate students in the United States. Hover over the dots to learn more about each student.</p></section>
-                    <section class="step"><p>Although this simplified dataset doesn’t precisely indicate which students will get free college, we use this 100-dot pool to predict the broad effects of different policy choices.</p></section>
-                    <section class="step"><p>Policymakers disagree on which college expenses should be free. For now, we will use “free college” to mean that students pay nothing in tuition and fees. Those costs are covered by merit-based or need-based grants.</p></section>
-                    <section class="step"><p>As you can see, about 27 students (i.e., 27 percent of students) attending college in the United States currently have free college. These students receive merit-based grants (like Louisiana’s TOPS awards), or need-based grants (such as the federal Pell grant), and those grants were sufficient to cover the year’s tuition and fees at their school.</p></section>
+                    <section class="step" data-step="0"></section>
+                    <section class="step" data-step="1">
+                        <p>These hundred dots represent the population of undergraduate students in the United States. Hover over the dots to learn more about each student.</p>
+                        <p>Although this simplified dataset doesn’t precisely indicate which students will get free college, we use this 100-dot pool to predict the broad effects of different policy choices.</p>
+                    </section>
+                    <section class="step" data-step="2"><p>Policymakers disagree on which college expenses should be free. For now, we will use “free college” to mean that students pay nothing in tuition and fees. Those costs are covered by merit-based or need-based grants.</p></section>
+                    <section class="step" data-step="3"><p>As you can see, about 27 students (i.e., 27 percent of students) attending college in the United States currently have free college. These students receive merit-based grants (like Louisiana’s TOPS awards), or need-based grants (such as the federal Pell grant), and those grants were sufficient to cover the year’s tuition and fees at their school.</p></section>
+                    <section class="step" data-step="4">
+                        <p>Free college is often proposed to “level the playing field” by making college more affordable for low-income students.</p>
+                        <p>Looking at the share of students receiving free college by income, we see that some high-income students get free college, and many low-income students—especially students who are older or are independent of their parents—don’t.</p>
+                    </section>
+                    <section class="step" data-step="5" style="margin-bottom: 300px;">
+                        <p>Let’s consider two students currently receiving free college:</p>
+                        <div class="personaDiv">
+                            <div class="persona image">
+                                <img src="img/elle.png">
+                            </div>
+                            <div class="persona bio">
+                                <div class="persona topRow">
+                                    <span class="persona dot">
+                                        <svg width="25" height="25">
+                                            <circle cx="13" cy="13" r="10" class="personaDot highlighted1" />
+                                        </svg>
+                                    </span>
+                                    <h4 class="persona name">Elle</h4>
+                                </div>
+                                <p>Elle is a dependent student attending a four-year public institution. Her parents’ annual income is $90,000, making her ineligible for federal need-based grants. She instead receives free college through merit-based grants because of her academic success in high school.</p>
+                            </div>
+                        </div>
+                        <div class="personaDiv">
+                            <div class="persona image">
+                                <img src="img/abed.png">
+                            </div>
+                            <div class="persona bio">
+                                <div class="persona topRow">
+                                    <span class="persona dot">
+                                        <svg width="25" height="25">
+                                            <circle cx="13" cy="13" r="10" class="personaDot highlighted2" />
+                                        </svg>
+                                    </span>
+                                    <h4 class="persona name">Abed</h4>
+                                </div>
+                                <p>Abed is an independent student earning $35,000. He attends a two-year public institution while caring for his two children. Abed pays nothing in tuition and fees because need-based federal and institutional grants fully cover these costs.</p>
+                            </div>
+                        </div>
+                        <p>Elle and Abed are attending different institutions and have substantially different economic need, but both currently have free college.</p>
+                    </section>
+                    <section class="step" data-step="6">
+                        <p>Now that we’ve seen who already gets free college, let’s think about the free college plan we might put in place. One of the key debates among Democratic presidential candidates is whether access to free college should be universal.</p>
+                    </section>
+                    <section class="step" data-step="7">
+                        <p>However, when states implement free college, they often impose an income ceiling for eligibility, like in Washington and New York. Similarly, we will implement a cap at or below 400 percent of the federal poverty level, which is $49,960 for a single person or $103,000 for a family of four in 2019. Anyone with a household income below that is eligible for free college under our plan.</p>
+                    </section>
+                    <section class="step" data-step="8">
+                        <p>This 400 percent cap is relatively generous so it’s no surprise that the number of students receiving free college increases dramatically to about 79 percent of students.</p>
+                    </section>
+                    <section class="step" data-step="9">
+                        <p>But many of these students attend private institutions, which typically aren’t included in free college plans. What happens when we limit our plan to public colleges and universities?</p>
+                    </section>
+                    <section class="step" data-step="10">
+                        <p>Restricting our plan to two- or four-year public institutions means that about 58 percent of current students would receive free college—leaving many low-income students with tuition bills.</p>
+                    </section>
+                    <section class="step" data-step="11" style="margin-bottom: 300px;">
+                        <div class="personaDiv">
+                            <div class="persona image">
+                                <img src="img/devon.png">
+                            </div>
+                            <div class="persona bio">
+                                <div class="persona topRow">
+                                    <span class="persona dot">
+                                        <svg width="25" height="25">
+                                            <circle cx="13" cy="13" r="10" class="personaDot noFreeCollege highlighted1" />
+                                        </svg>
+                                    </span>
+                                    <h4 class="persona name">Devon</h4>
+                                </div>
+                                <p>Devon comes from a family of five. His parents earn $75,000 and he attends a four-year public university. Under this plan, Devon will now receive free college.</p>
+                            </div>
+                        </div>
+                        <div class="personaDiv">
+                            <div class="persona image">
+                                <img src="img/justina.png">
+                            </div>
+                            <div class="persona bio">
+                                <div class="persona topRow">
+                                    <span class="persona dot">
+                                        <svg width="25" height="25">
+                                            <circle cx="13" cy="13" r="10" class="personaDot noFreeCollege highlighted2" />
+                                        </svg>
+                                    </span>
+                                    <h4 class="persona name">Justina</h4>
+                                </div>
+                                <p>Justina attends a for-profit university. She is a dependent student earning $10,000. Despite her low income and a Pell grant, Danielle doesn’t qualify for the free college plan, and will pay for her tuition and fees with savings and student loans.</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="step" data-step="12">
+                        <p></p>
+                    </section>
+                    <section class="step" data-step="13">
+                        <p>We can also see the effects of free college plans on students of different races and ethnicities.</p>
+                        <p>Students who are Black or Hispanic are more likely to get free college under our plan. Although White students make up about 53 percent of college students, a smaller share of white students would receive free college under our plan.</p>
+                    </section>
+                    <section class="step" data-step="14">
+                        <p>Still, many currently enrolled students of color, like <span class="personaTextHighlight">Justina,</span> will lose out on the benefit of free college. One reason for this is the disproportionate share of black and Hispanic students at for-profit colleges. Students may opt for a for-profit institution because they live far from a public college or because the for-profit  meets their needs better (e.g., by providing night classes).</p>
+                    </section>
+                    <section class="step" data-step="15">
+                        <p>Free college is sometimes touted as a means to help students reduce, or even eliminate, their need for student loans. If we provide eligible students with full tuition and fees, how might this affect the share of students who need to take on debt to attend college?</p>
+                    </section>
+                    <section class="step" data-step="16">
+                        <p>Even with free tuition and fees, student debt likely won’t go away. Of those who had free college before our new policy, a substantial share also had student loans. And many of those who receive free college under our plan may continue to rely on student loans.</p>
+                        <p>Beyond tuition and fees, students also need to pay for housing, food, transportation, and, in some cases, childcare, while in school. Some students, particularly those in four-year schools, cover these costs with federal student loans.</p>
+                    </section>
+                    <section class="step" data-step="17">
+                        <div class="personaDiv">
+                            <div class="persona image">
+                                <img src="img/denise.png">
+                            </div>
+                            <div class="persona bio">
+                                <div class="persona topRow">
+                                    <span class="persona dot">
+                                        <svg width="25" height="25">
+                                            <circle cx="13" cy="13" r="10" class="personaDot noFreeCollege highlighted2" />
+                                        </svg>
+                                    </span>
+                                    <h4 class="persona name">Denise</h4>
+                                </div>
+                                <p>Denise is an independent student earning $20,000 per year. She is living in an expensive city to attend a four-year university. Even though her tuition is covered under our plan, she will still need to take out loans to pay for her living expenses.</p>
+                            </div>
+                        </div>
+                        <div class="personaDiv">
+                            <div class="persona image">
+                                <img src="img/ana.png">
+                            </div>
+                            <div class="persona bio">
+                                <div class="persona topRow">
+                                    <span class="persona dot">
+                                        <svg width="25" height="25">
+                                            <circle cx="13" cy="13" r="10" class="personaDot noFreeCollege highlighted1" />
+                                        </svg>
+                                    </span>
+                                    <h4 class="persona name">Ana</h4>
+                                </div>
+                                <p>Ana is a dependent student attending a two-year college. She lives with her family to help reduce her living costs while she is in school. Her family’s income of $30,000 qualifies her for free tuition under this plan. Ana will not need to take out loans.</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="step" data-step="18">
+                        <p>If we want to help students pay for living costs while they are in college, we may add a stipend to our free college plan. What happens if we change the definition of free college to include a stipend of $2,000 per year?</p>
+                    </section>
+                    <section class="step" data-step="19">
+                        <p>About <span class="stipendTextHighlight">X percent of students</span> currently have their tuition, fees, and $2,000 worth of living expenses covered by grants and scholarships. If we add a $2,000 stipend to our free college plan, a larger share of students would benefit, meaning that some students could reduce their debt or work less to cover their living expenses.</p>
+                    </section>
+                    <section class="step" data-step="20">
+                        <p>Of course, offering all students eligible for free college an additional $2,000 per year substantially increases costs.</p>
+                    </section>
+                    <section class="step" data-step="21">
+                        <p>Instead, some policymakers want a free college plan that covers tuition and fees and allows students who already have aid to keep it and use it for living expenses.</p>
+                    </section>
+                    <section class="step" data-step="22">
+                        <div class="personaDiv">
+                            <div class="persona image">
+                                <img src="img/sally.png">
+                            </div>
+                            <div class="persona bio">
+                                <div class="persona topRow">
+                                    <span class="persona dot">
+                                        <svg width="25" height="25">
+                                            <circle cx="13" cy="13" r="10" class="personaDot noFreeCollege highlighted2" />
+                                        </svg>
+                                    </span>
+                                    <h4 class="persona name">Sally</h4>
+                                </div>
+                                <p>Sally is a dependent student from a low-income family and has qualified for a Pell Grant. She will receive $10,000 for tuition and fees and gets to keep her $3,000 Pell Grant to use toward living expenses.</p>
+                            </div>
+                        </div>
+                        <div class="personaDiv">
+                            <div class="persona image">
+                                <img src="img/stephen.png">
+                            </div>
+                            <div class="persona bio">
+                                <div class="persona topRow">
+                                    <span class="persona dot">
+                                        <svg width="25" height="25">
+                                            <circle cx="13" cy="13" r="10" class="personaDot noFreeCollege highlighted1" />
+                                        </svg>
+                                    </span>
+                                    <h4 class="persona name">Stephen</h4>
+                                </div>
+                                <p>Stephen is at a four-year university that costs $10,000 a year and he does not have any grant aid. Because his family’s income is below 400 percent of the federal poverty level, he would receive $10,000 for tuition and fees under our plan.</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="step" data-step="23">
+                        <p>Throughout, we’ve assumed that students will stay in the institutions they’re currently attending, but free college could encourage many students to switch schools.</p>
+                    </section>
+                    <section class="step" data-step="24">
+                        <p>For example, <span class="personaTextHighlight">Justina</span> may decide to move from a for-profit to a public institution because she qualifies for more aid.</p>
+                    </section>
+                    <section class="step" data-step="25">
+                        <p>If many students decide to switch to a public institution—or if free college convinces more people to pursue higher education—the costs for the federal government will rise and some public institutions may become more selective.</p>
+                    </section>
+                    <section class="step" data-step="26">
+                        <p>Expanding the population of people who have affordable access to college is a valuable policy goal. But predicting the response to such a massive policy shift is challenging.</p>
+                    </section>
+                    <section class="step" data-step="27">
+                        <p>If we have a national free college plan, states and localities might pull back on their funding for public institutions, meaning the federal government could end up shouldering more and more of the cost.</p>
+                        <p>Right now, about 52 percent of the total funding for education at public institutions comes from state and local funds. Unless the government has a plan for keeping states invested in higher education, the federal government could end up shouldering more and more of the cost. And since some states invest more funding in higher education than others, it will be critical to understand how to allocate funds equitably.</p>
+                    </section>
                 </div>
             </div>
 
@@ -132,7 +361,9 @@
 
         <script src="js/jquery.2.1.4.min.js"></script>
      	<script src="js/d3.v4.min.js"></script>
+        <script src="js/noframework.waypoints.min.js"></script>
         <script src="js/charts.js"></script>
+        <script src="js/scroller.js"></script>
 
 
 <!--        <script>
