@@ -99,8 +99,7 @@ window.createGraphic = function(graphicSelector) {
         splitFreeCollege400FPLPublic,       // step 23
         switchToPublic,                     // step 24
         moreDotsJoin,                       // step 25
-        freeCollegeBelow400FPLPublic,       // step 26
-        function step27() {}                // step 27
+        freeCollegeBelow400FPLPublic       // step 26
     ]
 
     // update our chart
