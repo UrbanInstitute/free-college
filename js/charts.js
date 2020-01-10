@@ -67,13 +67,19 @@ window.createGraphic = function(graphicSelector) {
             (scrollDirection === "up") && freeCollegeBelow400FPLPublic();
             highlightPersonas("Devon", "Justina");
         },
-        splitFreeCollege400FPLPublic,       // step 12
+        function step12() {
+            splitFreeCollege400FPLPublic();
+            if(scrollDirection === "up") d3.select(".chartTitle").text("Free tuition and fees, at public institutions and capped for family finances");
+        },       // step 12
         splitFreeCollege400FPLPublicByRace, // step 13
         function step14() {                 // step 14
             if(scrollDirection === "up") splitFreeCollege400FPLPublicByRace();
             highlightJustina();
         },
-        splitFreeCollege400FPLPublic,       // step 15
+        function step15() {
+            splitFreeCollege400FPLPublic()
+            if(scrollDirection === "up") d3.select(".chartTitle").text("Who gets free tuition and fees under this plan, by race or ethnicity?");
+        },       // step 15
         function step16() {                 // step 16
             if(scrollDirection === "up") removeHighlighting();
             else splitFreeCollege400FPLPublicByLoan();
@@ -85,6 +91,7 @@ window.createGraphic = function(graphicSelector) {
             removeHighlighting();
             d3.selectAll(".student").classed("hasStipend", false);
             d3.select(".legendEntry.stipend").classed("invisible", true);
+            d3.select(".chartTitle").text("Who gets free tuition and fees under this plan, by student loan status?");
         },
         showStipend,                        // step 19
         function step20() {},               // step 20
@@ -96,7 +103,10 @@ window.createGraphic = function(graphicSelector) {
             }
             highlightPersonas("Stephen", "Sally");
         },
-        splitFreeCollege400FPLPublic,       // step 23
+        function step23() {
+            splitFreeCollege400FPLPublic();
+            if(scrollDirection === "up") d3.select(".chartTitle").text("Who gets free tuition and fees under this plan, by student loan status?");
+        },       // step 23
         switchToPublic,                     // step 24
         moreDotsJoin,                       // step 25
         freeCollegeBelow400FPLPublic       // step 26
@@ -213,6 +223,7 @@ window.createGraphic = function(graphicSelector) {
         d3.selectAll(".columnLabel").remove();
         // d3.select(".legend").classed("invisible", true);
         removeHighlighting();
+        d3.select(".chartTitle").text("");
 
         var t = d3.transition()
             .duration(800)
@@ -265,7 +276,7 @@ window.createGraphic = function(graphicSelector) {
         d3.selectAll(".dividerLine").remove();
         removeHighlighting();
 
-        d3.select(".chartTitle").text("");
+        d3.select(".chartTitle").text("Who has free college now?");
 
         var t = d3.transition()
             .duration(800)
@@ -338,8 +349,9 @@ window.createGraphic = function(graphicSelector) {
         // console.log("separate into income groups");
         (d3.selectAll(".dotLabel").nodes().length < 6) && d3.selectAll(".dotLabel").remove();
         removeHighlighting();
+        d3.select(".chartTitle").text("Who has free college now?");
 
-        d3.select(".chartTitle").text("Current situation");
+        // d3.select(".chartTitle").text("Who has free college now?");
         d3.select(".legend").classed("invisible", false);
 
         var t = d3.transition()
@@ -422,7 +434,7 @@ window.createGraphic = function(graphicSelector) {
 
    function freeCollegeForAll() {
         // grant free college to all, by income
-        d3.select(".chartTitle").text("Free tuition and fees for all");
+        d3.select(".chartTitle").text("Free tuition and fees for all students");
 
         var t = d3.transition()
             .duration(800)
@@ -478,7 +490,7 @@ window.createGraphic = function(graphicSelector) {
 
     function freeCollegeBelow400FPL() {
         // grant free college to those < 400% of FPL, by income
-        d3.select(".chartTitle").text("Free tuition and fees for 400% of federal poverty level");
+        d3.select(".chartTitle").text("Free tuition and fees, capped for family finances");
 
         var t = d3.transition()
             .duration(800)
@@ -534,7 +546,7 @@ window.createGraphic = function(graphicSelector) {
 
     function freeCollegeBelow400FPLPublic() {
         // grant free college to those < 400% of FPL and attending public institutions, by income
-        d3.select(".chartTitle").text("Free tuition and fees for 400% of federal poverty level and attending public institutions only");
+        d3.select(".chartTitle").text("Free tuition and fees, at public institutions and capped for family finances");
         removeHighlighting();
         d3.selectAll(".newStudent").remove();
 
@@ -694,6 +706,7 @@ window.createGraphic = function(graphicSelector) {
 
         (d3.selectAll(".dotLabel").nodes().length < 10) && d3.selectAll(".dotLabel").remove();
         removeHighlighting();
+        d3.select(".chartTitle").text("Who gets free tuition and fees under this plan, by race or ethnicity?");
 
         var t = d3.transition()
             .duration(800)
@@ -772,6 +785,7 @@ window.createGraphic = function(graphicSelector) {
         // grant free college to those < 400% of FPL and attending public institutions, by loan status
         (d3.selectAll(".dotLabel").nodes().length < 4) && d3.selectAll(".dotLabel").remove();
         removeHighlighting();
+        d3.select(".chartTitle").text("Who gets free tuition and fees under this plan, by loan status?");
 
         var t = d3.transition()
             .duration(800)
@@ -842,6 +856,8 @@ window.createGraphic = function(graphicSelector) {
     }
 
     function showStipend() {
+        d3.select(".chartTitle").text("Who gets free tuition, fees, and a stipend under this plan, by student loan status?");
+
         // highlight students currently receiving a stipend in pink
         d3.selectAll(".legendEntry").classed("invisible", false);
         d3.selectAll(".student").classed("hasStipend", function(d) { return d.freecollege === "tuition&stipend" ? true : false; });
@@ -851,6 +867,7 @@ window.createGraphic = function(graphicSelector) {
         // show some dots moving from no free college to free college group, representing them changing the type of school they went to
         d3.select(".student.Justina").classed("highlighted1", true);
         d3.selectAll(".newStudent").remove();
+        d3.select(".chartTitle").text("Who moves to a public institution to get free college?");
 
         var simulation = d3.forceSimulation(dotsData)
             .force('charge', d3.forceManyBody().strength(-10))
@@ -886,6 +903,7 @@ window.createGraphic = function(graphicSelector) {
         d3.selectAll(".dividerLine").remove();
         (d3.selectAll(".dotLabel").nodes().length > 2) && d3.selectAll(".dotLabel").remove();
         removeHighlighting();
+        d3.select(".chartTitle").text("Who moves to a public institution to get free college?");
 
         // create data for new students
         var newStudentsData = [
