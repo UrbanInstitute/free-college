@@ -175,8 +175,8 @@ window.createGraphic = function(graphicSelector) {
             d3.select(".tooltip .studentPic").classed("hidden", true);
             d3.select(".tooltip .studentName").text("");
         }
-        d3.select(".tooltip .studentIncome").text(d3.format("$,.0f")(d.income));
-        d3.select(".tooltip .studentPovLevel").text(d.fpl);
+        d3.select(".tooltip .studentIncome span").text(d3.format("$,.0f")(d.income));
+        d3.select(".tooltip .studentRace").text(d.race);
         d3.select(".tooltip .studentInstitutionType").text(d.public);
         d3.select(".tooltip .studentLoanStatus").text(d.loan);
 
