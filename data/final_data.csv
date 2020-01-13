@@ -1,101 +1,101 @@
 char_id,race,incomegroup_tooltip,incomegroup,loan,sector,freecollege,fpl,name,income,currentFreeCollege,allFreeCollege,freeCollege400FPL,freeCollege400FPLPublic,switchToPublic
-1,White,Dependent (400%+),"Higher-income dependent student (more than $80,000)",No student loans,Public institution,not free,400%,NA,556400,no,yes,no,no,no
-122,White,Dependent (400%+),"Higher-income dependent student (more than $80,000)",No student loans,Public institution,tuition&stipend,400%,NA,280900,yes,yes,yes,yes,yes
-91,Black,Dependent (400%+),"Higher-income dependent student (more than $80,000)",Student loans,Public institution,not free,400%,NA,499600,no,yes,no,no,no
-128,Asian,Dependent (400%+),"Higher-income dependent student (more than $80,000)",No student loans,Private institution,not free,400%,NA,280000,no,yes,no,no,yes
-99,Other race or ethnicity,Dependent (400%+),"Higher-income dependent student (more than $80,000)",No student loans,Public institution,not free,400%,NA,199100,no,yes,no,no,no
-2,White,Dependent (400%+),"Higher-income dependent student (more than $80,000)",Student loans,Public institution,not free,400%,NA,179200,no,yes,no,no,no
-36,Latino,Dependent (400%+),"Higher-income dependent student (more than $80,000)",No student loans,Public institution,not free,400%,NA,142800,no,yes,no,no,no
-2,White,Dependent (400%+),"Higher-income dependent student (more than $80,000)",Student loans,Public institution,not free,400%,NA,140100,no,yes,no,no,no
-2,Asian,Dependent (400%+),"Higher-income dependent student (more than $80,000)",Student loans,Public institution,not free,400%,NA,185100,no,yes,no,no,no
-1,White,Dependent (400%+),"Higher-income dependent student (more than $80,000)",No student loans,Public institution,not free,400%,NA,148200,no,yes,no,no,no
-1,White,Dependent (400%+),"Higher-income dependent student (more than $80,000)",No student loans,Public institution,not free,400%,NA,148800,no,yes,no,no,no
-14,White,Dependent (400%+),"Higher-income dependent student (more than $80,000)",No student loans,Private institution,not free,400%,NA,151700,no,yes,no,no,no
-2,White,Dependent (400%+),"Higher-income dependent student (more than $80,000)",Student loans,Public institution,not free,400%,NA,162800,no,yes,no,no,no
-1,White,Dependent (400%+),"Higher-income dependent student (more than $80,000)",No student loans,Public institution,not free,400%,NA,161100,no,yes,no,no,no
-2,White,Dependent (400%+),"Higher-income dependent student (more than $80,000)",Student loans,Public institution,not free,400%,NA,190800,no,yes,no,no,no
-81,Black,Dependent (400%+),"Higher-income dependent student (more than $80,000)",No student loans,Public institution,not free,400%,NA,157400,no,yes,no,no,no
-57,White,Dependent (400%+),"Higher-income dependent student (more than $80,000)",No student loans,Public institution,tuition,400%,Elle,90000,yes,yes,yes,yes,yes
-27,White,Dependent (400%+),"Higher-income dependent student (more than $80,000)",Student loans,Public institution,not free,200%-400%,NA,97900,no,yes,yes,yes,yes
-220,Black,Dependent (400%+),"Higher-income dependent student (more than $80,000)",No student loans,Public institution,not free,200%-400%,NA,84100,no,yes,yes,yes,yes
-27,White,Dependent (400%+),"Higher-income dependent student (more than $80,000)",Student loans,Public institution,not free,200%-400%,NA,93800,no,yes,yes,yes,yes
-59,White,Dependent (400%+),"Higher-income dependent student (more than $80,000)",Student loans,Private institution,not free,200%-400%,NA,80400,no,yes,yes,no,yes
-71,Latino,Dependent (400%+),"Higher-income dependent student (more than $80,000)",No student loans,Private institution,not free,200%-400%,NA,87700,no,yes,yes,no,no
-1,White,Dependent (200%–400%),"Middle-income dependent student ($40,001 to $80,000)",No student loans,Public institution,not free,400%,NA,70800,no,yes,no,no,no
-221,Latino,Dependent (200%–400%),"Middle-income dependent student ($40,001 to $80,000)",Student loans,Public institution,tuition&stipend,200%-400%,NA,62100,yes,yes,yes,yes,yes
-6,White,Dependent (200%–400%),"Middle-income dependent student ($40,001 to $80,000)",No student loans,Public institution,not free,200%-400%,NA,64700,no,yes,yes,yes,yes
-75,Black,Dependent (200%–400%),"Middle-income dependent student ($40,001 to $80,000)",Student loans,Public institution,not free,200%-400%,NA,58100,no,yes,yes,yes,yes
-6,White,Dependent (200%–400%),"Middle-income dependent student ($40,001 to $80,000)",No student loans,Public institution,not free,200%-400%,NA,78400,no,yes,yes,yes,yes
-344,White,Dependent (200%–400%),"Middle-income dependent student ($40,001 to $80,000)",Student loans,Public institution,tuition,200%-400%,NA,51300,yes,yes,yes,yes,yes
-343,Black,Dependent (200%–400%),"Middle-income dependent student ($40,001 to $80,000)",Student loans,Public institution,tuition&stipend,200%-400%,NA,73000,yes,yes,yes,yes,yes
-6,White,Dependent (200%–400%),"Middle-income dependent student ($40,001 to $80,000)",No student loans,Public institution,not free,200%-400%,NA,71800,no,yes,yes,yes,yes
-139,Black,Dependent (200%–400%),"Middle-income dependent student ($40,001 to $80,000)",Student loans,Private institution,not free,200%-400%,NA,66400,no,yes,yes,no,yes
-9,Latino,Dependent (200%–400%),"Middle-income dependent student ($40,001 to $80,000)",No student loans,Public institution,tuition,<200%,NA,41800,yes,yes,yes,yes,yes
-66,White,Dependent (200%–400%),"Middle-income dependent student ($40,001 to $80,000)",No student loans,Public institution,not free,<200%,NA,54000,no,yes,yes,yes,yes
-75,Black,Dependent (200%–400%),"Middle-income dependent student ($40,001 to $80,000)",Student loans,Public institution,not free,<200%,Devon,75000,no,yes,yes,yes,yes
-78,Latino,Dependent (200%–400%),"Middle-income dependent student ($40,001 to $80,000)",No student loans,Public institution,not free,<200%,NA,40500,no,yes,yes,yes,yes
-192,Other race or ethnicity,Dependent (<200%),"Lower-income dependent student (less than $40,000)",Student loans,Private institution,not free,<200%,NA,16200,no,yes,yes,no,no
-70,White,Dependent (<200%),"Lower-income dependent student (less than $40,000)",Student loans,Public institution,tuition,<200%,NA,10700,yes,yes,yes,yes,yes
-29,Black,Dependent (<200%),"Lower-income dependent student (less than $40,000)",No student loans,Public institution,not free,<200%,NA,27900,no,yes,yes,yes,yes
-64,White,Dependent (<200%),"Lower-income dependent student (less than $40,000)",No student loans,Public institution,tuition&stipend,<200%,NA,19600,yes,yes,yes,yes,yes
-108,Latino,Dependent (<200%),"Lower-income dependent student (less than $40,000)",Student loans,Public institution,tuition&stipend,<200%,NA,14900,yes,yes,yes,yes,yes
-255,Latino,Dependent (<200%),"Lower-income dependent student (less than $40,000)",Student loans,Private institution,tuition,<200%,NA,24700,yes,yes,yes,yes,yes
-113,Other race or ethnicity,Dependent (<200%),"Lower-income dependent student (less than $40,000)",Student loans,Public institution,tuition,<200%,NA,26700,yes,yes,yes,yes,yes
-199,White,Dependent (<200%),"Lower-income dependent student (less than $40,000)",Student loans,Private institution,tuition,<200%,NA,38300,yes,yes,yes,yes,yes
-40,White,Dependent (<200%),"Lower-income dependent student (less than $40,000)",Student loans,Public institution,tuition,<200%,NA,15600,yes,yes,yes,yes,yes
-33,White,Dependent (<200%),"Lower-income dependent student (less than $40,000)",Student loans,Private institution,not free,<200%,NA,23000,no,yes,yes,no,no
-48,Asian,Dependent (<200%),"Lower-income dependent student (less than $40,000)",Student loans,Public institution,not free,<200%,Sally,28800,no,yes,yes,yes,yes
-9,Latino,Dependent (<200%),"Lower-income dependent student (less than $40,000)",No student loans,Public institution,tuition,<200%,NA,12900,yes,yes,yes,yes,yes
-9,Latino,Dependent (<200%),"Lower-income dependent student (less than $40,000)",No student loans,Public institution,not free,<200%,NA,19900,no,yes,yes,yes,yes
-3,White,Dependent (<200%),"Lower-income dependent student (less than $40,000)",No student loans,Public institution,not free,<200%,NA,38600,no,yes,yes,yes,yes
-9,Latino,Dependent (<200%),"Lower-income dependent student (less than $40,000)",No student loans,Public institution,tuition,<200%,NA,26100,yes,yes,yes,yes,yes
-47,Latino,Dependent (<200%),"Lower-income dependent student (less than $40,000)",Student loans,Private institution,not free,<200%,Justina,10000,no,yes,yes,no,yes
-13,Latino,Dependent (<200%),"Lower-income dependent student (less than $40,000)",No student loans,Public institution,not free,<200%,Ana,30000,no,yes,yes,yes,yes
-100,Asian,Independent (400%+),"Higher-income independent student (more than $30,000)",No student loans,Public institution,not free,400%,NA,74700,no,yes,no,no,no
-92,White,Independent (400%+),"Higher-income independent student (more than $30,000)",Student loans,Public institution,not free,400%,NA,74500,no,yes,no,no,no
-5,White,Independent (400%+),"Higher-income independent student (more than $30,000)",No student loans,Public institution,not free,400%,NA,64300,no,yes,no,no,no
-4,White,Independent (400%+),"Higher-income independent student (more than $30,000)",No student loans,Public institution,not free,200%-400%,Stephen,40800,no,yes,yes,yes,yes
-4,White,Independent (400%+),"Higher-income independent student (more than $30,000)",No student loans,Public institution,not free,200%-400%,NA,53300,no,yes,yes,yes,yes
-37,White,Independent (400%+),"Higher-income independent student (more than $30,000)",Student loans,Private institution,not free,200%-400%,NA,64100,no,yes,yes,no,no
-4,White,Independent (400%+),"Higher-income independent student (more than $30,000)",No student loans,Public institution,not free,200%-400%,NA,65200,no,yes,yes,yes,yes
-51,White,Independent (400%+),"Higher-income independent student (more than $30,000)",No student loans,Public institution,tuition,200%-400%,NA,31700,yes,yes,yes,yes,yes
-37,White,Independent (400%+),"Higher-income independent student (more than $30,000)",Student loans,Private institution,not free,200%-400%,NA,66600,no,yes,yes,no,no
-140,Latino,Independent (400%+),"Higher-income independent student (more than $30,000)",Student loans,Private institution,not free,200%-400%,NA,65000,no,yes,yes,no,no
-156,Black,Independent (400%+),"Higher-income independent student (more than $30,000)",No student loans,Public institution,tuition,200%-400%,NA,48400,yes,yes,yes,yes,yes
-112,Latino,Independent (400%+),"Higher-income independent student (more than $30,000)",No student loans,Public institution,tuition,200%-400%,NA,51300,yes,yes,yes,yes,yes
-141,Black,Independent (400%+),"Higher-income independent student (more than $30,000)",No student loans,Public institution,not free,<200%,NA,43000,no,yes,yes,yes,yes
-398,Asian,Independent (400%+),"Higher-income independent student (more than $30,000)",No student loans,Private institution,not free,<200%,NA,50800,no,yes,yes,no,no
-132,White,Independent (400%+),"Higher-income independent student (more than $30,000)",No student loans,Private institution,not free,<200%,NA,48400,no,yes,yes,no,no
-4,White,Independent (400%+),"Higher-income independent student (more than $30,000)",No student loans,Public institution,not free,<200%,NA,59800,no,yes,yes,yes,yes
-403,Other race or ethnicity,Independent (400%+),"Higher-income independent student (more than $30,000)",Student loans,Public institution,tuition,<200%,Abed,35000,yes,yes,yes,yes,yes
-168,Black,Independent (200%–400%),"Middle-income independent student ($15,001 to $30,000)",No student loans,Public institution,not free,200%-400%,NA,22000,no,yes,yes,yes,yes
-49,White,Independent (200%–400%),"Middle-income independent student ($15,001 to $30,000)",No student loans,Public institution,not free,200%-400%,NA,30000,no,yes,yes,yes,yes
-168,Asian,Independent (200%–400%),"Middle-income independent student ($15,001 to $30,000)",No student loans,Public institution,tuition,200%-400%,NA,25100,yes,yes,yes,yes,yes
-49,White,Independent (200%–400%),"Middle-income independent student ($15,001 to $30,000)",No student loans,Public institution,not free,200%-400%,NA,26200,no,yes,yes,yes,yes
-11,White,Independent (200%–400%),"Middle-income independent student ($15,001 to $30,000)",No student loans,Public institution,not free,<200%,NA,23800,no,yes,yes,yes,yes
-94,Black,Independent (200%–400%),"Middle-income independent student ($15,001 to $30,000)",Student loans,Public institution,not free,<200%,Denise,20000,no,yes,yes,yes,yes
-136,Asian,Independent (200%–400%),"Middle-income independent student ($15,001 to $30,000)",No student loans,Public institution,not free,<200%,NA,17900,no,yes,yes,yes,yes
-32,White,Independent (200%–400%),"Middle-income independent student ($15,001 to $30,000)",No student loans,Public institution,tuition,<200%,NA,21400,yes,yes,yes,yes,yes
-89,White,Independent (200%–400%),"Middle-income independent student ($15,001 to $30,000)",No student loans,Private institution,not free,<200%,NA,15400,no,yes,yes,no,no
-117,Black,Independent (200%–400%),"Middle-income independent student ($15,001 to $30,000)",No student loans,Private institution,not free,<200%,NA,21500,no,yes,yes,no,yes
-35,White,Independent (200%–400%),"Middle-income independent student ($15,001 to $30,000)",Student loans,Private institution,tuition,<200%,NA,21000,yes,yes,yes,yes,yes
-125,Latino,Independent (200%–400%),"Middle-income independent student ($15,001 to $30,000)",Student loans,Public institution,not free,<200%,NA,22600,no,yes,yes,yes,yes
-3,White,Independent (<200%),"Lower-income independent student (less than $15,000)",No student loans,Public institution,not free,<200%,NA,9300,no,yes,yes,yes,yes
-23,White,Independent (<200%),"Lower-income independent student (less than $15,000)",No student loans,Public institution,not free,<200%,NA,6200,no,yes,yes,yes,yes
-21,White,Independent (<200%),"Lower-income independent student (less than $15,000)",Student loans,Public institution,not free,<200%,NA,10700,no,yes,yes,yes,yes
-10,White,Independent (<200%),"Lower-income independent student (less than $15,000)",No student loans,Public institution,tuition,<200%,NA,10400,yes,yes,yes,yes,yes
-87,Latino,Independent (<200%),"Lower-income independent student (less than $15,000)",Student loans,Public institution,not free,<200%,NA,9400,no,yes,yes,yes,yes
-23,White,Independent (<200%),"Lower-income independent student (less than $15,000)",No student loans,Public institution,not free,<200%,NA,6300,no,yes,yes,yes,yes
-13,Latino,Independent (<200%),"Lower-income independent student (less than $15,000)",No student loans,Public institution,not free,<200%,NA,13600,no,yes,yes,yes,yes
-54,Black,Independent (<200%),"Lower-income independent student (less than $15,000)",Student loans,Public institution,tuition,<200%,NA,10100,yes,yes,yes,yes,yes
-17,White,Independent (<200%),"Lower-income independent student (less than $15,000)",Student loans,Private institution,not free,<200%,NA,10900,no,yes,yes,no,no
-3,White,Independent (<200%),"Lower-income independent student (less than $15,000)",No student loans,Public institution,not free,<200%,NA,11500,no,yes,yes,yes,yes
-17,White,Independent (<200%),"Lower-income independent student (less than $15,000)",Student loans,Private institution,not free,<200%,NA,8500,no,yes,yes,no,no
-13,Latino,Independent (<200%),"Lower-income independent student (less than $15,000)",No student loans,Public institution,not free,<200%,NA,14000,no,yes,yes,yes,yes
-289,White,Independent (<200%),"Lower-income independent student (less than $15,000)",No student loans,Private institution,tuition&stipend,<200%,NA,6100,yes,yes,yes,yes,yes
-25,Latino,Independent (<200%),"Lower-income independent student (less than $15,000)",No student loans,Public institution,tuition,<200%,NA,12900,yes,yes,yes,yes,yes
-19,Black,Independent (<200%),"Lower-income independent student (less than $15,000)",Student loans,Private institution,not free,<200%,NA,7500,no,yes,yes,no,no
-3,White,Independent (<200%),"Lower-income independent student (less than $15,000)",No student loans,Public institution,not free,<200%,NA,7800,no,yes,yes,yes,yes
-54,Black,Independent (<200%),"Lower-income independent student (less than $15,000)",Student loans,Public institution,tuition,<200%,NA,9800,yes,yes,yes,yes,yes
-13,Latino,Independent (<200%),"Lower-income independent student (less than $15,000)",No student loans,Public institution,not free,<200%,NA,11600,no,yes,yes,yes,yes
-3,White,Independent (<200%),"Lower-income independent student (less than $15,000)",No student loans,Public institution,not free,<200%,NA,6400,no,yes,yes,yes,yes
+1,White,Dependent (>400% FPL),"Higher-income dependent student (more than $80,000)",No student loans,Public institution,not free,400%,NA,556400,no,yes,no,no,no
+122,White,Dependent (>400% FPL),"Higher-income dependent student (more than $80,000)",No student loans,Public institution,tuition&stipend,400%,NA,280900,yes,yes,yes,yes,yes
+91,Black,Dependent (>400% FPL),"Higher-income dependent student (more than $80,000)",Student loans,Public institution,not free,400%,NA,499600,no,yes,no,no,no
+128,Asian,Dependent (>400% FPL),"Higher-income dependent student (more than $80,000)",No student loans,Private institution,not free,400%,NA,280000,no,yes,no,no,yes
+99,Other race or ethnicity,Dependent (>400% FPL),"Higher-income dependent student (more than $80,000)",No student loans,Public institution,not free,400%,NA,199100,no,yes,no,no,no
+2,White,Dependent (>400% FPL),"Higher-income dependent student (more than $80,000)",Student loans,Public institution,not free,400%,NA,179200,no,yes,no,no,no
+36,Latino,Dependent (>400% FPL),"Higher-income dependent student (more than $80,000)",No student loans,Public institution,not free,400%,NA,142800,no,yes,no,no,no
+2,White,Dependent (>400% FPL),"Higher-income dependent student (more than $80,000)",Student loans,Public institution,not free,400%,NA,140100,no,yes,no,no,no
+2,Asian,Dependent (>400% FPL),"Higher-income dependent student (more than $80,000)",Student loans,Public institution,not free,400%,NA,185100,no,yes,no,no,no
+1,White,Dependent (>400% FPL),"Higher-income dependent student (more than $80,000)",No student loans,Public institution,not free,400%,NA,148200,no,yes,no,no,no
+1,White,Dependent (>400% FPL),"Higher-income dependent student (more than $80,000)",No student loans,Public institution,not free,400%,NA,148800,no,yes,no,no,no
+14,White,Dependent (>400% FPL),"Higher-income dependent student (more than $80,000)",No student loans,Private institution,not free,400%,NA,151700,no,yes,no,no,no
+2,White,Dependent (>400% FPL),"Higher-income dependent student (more than $80,000)",Student loans,Public institution,not free,400%,NA,162800,no,yes,no,no,no
+1,White,Dependent (>400% FPL),"Higher-income dependent student (more than $80,000)",No student loans,Public institution,not free,400%,NA,161100,no,yes,no,no,no
+2,White,Dependent (>400% FPL),"Higher-income dependent student (more than $80,000)",Student loans,Public institution,not free,400%,NA,190800,no,yes,no,no,no
+81,Black,Dependent (>400% FPL),"Higher-income dependent student (more than $80,000)",No student loans,Public institution,not free,400%,NA,157400,no,yes,no,no,no
+57,White,Dependent (>400% FPL),"Higher-income dependent student (more than $80,000)",No student loans,Public institution,tuition,400%,Elle,90000,yes,yes,yes,yes,yes
+27,White,Dependent (>400% FPL),"Higher-income dependent student (more than $80,000)",Student loans,Public institution,not free,200%-400%,NA,97900,no,yes,yes,yes,yes
+220,Black,Dependent (>400% FPL),"Higher-income dependent student (more than $80,000)",No student loans,Public institution,not free,200%-400%,NA,84100,no,yes,yes,yes,yes
+27,White,Dependent (>400% FPL),"Higher-income dependent student (more than $80,000)",Student loans,Public institution,not free,200%-400%,NA,93800,no,yes,yes,yes,yes
+59,White,Dependent (>400% FPL),"Higher-income dependent student (more than $80,000)",Student loans,Private institution,not free,200%-400%,NA,80400,no,yes,yes,no,yes
+71,Latino,Dependent (>400% FPL),"Higher-income dependent student (more than $80,000)",No student loans,Private institution,not free,200%-400%,NA,87700,no,yes,yes,no,no
+1,White,Dependent (200%–400% FPL),"Middle-income dependent student ($40,001 to $80,000)",No student loans,Public institution,not free,400%,NA,70800,no,yes,no,no,no
+221,Latino,Dependent (200%–400% FPL),"Middle-income dependent student ($40,001 to $80,000)",Student loans,Public institution,tuition&stipend,200%-400%,NA,62100,yes,yes,yes,yes,yes
+6,White,Dependent (200%–400% FPL),"Middle-income dependent student ($40,001 to $80,000)",No student loans,Public institution,not free,200%-400%,NA,64700,no,yes,yes,yes,yes
+75,Black,Dependent (200%–400% FPL),"Middle-income dependent student ($40,001 to $80,000)",Student loans,Public institution,not free,200%-400%,NA,58100,no,yes,yes,yes,yes
+6,White,Dependent (200%–400% FPL),"Middle-income dependent student ($40,001 to $80,000)",No student loans,Public institution,not free,200%-400%,NA,78400,no,yes,yes,yes,yes
+344,White,Dependent (200%–400% FPL),"Middle-income dependent student ($40,001 to $80,000)",Student loans,Public institution,tuition,200%-400%,NA,51300,yes,yes,yes,yes,yes
+343,Black,Dependent (200%–400% FPL),"Middle-income dependent student ($40,001 to $80,000)",Student loans,Public institution,tuition&stipend,200%-400%,NA,73000,yes,yes,yes,yes,yes
+6,White,Dependent (200%–400% FPL),"Middle-income dependent student ($40,001 to $80,000)",No student loans,Public institution,not free,200%-400%,NA,71800,no,yes,yes,yes,yes
+139,Black,Dependent (200%–400% FPL),"Middle-income dependent student ($40,001 to $80,000)",Student loans,Private institution,not free,200%-400%,NA,66400,no,yes,yes,no,yes
+9,Latino,Dependent (200%–400% FPL),"Middle-income dependent student ($40,001 to $80,000)",No student loans,Public institution,tuition,<200%,NA,41800,yes,yes,yes,yes,yes
+66,White,Dependent (200%–400% FPL),"Middle-income dependent student ($40,001 to $80,000)",No student loans,Public institution,not free,<200%,NA,54000,no,yes,yes,yes,yes
+75,Black,Dependent (200%–400% FPL),"Middle-income dependent student ($40,001 to $80,000)",Student loans,Public institution,not free,<200%,Devon,75000,no,yes,yes,yes,yes
+78,Latino,Dependent (200%–400% FPL),"Middle-income dependent student ($40,001 to $80,000)",No student loans,Public institution,not free,<200%,NA,40500,no,yes,yes,yes,yes
+192,Other race or ethnicity,Dependent (<200% FPL),"Lower-income dependent student (less than $40,000)",Student loans,Private institution,not free,<200%,NA,16200,no,yes,yes,no,no
+70,White,Dependent (<200% FPL),"Lower-income dependent student (less than $40,000)",Student loans,Public institution,tuition,<200%,NA,10700,yes,yes,yes,yes,yes
+29,Black,Dependent (<200% FPL),"Lower-income dependent student (less than $40,000)",No student loans,Public institution,not free,<200%,NA,27900,no,yes,yes,yes,yes
+64,White,Dependent (<200% FPL),"Lower-income dependent student (less than $40,000)",No student loans,Public institution,tuition&stipend,<200%,NA,19600,yes,yes,yes,yes,yes
+108,Latino,Dependent (<200% FPL),"Lower-income dependent student (less than $40,000)",Student loans,Public institution,tuition&stipend,<200%,NA,14900,yes,yes,yes,yes,yes
+255,Latino,Dependent (<200% FPL),"Lower-income dependent student (less than $40,000)",Student loans,Private institution,tuition,<200%,NA,24700,yes,yes,yes,yes,yes
+113,Other race or ethnicity,Dependent (<200% FPL),"Lower-income dependent student (less than $40,000)",Student loans,Public institution,tuition,<200%,NA,26700,yes,yes,yes,yes,yes
+199,White,Dependent (<200% FPL),"Lower-income dependent student (less than $40,000)",Student loans,Private institution,tuition,<200%,NA,38300,yes,yes,yes,yes,yes
+40,White,Dependent (<200% FPL),"Lower-income dependent student (less than $40,000)",Student loans,Public institution,tuition,<200%,NA,15600,yes,yes,yes,yes,yes
+33,White,Dependent (<200% FPL),"Lower-income dependent student (less than $40,000)",Student loans,Private institution,not free,<200%,NA,23000,no,yes,yes,no,no
+48,Asian,Dependent (<200% FPL),"Lower-income dependent student (less than $40,000)",Student loans,Public institution,not free,<200%,Sally,28800,no,yes,yes,yes,yes
+9,Latino,Dependent (<200% FPL),"Lower-income dependent student (less than $40,000)",No student loans,Public institution,tuition,<200%,NA,12900,yes,yes,yes,yes,yes
+9,Latino,Dependent (<200% FPL),"Lower-income dependent student (less than $40,000)",No student loans,Public institution,not free,<200%,NA,19900,no,yes,yes,yes,yes
+3,White,Dependent (<200% FPL),"Lower-income dependent student (less than $40,000)",No student loans,Public institution,not free,<200%,NA,38600,no,yes,yes,yes,yes
+9,Latino,Dependent (<200% FPL),"Lower-income dependent student (less than $40,000)",No student loans,Public institution,tuition,<200%,NA,26100,yes,yes,yes,yes,yes
+47,Latino,Dependent (<200% FPL),"Lower-income dependent student (less than $40,000)",Student loans,Private institution,not free,<200%,Justina,10000,no,yes,yes,no,yes
+13,Latino,Dependent (<200% FPL),"Lower-income dependent student (less than $40,000)",No student loans,Public institution,not free,<200%,Ana,30000,no,yes,yes,yes,yes
+100,Asian,Independent (>400% FPL),"Higher-income independent student (more than $30,000)",No student loans,Public institution,not free,400%,NA,74700,no,yes,no,no,no
+92,White,Independent (>400% FPL),"Higher-income independent student (more than $30,000)",Student loans,Public institution,not free,400%,NA,74500,no,yes,no,no,no
+5,White,Independent (>400% FPL),"Higher-income independent student (more than $30,000)",No student loans,Public institution,not free,400%,NA,64300,no,yes,no,no,no
+4,White,Independent (>400% FPL),"Higher-income independent student (more than $30,000)",No student loans,Public institution,not free,200%-400%,Stephen,40800,no,yes,yes,yes,yes
+4,White,Independent (>400% FPL),"Higher-income independent student (more than $30,000)",No student loans,Public institution,not free,200%-400%,NA,53300,no,yes,yes,yes,yes
+37,White,Independent (>400% FPL),"Higher-income independent student (more than $30,000)",Student loans,Private institution,not free,200%-400%,NA,64100,no,yes,yes,no,no
+4,White,Independent (>400% FPL),"Higher-income independent student (more than $30,000)",No student loans,Public institution,not free,200%-400%,NA,65200,no,yes,yes,yes,yes
+51,White,Independent (>400% FPL),"Higher-income independent student (more than $30,000)",No student loans,Public institution,tuition,200%-400%,NA,31700,yes,yes,yes,yes,yes
+37,White,Independent (>400% FPL),"Higher-income independent student (more than $30,000)",Student loans,Private institution,not free,200%-400%,NA,66600,no,yes,yes,no,no
+140,Latino,Independent (>400% FPL),"Higher-income independent student (more than $30,000)",Student loans,Private institution,not free,200%-400%,NA,65000,no,yes,yes,no,no
+156,Black,Independent (>400% FPL),"Higher-income independent student (more than $30,000)",No student loans,Public institution,tuition,200%-400%,NA,48400,yes,yes,yes,yes,yes
+112,Latino,Independent (>400% FPL),"Higher-income independent student (more than $30,000)",No student loans,Public institution,tuition,200%-400%,NA,51300,yes,yes,yes,yes,yes
+141,Black,Independent (>400% FPL),"Higher-income independent student (more than $30,000)",No student loans,Public institution,not free,<200%,NA,43000,no,yes,yes,yes,yes
+398,Asian,Independent (>400% FPL),"Higher-income independent student (more than $30,000)",No student loans,Private institution,not free,<200%,NA,50800,no,yes,yes,no,no
+132,White,Independent (>400% FPL),"Higher-income independent student (more than $30,000)",No student loans,Private institution,not free,<200%,NA,48400,no,yes,yes,no,no
+4,White,Independent (>400% FPL),"Higher-income independent student (more than $30,000)",No student loans,Public institution,not free,<200%,NA,59800,no,yes,yes,yes,yes
+403,Other race or ethnicity,Independent (>400% FPL),"Higher-income independent student (more than $30,000)",Student loans,Public institution,tuition,<200%,Abed,35000,yes,yes,yes,yes,yes
+168,Black,Independent (200%–400% FPL),"Middle-income independent student ($15,001 to $30,000)",No student loans,Public institution,not free,200%-400%,NA,22000,no,yes,yes,yes,yes
+49,White,Independent (200%–400% FPL),"Middle-income independent student ($15,001 to $30,000)",No student loans,Public institution,not free,200%-400%,NA,30000,no,yes,yes,yes,yes
+168,Asian,Independent (200%–400% FPL),"Middle-income independent student ($15,001 to $30,000)",No student loans,Public institution,tuition,200%-400%,NA,25100,yes,yes,yes,yes,yes
+49,White,Independent (200%–400% FPL),"Middle-income independent student ($15,001 to $30,000)",No student loans,Public institution,not free,200%-400%,NA,26200,no,yes,yes,yes,yes
+11,White,Independent (200%–400% FPL),"Middle-income independent student ($15,001 to $30,000)",No student loans,Public institution,not free,<200%,NA,23800,no,yes,yes,yes,yes
+94,Black,Independent (200%–400% FPL),"Middle-income independent student ($15,001 to $30,000)",Student loans,Public institution,not free,<200%,Denise,20000,no,yes,yes,yes,yes
+136,Asian,Independent (200%–400% FPL),"Middle-income independent student ($15,001 to $30,000)",No student loans,Public institution,not free,<200%,NA,17900,no,yes,yes,yes,yes
+32,White,Independent (200%–400% FPL),"Middle-income independent student ($15,001 to $30,000)",No student loans,Public institution,tuition,<200%,NA,21400,yes,yes,yes,yes,yes
+89,White,Independent (200%–400% FPL),"Middle-income independent student ($15,001 to $30,000)",No student loans,Private institution,not free,<200%,NA,15400,no,yes,yes,no,no
+117,Black,Independent (200%–400% FPL),"Middle-income independent student ($15,001 to $30,000)",No student loans,Private institution,not free,<200%,NA,21500,no,yes,yes,no,yes
+35,White,Independent (200%–400% FPL),"Middle-income independent student ($15,001 to $30,000)",Student loans,Private institution,tuition,<200%,NA,21000,yes,yes,yes,yes,yes
+125,Latino,Independent (200%–400% FPL),"Middle-income independent student ($15,001 to $30,000)",Student loans,Public institution,not free,<200%,NA,22600,no,yes,yes,yes,yes
+3,White,Independent (<200% FPL),"Lower-income independent student (less than $15,000)",No student loans,Public institution,not free,<200%,NA,9300,no,yes,yes,yes,yes
+23,White,Independent (<200% FPL),"Lower-income independent student (less than $15,000)",No student loans,Public institution,not free,<200%,NA,6200,no,yes,yes,yes,yes
+21,White,Independent (<200% FPL),"Lower-income independent student (less than $15,000)",Student loans,Public institution,not free,<200%,NA,10700,no,yes,yes,yes,yes
+10,White,Independent (<200% FPL),"Lower-income independent student (less than $15,000)",No student loans,Public institution,tuition,<200%,NA,10400,yes,yes,yes,yes,yes
+87,Latino,Independent (<200% FPL),"Lower-income independent student (less than $15,000)",Student loans,Public institution,not free,<200%,NA,9400,no,yes,yes,yes,yes
+23,White,Independent (<200% FPL),"Lower-income independent student (less than $15,000)",No student loans,Public institution,not free,<200%,NA,6300,no,yes,yes,yes,yes
+13,Latino,Independent (<200% FPL),"Lower-income independent student (less than $15,000)",No student loans,Public institution,not free,<200%,NA,13600,no,yes,yes,yes,yes
+54,Black,Independent (<200% FPL),"Lower-income independent student (less than $15,000)",Student loans,Public institution,tuition,<200%,NA,10100,yes,yes,yes,yes,yes
+17,White,Independent (<200% FPL),"Lower-income independent student (less than $15,000)",Student loans,Private institution,not free,<200%,NA,10900,no,yes,yes,no,no
+3,White,Independent (<200% FPL),"Lower-income independent student (less than $15,000)",No student loans,Public institution,not free,<200%,NA,11500,no,yes,yes,yes,yes
+17,White,Independent (<200% FPL),"Lower-income independent student (less than $15,000)",Student loans,Private institution,not free,<200%,NA,8500,no,yes,yes,no,no
+13,Latino,Independent (<200% FPL),"Lower-income independent student (less than $15,000)",No student loans,Public institution,not free,<200%,NA,14000,no,yes,yes,yes,yes
+289,White,Independent (<200% FPL),"Lower-income independent student (less than $15,000)",No student loans,Private institution,tuition&stipend,<200%,NA,6100,yes,yes,yes,yes,yes
+25,Latino,Independent (<200% FPL),"Lower-income independent student (less than $15,000)",No student loans,Public institution,tuition,<200%,NA,12900,yes,yes,yes,yes,yes
+19,Black,Independent (<200% FPL),"Lower-income independent student (less than $15,000)",Student loans,Private institution,not free,<200%,NA,7500,no,yes,yes,no,no
+3,White,Independent (<200% FPL),"Lower-income independent student (less than $15,000)",No student loans,Public institution,not free,<200%,NA,7800,no,yes,yes,yes,yes
+54,Black,Independent (<200% FPL),"Lower-income independent student (less than $15,000)",Student loans,Public institution,tuition,<200%,NA,9800,yes,yes,yes,yes,yes
+13,Latino,Independent (<200% FPL),"Lower-income independent student (less than $15,000)",No student loans,Public institution,not free,<200%,NA,11600,no,yes,yes,yes,yes
+3,White,Independent (<200% FPL),"Lower-income independent student (less than $15,000)",No student loans,Public institution,not free,<200%,NA,6400,no,yes,yes,yes,yes

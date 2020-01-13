@@ -35,12 +35,12 @@ final_dat2 <- final_dat %>%
     TRUE ~ race 
   ),
   incomegroup_tooltip = case_when(
-    incomegroup == "Dep+80k" ~ "Dependent (400%+)",
-    incomegroup == "Dep40k-80k" ~ "Dependent (200%–400%)",
-    incomegroup == "Dep<=40k" ~ "Dependent (<200%)",
-    incomegroup == "Ind+30k" ~ "Independent (400%+)",
-    incomegroup == "Ind15k-30k" ~ "Independent (200%–400%)",
-    incomegroup == "Ind<=15k" ~ "Independent (<200%)"
+    incomegroup == "Dep+80k" ~ "Dependent (>400% FPL)",
+    incomegroup == "Dep40k-80k" ~ "Dependent (200%–400% FPL)",
+    incomegroup == "Dep<=40k" ~ "Dependent (<200% FPL)",
+    incomegroup == "Ind+30k" ~ "Independent (>400% FPL)",
+    incomegroup == "Ind15k-30k" ~ "Independent (200%–400% FPL)",
+    incomegroup == "Ind<=15k" ~ "Independent (<200% FPL)"
   ), 
   incomegroup2 = case_when(
     incomegroup == "Dep+80k" ~ "Higher-income dependent student (more than $80,000)",
