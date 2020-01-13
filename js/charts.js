@@ -24,12 +24,12 @@ window.createGraphic = function(graphicSelector) {
         .range([0.25*width, 0.75*width]);
 
     var yScale_inc = d3.scaleBand()
-        .domain(["Higher-income dependent student (more than $80,000)",
-                 "Middle-income dependent student ($40,001 to $80,000)",
-                 "Lower-income dependent student (less than $40,000)",
-                 "Higher-income independent student (more than $30,000)",
-                 "Middle-income independent student ($15,001 to $30,000)",
-                 "Lower-income independent student (less than $15,000)"])
+        .domain(["Higher-income dependent (more than $80,000)",
+                 "Middle-income dependent ($40,001 to $80,000)",
+                 "Lower-income dependent (less than $40,000)",
+                 "Higher-income independent (more than $30,000)",
+                 "Middle-income independent ($15,001 to $30,000)",
+                 "Lower-income independent (less than $15,000)"])
         // .range([50, 150, 250, 350, 450, 550]);
         .rangeRound([margin, height - margin])
         .padding(margin);
@@ -397,8 +397,10 @@ window.createGraphic = function(graphicSelector) {
                 .attr("class", "catLabel")
                 .attr("x", width / 2)
                 .attr("y", function(d) { return yScale_inc(d); })
+                .attr("dy", 0)
                 .text(function(d) { return d; })
-                .style("opacity", 1);
+                .style("opacity", 1)
+                .call(wrap, 185);
 
             svg.selectAll(".dividerLine")
                 .data(yScale_inc.domain().slice(0, 5))
@@ -594,7 +596,9 @@ window.createGraphic = function(graphicSelector) {
                     .attr("class", "catLabel")
                     .attr("x", width / 2)
                     .attr("y", function(d) { return yScale_inc(d); })
-                    .text(function(d) { return d; });
+                    .attr("dy", 0)
+                    .text(function(d) { return d; })
+                    .call(wrap, 180);
             }
 
             if(svg.selectAll(".dividerLine").nodes().length < 5) {
@@ -983,6 +987,31 @@ window.createGraphic = function(graphicSelector) {
         });
 
         return sums;
+    }
+
+    function wrap(text, width) {
+      text.each(function() {
+        var text = d3.select(this),
+            words = text.text().split(/\s+/).reverse(),
+            word,
+            line = [],
+            lineNumber = 0,
+            lineHeight = 1.1, // ems
+            x = text.attr("x"),
+            y = text.attr("y"),
+            dy = parseFloat(text.attr("dy")),
+            tspan = text.text(null).append("tspan").attr("x", x).attr("y", y).attr("dy", dy + "em");
+        while (word = words.pop()) {
+          line.push(word);
+          tspan.text(line.join(" "));
+          if (tspan.node().getComputedTextLength() > width) {
+            line.pop();
+            tspan.text(line.join(" "));
+            line = [word];
+            tspan = text.append("tspan").attr("x", x).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
+          }
+        }
+      });
     }
 
     function init() {
