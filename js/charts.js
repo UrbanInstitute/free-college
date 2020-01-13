@@ -182,6 +182,7 @@ window.createGraphic = function(graphicSelector) {
             d3.select(".tooltip .studentName").text("");
         }
         d3.select(".tooltip .studentIncome span").text(d3.format("$,.0f")(d.income));
+        d3.select(".tooltip .studentIncGroup").text(d.incomegroup_tooltip);
         d3.select(".tooltip .studentRace").text(d.race);
         d3.select(".tooltip .studentInstitutionType").text(d.sector);
         d3.select(".tooltip .studentLoanStatus").text(d.loan);

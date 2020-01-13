@@ -56,8 +56,16 @@ p {
 h1 {
     font-size: 40px;
     font-weight: bold;
-    margin: 100px 0 40px;
+    margin-top: 100px;
     text-align: center;
+}
+
+h2 {
+    font-size: 20px;
+    text-align: center;
+    font-weight: normal;
+    line-height: 40px;
+    margin-bottom: 40px;
 }
 
 hr {
