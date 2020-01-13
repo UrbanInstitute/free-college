@@ -27,4 +27,36 @@ final_dat <- data %>%
   select(char_id, race, incomegroup, loan, public, freecollege, fpl, name = new_name, income, 
          currentFreeCollege, allFreeCollege, freeCollege400FPL, freeCollege400FPLPublic, switchToPublic)
 
-write_csv(final_dat, "final_data.csv")
+final_dat2 <- final_dat %>%
+  mutate(race2 = case_when(
+    race == "Black or African American" ~ "Black",
+    race == "Hispanic or Latino" ~ "Latino",
+    race == "American Indian or Alaka Native, Native Hawaiian/other Pacific Islanders, or more than one race" ~ "Other race or ethnicity",
+    TRUE ~ race 
+  ),
+  incomegroup_tooltip = case_when(
+    incomegroup == "Dep+80k" ~ "Dependent (400%+)",
+    incomegroup == "Dep40k-80k" ~ "Dependent (200%–400%)",
+    incomegroup == "Dep<=40k" ~ "Dependent (<200%)",
+    incomegroup == "Ind+30k" ~ "Independent (400%+)",
+    incomegroup == "Ind15k-30k" ~ "Independent (200%–400%)",
+    incomegroup == "Ind<=15k" ~ "Independent (<200%)"
+  ), 
+  incomegroup2 = case_when(
+    incomegroup == "Dep+80k" ~ "Higher-income dependent student (more than $80,000)",
+    incomegroup == "Dep40k-80k" ~ "Middle-income dependent student ($40,001 to $80,000)",
+    incomegroup == "Dep<=40k" ~ "Lower-income dependent student (less than $40,000)",
+    incomegroup == "Ind+30k" ~ "Higher-income independent student (more than $30,000)",
+    incomegroup == "Ind15k-30k" ~ "Middle-income independent student ($15,001 to $30,000)",
+    incomegroup == "Ind<=15k" ~ "Lower-income independent student (less than $15,000)"
+  ),
+  loan2 = case_when(loan == "no loans" ~ "No student loans",
+                    loan == "loans" ~ "Student loans"),
+  sector = case_when(public == "2/4 yr pub" ~ "Public institution",
+                     public == "not 2/4 yr pub" ~ "Private institution")
+  ) %>%
+  select(char_id, race2, incomegroup_tooltip, incomegroup2, loan2, sector, freecollege, fpl, name,
+         income, currentFreeCollege, allFreeCollege, freeCollege400FPL, freeCollege400FPLPublic, switchToPublic) %>%
+  rename(race = race2, loan = loan2, incomegroup = incomegroup2)
+
+write_csv(final_dat2, "final_data.csv")

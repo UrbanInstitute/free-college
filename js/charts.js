@@ -24,18 +24,23 @@ window.createGraphic = function(graphicSelector) {
         .range([0.25*width, 0.75*width]);
 
     var yScale_inc = d3.scaleBand()
-        .domain(["Dep+80k", "Dep40k-80k", "Dep<=40k", "Ind+30k", "Ind15k-30k", "Ind<=15k"])
+        .domain(["Higher-income dependent student (more than $80,000)",
+                 "Middle-income dependent student ($40,001 to $80,000)",
+                 "Lower-income dependent student (less than $40,000)",
+                 "Higher-income independent student (more than $30,000)",
+                 "Middle-income independent student ($15,001 to $30,000)",
+                 "Lower-income independent student (less than $15,000)"])
         // .range([50, 150, 250, 350, 450, 550]);
         .rangeRound([margin, height - margin])
         .padding(margin);
 
     var yScale_race = d3.scaleBand()
-        .domain(["American Indian or Alaka Native, Native Hawaiian/other Pacific Islanders, or more than one race", "Asian", "Black or African American", "Hispanic or Latino", "White"])
+        .domain(["White", "Black", "Asian", "Latino", "Other race or ethnicity"])
         .rangeRound([margin, height - margin])
         .padding(margin);
 
     var yScale_loan = d3.scaleBand()
-        .domain(["loans", "no loans"])
+        .domain(["No student loans", "Student loans"])
         .rangeRound([margin, height - margin])
         .padding(margin);
 
@@ -125,9 +130,10 @@ window.createGraphic = function(graphicSelector) {
             return {
                 char_id: d.char_id,
                 race: d.race,
+                incomegroup_tooltip: d.incomegroup_tooltip,
                 incomegroup: d.incomegroup,
                 loan: d.loan,
-                public: d.public,
+                sector: d.sector,
                 freecollege: d.freecollege,
                 fpl: d.fpl,
                 name: d.name,
@@ -177,7 +183,7 @@ window.createGraphic = function(graphicSelector) {
         }
         d3.select(".tooltip .studentIncome span").text(d3.format("$,.0f")(d.income));
         d3.select(".tooltip .studentRace").text(d.race);
-        d3.select(".tooltip .studentInstitutionType").text(d.public);
+        d3.select(".tooltip .studentInstitutionType").text(d.sector);
         d3.select(".tooltip .studentLoanStatus").text(d.loan);
 
         // position and show tooltip
