@@ -796,7 +796,7 @@ window.createGraphic = function(graphicSelector) {
         // grant free college to those < 400% of FPL and attending public institutions, by loan status
         (d3.selectAll(".dotLabel").nodes().length < 4) && d3.selectAll(".dotLabel").remove();
         removeHighlighting();
-        d3.select(".chartTitle").text("Who gets free tuition and fees under this plan, by loan status?");
+        d3.select(".chartTitle").text("Who gets free tuition and fees under this plan, by student loan status?");
 
         var t = d3.transition()
             .duration(800)
