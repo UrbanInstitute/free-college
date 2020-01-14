@@ -84,7 +84,7 @@
 
         <div class="main">
             <div id="navDots">
-                <a href="#intro"><span class="navDot selected"></span></a> <!-- intro -->
+                <a href="#intro"><span class="navDot is-selected"></span></a> <!-- intro -->
                 <a href="#hundredDots"><span class="navDot"></span></a> <!-- start of scrollytelling? (step 0) -->
                 <a href="#splitCurrentByIncome"><span class="navDot"></span></a> <!-- split current by income (step 4) -->
                 <a href="#splitByRace"><span class="navDot"></span></a> <!-- split plan by race (step 13) -->
@@ -98,7 +98,7 @@
                 <hr>
                 <div class="date">February XX, 2020</div>
 
-                <p id="intro">Motivated by <a href="https://research.collegeboard.org/pdf/trends-college-pricing-2018-full-report.pdf" target="_blank">rising tuition</a> and <a href="https://studentaid.ed.gov/sa/about/data-center/student/portfolio" target="_blank">increasing student loan balances</a>, local, state, and federal policymakers are considering new ways to reduce college costs, especially for low- and middle-income students. </p>
+                <p class="navDotStep" id="intro">Motivated by <a href="https://research.collegeboard.org/pdf/trends-college-pricing-2018-full-report.pdf" target="_blank">rising tuition</a> and <a href="https://studentaid.ed.gov/sa/about/data-center/student/portfolio" target="_blank">increasing student loan balances</a>, local, state, and federal policymakers are considering new ways to reduce college costs, especially for low- and middle-income students. </p>
                 <p>Cities and states have already introduced several “free college” plans, primarily in the form of <a href="http://ahead-penn.org/creating-knowledge/college-promise" target="_blank">College Promise programs</a>. Nearly half of all <a href="https://www.usnews.com/education/best-colleges/paying-for-college/articles/2018-02-01/these-states-offer-tuition-free-college-programs" target="_blank">states</a> have programs that provides tuition-free college for some students. And its seems like <a href="https://www.vox.com/2019/6/24/18677785/democrats-free-college-sanders-warren-biden" target="_blank">nearly every Democratic presidential candidate</a> has a plan to provide more students with free or low-cost education.</p>
                 <p>A federal free college program could dramatically increase the number of students who could attend college for free, but much depends on the choices legislators make. Which students, and which institutions, would be eligible? Which college expenses would be covered? Our interactive feature shows how the answers to these questions could dictate which students would benefit from a broad free college plan.</p>
             </div>
@@ -135,7 +135,7 @@
                 </div>
                 <div id="sections">
                     <section class="step" data-step="0"></section>
-                    <section class="step" data-step="1" id="hundredDots">
+                    <section class="step navDotStep" data-step="1" id="hundredDots">
                         <p>These hundred dots represent undergraduate students at private and public institutions in the United States. Hover over the dots to learn more about each student.</p>
                         <p>Although this simplified dataset doesn’t precisely indicate which students would get free college, we use this 100-dot pool to predict the broad effects of different policy choices.</p>
                     </section>
@@ -145,7 +145,7 @@
                     <section class="step" data-step="3">
                         <p>About 27 percent of students (i.e., 27 students in our world) attending US colleges currently have free college. These students receive merit-based grants (such as <a href="https://www.osfa.la.gov/tops_mainlink.html" target="_blank">Louisiana’s Taylor Opportunity Program for Students, or TOPS, awards</a>), or need-based grants (such as the <a href="https://www2.ed.gov/programs/fpg/index.html" target="_blank">federal Pell grant</a>), and those grants covered tuition and fees.</p>
                     </section>
-                    <section class="step" data-step="4" id="splitCurrentByIncome">
+                    <section class="step navDotStep" data-step="4" id="splitCurrentByIncome">
                         <p>Free college is often proposed to “level the playing field” by making college more affordable for low- and middle-income students.</p>
                         <p>Looking at the share of students receiving free college by income, we see that some high-income students get free college, and some low-income students—especially independent students, <a href="https://studentaid.gov/apply-for-aid/fafsa/filling-out/dependency" target="_blank">who tend to be older and often have families of their own</a>—don’t.</p>
                     </section>
@@ -237,7 +237,7 @@
                     <section class="step" data-step="12">
                         <p></p>
                     </section>
-                    <section class="step" data-step="13" id="splitByRace">
+                    <section class="step navDotStep" data-step="13" id="splitByRace">
                         <p>We can also see the effects of free college plans on students of different races and ethnicities.</p>
                         <p>Our plan is more likely to benefit students of color. Sixty-eight percent of currently enrolled Black students and 75 percent of Hispanic students would get free college under our plan. Although white students make up the largest share of college students, 52 percent of white students would receive free college under our plan.</p>
                     </section>
@@ -247,7 +247,7 @@
                     <section class="step" data-step="15">
                         <p>Free college is sometimes touted as a means to help students reduce, or even eliminate, their need for student loans. If we provide eligible students with full tuition and fees, how might this affect the share of students who need to take on debt to attend college?</p>
                     </section>
-                    <section class="step" data-step="16" id="splitByLoan">
+                    <section class="step navDotStep" data-step="16" id="splitByLoan">
                         <p>Even without tuition and fees, student debt won’t go away. Of students who had free college before our new policy, many also had student loans. And many of those who would receive free college under our plan may continue to rely on student loans, though their debt burden might decrease.</p>
                         <p>Beyond tuition and fees, students also need to pay for housing, food, transportation, and, in some cases, child care while in school. Some students, particularly those in four-year schools, cover these costs with federal student loans.</p>
                     </section>
@@ -335,7 +335,7 @@
                     <section class="step" data-step="23">
                         <p>We’ve assumed that students will stay in the institutions they’re currently attending, but free college could encourage many students to switch schools.</p>
                     </section>
-                    <section class="step" data-step="24" id="studentsMove">
+                    <section class="step navDotStep" data-step="24" id="studentsMove">
                         <p>For example, <span class="personaTextHighlight">Justina</span> may decide to move from a for-profit institution to a public institution because she qualifies for more aid. But it’s unclear which students, and how many, might <a href="https://www.insidehighered.com/sites/default/server_files/files/memo Clinton plan.pdf" target="_blank">make this switch</a>.</p>
                         <p>In Tennessee, the implementation of a <a href="https://www.brookings.edu/blog/brown-center-chalkboard/2019/05/06/five-things-to-know-about-the-tennessee-promise-scholarship/" target="_blank">statewide Promise program</a> for two-year public schools substantially increased enrollment among high school graduates and led to a small dip in four-year public college enrollment.</p>
                     </section>
@@ -349,7 +349,7 @@
             </div>
 
             <div class="content afterScroll">
-                <p id="conclusion">If we have a national free college plan, states and localities might reduce their funding for public institutions, causing the federal government to shoulder more of the cost. Nearly all proposals have mechanisms to keep states invested, but this <a href="https://www.nytimes.com/2019/12/20/upshot/50-reasons-free-college-misunderstood.html" target="_blank">may require trade-offs</a>.</p>
+                <p class="navDotStep" id="conclusion">If we have a national free college plan, states and localities might reduce their funding for public institutions, causing the federal government to shoulder more of the cost. Nearly all proposals have mechanisms to keep states invested, but this <a href="https://www.nytimes.com/2019/12/20/upshot/50-reasons-free-college-misunderstood.html" target="_blank">may require trade-offs</a>.</p>
                 <p>Right now, <a href="https://www.pewtrusts.org/en/research-and-analysis/issue-briefs/2015/06/federal-and-state-funding-of-higher-education" target="_blank">52 percent of total funding</a> for education at public institutions comes from state and local funds. Since some states invest more funding in higher education than others, the federal government will need to understand how to allocate funds equitably.</p>
                 <p>The idea of broadening access to free college is an appealing and important one, but how such a plan is designed hinges on our underlying goals.</p>
                 <p>If we want to provide universal access to college, we may want to prioritize making all two-year public institutions free, since those institutions are open to all who apply. If our goal is to reduce student loans, we need to consider funding living expenses for low-income students. And if we want to close gaps in college access for students of color, we should think about how to support students who are in nonpublic institutions.</p>

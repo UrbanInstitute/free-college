@@ -1,14 +1,15 @@
 // code modified from: https://github.com/CodyHouse/vertical-fixed-navigation
 $(document).ready(function($){
-    var contentSections = $('.step'),
+    var contentSections = $('.navDotStep'),
         navigationItems = $('#navDots a');
 
+    // update which navigation dot is selected
     // updateNavigation();
-    // $(window).on('scroll', function(){
-    //     updateNavigation();
-    // });
+    $(window).on('scroll', function(){
+        updateNavigation();
+    });
 
-    //smooth scroll to the section when clicking on a dot
+    // smooth scroll to the section when clicking on a dot
     navigationItems.on('click', function(event){
         event.preventDefault();
         smoothScroll($(this.hash));
@@ -24,17 +25,18 @@ $(document).ready(function($){
     //     $('.touch #cd-vertical-nav').removeClass('open');
     // });
 
-    // function updateNavigation() {
-    //     contentSections.each(function(){
-    //         $this = $(this);
-    //         var activeSection = $('#cd-vertical-nav a[href="#'+$this.attr('id')+'"]').data('number') - 1;
-    //         if ( ( $this.offset().top - $(window).height()/2 < $(window).scrollTop() ) && ( $this.offset().top + $this.height() - $(window).height()/2 > $(window).scrollTop() ) ) {
-    //             navigationItems.eq(activeSection).addClass('is-selected');
-    //         }else {
-    //             navigationItems.eq(activeSection).removeClass('is-selected');
-    //         }
-    //     });
-    // }
+    function updateNavigation() {
+        contentSections.each(function(){
+            $this = $(this);
+            var activeSection = $this.attr('id');
+
+            // if element appears 10% up the window (when the scrollytelling step is triggered) and bottom of the element is below the top of the screen, make its dot active
+            if (($this.offset().top - $(window).height()*0.9 < $(window).scrollTop()) && ($this.offset().top + $this.height() - $(window).height()*0.9 > $(window).scrollTop())) {
+                d3.selectAll("#navDots .navDot").classed("is-selected", false);
+                d3.select("#navDots a[href='#" + activeSection + "'] .navDot").classed("is-selected", true);
+            }
+        });
+    }
 
     function smoothScroll(target) {
         $('body,html').animate(

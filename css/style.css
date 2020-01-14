@@ -183,7 +183,7 @@ hr {
     margin: 10px 0;
 }
 
-.navDot.selected {
+.navDot.is-selected {
     background-color: #353535;
 }
 
