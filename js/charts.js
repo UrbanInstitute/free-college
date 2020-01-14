@@ -217,6 +217,12 @@ window.createGraphic = function(graphicSelector) {
 
     function allDotsCentered() {
         d3.selectAll(".dotLabel").remove();
+        d3.selectAll(".columnLabel").remove();
+        d3.selectAll(".catLabel").remove();
+        d3.selectAll(".dividerLine").remove();
+        d3.select(".legend").classed("invisible", true);
+        removeHighlighting();
+        d3.select(".chartTitle").text("");
 
         d3.selectAll(".student")
             .transition()
@@ -225,10 +231,11 @@ window.createGraphic = function(graphicSelector) {
     }
 
     function spreadOut100Dots() {
-        // console.log("spread out 100 dots");
         d3.selectAll(".dotLabel").remove();
         d3.selectAll(".columnLabel").remove();
-        // d3.select(".legend").classed("invisible", true);
+        d3.selectAll(".catLabel").remove();
+        d3.selectAll(".dividerLine").remove();
+        d3.select(".legend").classed("invisible", true);
         removeHighlighting();
         d3.select(".chartTitle").text("");
 
@@ -281,6 +288,7 @@ window.createGraphic = function(graphicSelector) {
         // console.log("split into two groups: those who have free college and those who don't");
         d3.selectAll(".catLabel").remove();
         d3.selectAll(".dividerLine").remove();
+        d3.select(".legend").classed("invisible", true);
         removeHighlighting();
 
         d3.select(".chartTitle").text("Who has free college now?");
@@ -789,7 +797,7 @@ window.createGraphic = function(graphicSelector) {
 
     function highlightJustina() {
         d3.select(".student.Justina").classed("highlighted1", true);
-        // show Danielle's tooltip
+        // show Justina's tooltip
     }
 
     function splitFreeCollege400FPLPublicByLoan() {
