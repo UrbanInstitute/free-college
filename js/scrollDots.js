@@ -1,8 +1,15 @@
-// code modified from: https://github.com/CodyHouse/vertical-fixed-navigation
+// code modified from: https://github.com/CodyHouse/vertical-fixed-navigation / https://codyhouse.co/gem/vertical-fixed-navigation/
 $(document).ready(function($){
     var contentSections = $('.navDotStep'),
         navigationItems = $('#navDots a');
 
+    var contentSectionTops = [];
+
+    // get the vertical location of where each "chapter" begins
+    contentSections.each(function() {
+        contentSectionTops.push($(this).offset().top - $(window).height());
+    });
+    console.log(contentSectionTops);
     // update which navigation dot is selected
     // updateNavigation();
     $(window).on('scroll', function(){
@@ -26,16 +33,24 @@ $(document).ready(function($){
     // });
 
     function updateNavigation() {
-        contentSections.each(function(){
-            $this = $(this);
-            var activeSection = $this.attr('id');
+        var windowScrollTop = $(window).scrollTop();
 
-            // if element appears 10% up the window (when the scrollytelling step is triggered) and bottom of the element is below the top of the screen, make its dot active
-            if (($this.offset().top - $(window).height()*0.9 < $(window).scrollTop()) && ($this.offset().top + $this.height() - $(window).height()*0.9 > $(window).scrollTop())) {
-                d3.selectAll("#navDots .navDot").classed("is-selected", false);
-                d3.select("#navDots a[href='#" + activeSection + "'] .navDot").classed("is-selected", true);
+        d3.selectAll("#navDots .navDot").classed("is-selected", false);
+
+        if(windowScrollTop < contentSectionTops[0]) {
+            d3.select("#navDots .navDot").classed("is-selected", true);
+        }
+        else if(windowScrollTop > contentSectionTops[contentSectionTops.length - 1]) {
+            d3.selectAll("#navDots .navDot").filter(function(d, i) { return i === contentSectionTops.length - 1; }).classed("is-selected", true);
+        }
+        else {
+            for(var j = 0; j < contentSectionTops.length - 1; j++) {
+                if(windowScrollTop >= contentSectionTops[j] && windowScrollTop < contentSectionTops[j+1]){
+                    d3.selectAll("#navDots .navDot").filter(function(d, i) { return i === j; }).classed("is-selected", true);
+                    break;
+                }
             }
-        });
+        }
     }
 
     function smoothScroll(target) {
