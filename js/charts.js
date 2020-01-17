@@ -928,12 +928,12 @@ window.createGraphic = function(graphicSelector) {
         var newStudentsData = [
             {char_id: "new", currentFreeCollege: "no", switchToPublic: "yes"},
             {char_id: "new", currentFreeCollege: "no", switchToPublic: "yes"},
-            {char_id: "new", currentFreeCollege: "no", switchToPublic: "no"},
-            {char_id: "new", currentFreeCollege: "no", switchToPublic: "yes"},
-            {char_id: "new", currentFreeCollege: "no", switchToPublic: "no"},
             {char_id: "new", currentFreeCollege: "no", switchToPublic: "yes"},
             {char_id: "new", currentFreeCollege: "no", switchToPublic: "yes"},
-            {char_id: "new", currentFreeCollege: "no", switchToPublic: "no"},
+            {char_id: "new", currentFreeCollege: "no", switchToPublic: "yes"},
+            {char_id: "new", currentFreeCollege: "no", switchToPublic: "yes"},
+            {char_id: "new", currentFreeCollege: "no", switchToPublic: "yes"},
+            {char_id: "new", currentFreeCollege: "no", switchToPublic: "yes"},
             {char_id: "new", currentFreeCollege: "no", switchToPublic: "yes"},
             {char_id: "new", currentFreeCollege: "no", switchToPublic: "yes"}
         ];
