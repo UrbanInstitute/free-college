@@ -113,8 +113,7 @@ window.createGraphic = function(graphicSelector) {
             if(scrollDirection === "up") d3.select(".chartTitle").text("Who gets free tuition and fees under this plan, by student loan status?");
         },       // step 23
         switchToPublic,                     // step 24
-        moreDotsJoin,                       // step 25
-        function step26() {}       // step 26
+        moreDotsJoin                       // step 25
     ]
 
     // update our chart
