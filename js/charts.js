@@ -114,7 +114,7 @@ window.createGraphic = function(graphicSelector) {
         },       // step 23
         switchToPublic,                     // step 24
         moreDotsJoin,                       // step 25
-        freeCollegeBelow400FPLPublic       // step 26
+        function step26() {}       // step 26
     ]
 
     // update our chart
