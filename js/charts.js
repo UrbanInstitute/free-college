@@ -289,6 +289,7 @@ window.createGraphic = function(graphicSelector) {
         d3.selectAll(".dividerLine").remove();
         d3.select(".legend").classed("invisible", true);
         removeHighlighting();
+        (d3.selectAll(".dotLabel").nodes().length !== 2) && d3.selectAll(".dotLabel").remove();
 
         d3.select(".chartTitle").text("Who has free college now?");
 
@@ -312,50 +313,67 @@ window.createGraphic = function(graphicSelector) {
             d3.select(".legend").classed("invisible", true);
 
             var students = d3.selectAll(".student");
+            var numTransitions = 0;
 
             students
                 .transition(t)
                 .attr("cx", function(d) { return d.x; })
-                .attr("cy", function(d) { return d.y; });
+                .attr("cy", function(d) { return d.y; })
+                .on("interrupt", function() { })
+                .on("end", function() {
+                    numTransitions++;
 
-            students.classed("noFreeCollege", function(d) { return d.currentFreeCollege === "no" ? true : false; });
+                    if(numTransitions == 100) {  // fade in labels gracefully after dots have finished transitioning
+                        students.classed("noFreeCollege", function(d) { return d.currentFreeCollege === "no" ? true : false; });
 
-            // label "Free College" and "No free college" columns
-            var svg = d3.select("svg g");
+                        // label "Free College" and "No free college" columns
+                        var svg = d3.select("svg g");
 
-            svg.append("text")
-                .attr("class", "columnLabel")
-                .attr("x", xScale("yes"))
-                .attr("y", margin)
-                .text("Free college");
+                        svg.append("text")
+                            .attr("class", "columnLabel")
+                            .attr("x", xScale("yes"))
+                            .attr("y", margin)
+                            .text("Free college")
+                            .style("opacity", 0);
 
-            svg.append("text")
-                .attr("class", "columnLabel")
-                .attr("x", xScale("no"))
-                .attr("y", margin)
-                .text("No free college");
+                        svg.append("text")
+                            .attr("class", "columnLabel")
+                            .attr("x", xScale("no"))
+                            .attr("y", margin)
+                            .text("No free college")
+                            .style("opacity", 0);
 
-            // update label below dots
-            if(d3.selectAll(".dotLabel").nodes().length !== 2) {
-                d3.selectAll(".dotLabel").remove();
+                        d3.selectAll(".columnLabel")
+                            .transition(800)
+                            .style("opacity", 1);
 
-                var numFreeCollege = students.data().filter(function(d) { return d.currentFreeCollege !== "no"; }).length;
-                var numNoFreeCollege = 100 - numFreeCollege;
+                        // update labels below dots
+                        if(d3.selectAll(".dotLabel").nodes().length !== 2) {
+                            var numFreeCollege = students.data().filter(function(d) { return d.currentFreeCollege !== "no"; }).length;
+                            var numNoFreeCollege = 100 - numFreeCollege;
 
-                var lowestDotY = d3.max(students.data(), function(d) { return d.y; });
+                            var lowestDotY = d3.max(students.data(), function(d) { return d.y; });
 
-                svg.append("text")
-                    .attr("class", "dotLabel")
-                    .attr("x", xScale("yes"))
-                    .attr("y", lowestDotY + 40)
-                    .text(numFreeCollege + " students");
+                            svg.append("text")
+                                .attr("class", "dotLabel")
+                                .attr("x", xScale("yes"))
+                                .attr("y", lowestDotY + 40)
+                                .text(numFreeCollege + " students")
+                                .style("opacity", 0);
 
-                svg.append("text")
-                    .attr("class", "dotLabel noFreeCollege")
-                    .attr("x", xScale("no"))
-                    .attr("y", lowestDotY + 40)
-                    .text(numNoFreeCollege + " students");
-            }
+                            svg.append("text")
+                                .attr("class", "dotLabel noFreeCollege")
+                                .attr("x", xScale("no"))
+                                .attr("y", lowestDotY + 40)
+                                .text(numNoFreeCollege + " students")
+                                .style("opacity", 0);
+
+                            d3.selectAll(".dotLabel")
+                                .transition(800)
+                                .style("opacity", 1);
+                        }
+                    }
+                });
         });
     }
 
