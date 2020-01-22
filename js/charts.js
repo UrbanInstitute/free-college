@@ -282,9 +282,9 @@ window.createGraphic = function(graphicSelector) {
                     if(numTransitions == 100) {  // fade in labels gracefully after dots have finished transitioning
                         students.classed("noFreeCollege", function(d) { return d.currentFreeCollege === "no" ? true : false; });
 
-                        // label "Free College" and "No free college" columns
                         var svg = d3.select("svg g");
 
+                        // label "Free College" and "No free college" columns
                         showColumnLabels(svg);
 
                         // update labels below dots
@@ -401,20 +401,7 @@ window.createGraphic = function(graphicSelector) {
                             var rightmostDot = d3.max(students.data(), function(d) { return d.x; });
                             // console.log(sums)
 
-                            svg.selectAll(".dotLabel")
-                                .data(sums)
-                                .enter()
-                                .append("text")
-                                .attr("class", function(d) { return d.freecollege === "yes" ? "dotLabel" : "dotLabel noFreeCollege"; })
-                                .attr("x", function(d) { return d.freecollege === "yes" ? rightmostDot + margin*4.5 : leftmostDot - margin*2; })
-                                .attr("y", function(d) { return yScale_inc(d.group); })
-                                .text(function(d) { return d.sum + " students"; })
-                                .style("text-anchor", "end")
-                                .style("opacity", 0);
-
-                            d3.selectAll(".dotLabel")
-                                .transition(1000)
-                                .style("opacity", 1);
+                            showDotLabels(svg, sums, leftmostDot, rightmostDot, yScale_inc);
 
                             d3.select(".legend").classed("invisible", false);
                         }
@@ -478,7 +465,6 @@ window.createGraphic = function(graphicSelector) {
 
                         // add labels with group totals
                         var sums = groupBySums("allFreeCollege", yScale_inc.domain(), "incomegroup");
-                        var rightmostDot = d3.max(students.data(), function(d) { return d.x; });
 
                         var labels = svg.selectAll(".dotLabel")
                             .data(sums)
@@ -528,13 +514,10 @@ window.createGraphic = function(graphicSelector) {
                     numTransitions++;
 
                     if(numTransitions === 100) {
-                        // add labels for income groups and divider lines
                         var svg = d3.select("svg g");
 
                         // add labels with group totals
                         var sums = groupBySums("freeCollege400FPL", yScale_inc.domain(), "incomegroup");
-                        var leftmostDot = d3.min(students.data(), function(d) { return d.x; });
-                        var rightmostDot = d3.max(students.data(), function(d) { return d.x; });
 
                         var labels = svg.selectAll(".dotLabel")
                             .data(sums)
@@ -617,23 +600,15 @@ window.createGraphic = function(graphicSelector) {
                         var leftmostDot = d3.min(students.data(), function(d) { return d.x; });
                         var rightmostDot = d3.max(students.data(), function(d) { return d.x; });
 
-                        if(svg.selectAll(".dotLabel").nodes().length < 12) svg.selectAll(".dotLabel").remove();
-
-                        var labels = svg.selectAll(".dotLabel")
-                            .data(sums);
-
-                        labels.exit().remove();
-
-                        labels.enter()
-                            .append("text")
-                            .attr("class", function(d) { return d.freecollege === "yes" ? "dotLabel" : "dotLabel noFreeCollege"; })
-                            .attr("x", function(d) { return d.freecollege === "yes" ? rightmostDot + margin*4.5 : leftmostDot - margin*2; })
-                            .attr("y", function(d) { return yScale_inc(d.group); })
-                            .style("text-anchor", "end")
-                            .text(function(d) { return d.sum + " students"; });
-
-                        labels.text(function(d) { return d.sum + " students"; })
-                            .style("opacity", 1);
+                        if(svg.selectAll(".dotLabel").nodes().length < 12) {
+                            svg.selectAll(".dotLabel").remove();
+                            showDotLabels(svg, sums, leftmostDot, rightmostDot, yScale_inc);
+                        }
+                        else {
+                            svg.selectAll(".dotLabel")
+                                .data(sums)
+                                .text(function(d) { return d.sum + " students"; });
+                        }
                     }
                 });
         });
@@ -791,20 +766,7 @@ window.createGraphic = function(graphicSelector) {
                         var rightmostDot = d3.max(students.data(), function(d) { return d.x; });
                         // console.log(sums)
 
-                        svg.selectAll(".dotLabel")
-                            .data(sums)
-                            .enter()
-                            .append("text")
-                            .attr("class", function(d) { return d.freecollege === "yes" ? "dotLabel" : "dotLabel noFreeCollege"; })
-                            .attr("x", function(d) { return d.freecollege === "yes" ? rightmostDot + margin*4.5 : leftmostDot - margin*2; })
-                            .attr("y", function(d) { return yScale_race(d.group); })
-                            .text(function(d) { return d.sum + " students"; })
-                            .style("text-anchor", "end")
-                            .style("opacity", 0);
-
-                        d3.selectAll(".dotLabel")
-                            .transition(1000)
-                            .style("opacity", 1);
+                        showDotLabels(svg, sums, leftmostDot, rightmostDot, yScale_race);
                     }
                 });
         });
@@ -894,20 +856,7 @@ window.createGraphic = function(graphicSelector) {
                         var rightmostDot = d3.max(students.data(), function(d) { return d.x; });
                         // console.log(sums)
 
-                        svg.selectAll(".dotLabel")
-                            .data(sums)
-                            .enter()
-                            .append("text")
-                            .attr("class", function(d) { return d.freecollege === "yes" ? "dotLabel" : "dotLabel noFreeCollege"; })
-                            .attr("x", function(d) { return d.freecollege === "yes" ? rightmostDot + margin*4.5 : leftmostDot - margin*2; })
-                            .attr("y", function(d) { return yScale_loan(d.group); })
-                            .text(function(d) { return d.sum + " students"; })
-                            .style("text-anchor", "end")
-                            .style("opacity", 0);
-
-                        d3.selectAll(".dotLabel")
-                            .transition(1000)
-                            .style("opacity", 1);
+                        showDotLabels(svg, sums, leftmostDot, rightmostDot, yScale_loan);
                     }
                 });
         });
@@ -1120,9 +1069,25 @@ window.createGraphic = function(graphicSelector) {
             .style("opacity", 1);
     }
 
+    function showDotLabels(svg, sums, leftmostDot, rightmostDot, yScale) {
+        svg.selectAll(".dotLabel")
+            .data(sums)
+            .enter()
+            .append("text")
+            .attr("class", function(d) { return d.freecollege === "yes" ? "dotLabel" : "dotLabel noFreeCollege"; })
+            .attr("x", function(d) { return d.freecollege === "yes" ? rightmostDot + margin*4.5 : leftmostDot - margin*2; })
+            .attr("y", function(d) { return yScale(d.group); })
+            .text(function(d) { return d.sum + " students"; })
+            .style("text-anchor", "end")
+            .style("opacity", 0);
+
+        d3.selectAll(".dotLabel")
+            .transition(1000)
+            .style("opacity", 1);
+    }
+
     function init() {
         setupCharts()
-        // setupProse()
         update(0)
     }
 
