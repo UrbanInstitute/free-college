@@ -418,6 +418,7 @@ window.createGraphic = function(graphicSelector) {
                     numTransitions++;
 
                     if(numTransitions == 100) {
+                        students.classed("noFreeCollege", function(d) { return d.currentFreeCollege === "no" ? true : false; });
 
                         // add labels for income groups and divider lines
                         var svg = d3.select("svg g");
@@ -808,54 +809,74 @@ window.createGraphic = function(graphicSelector) {
             simulation.tick();
           }
 
+            var numTransitions = 0;
             var students = d3.selectAll(".student");
 
             students
                 .transition(t)
                 .attr("cx", function(d) { return d.x; })
-                .attr("cy", function(d) { return d.y; });
+                .attr("cy", function(d) { return d.y; })
+                .on("interrupt", function() { })
+                .on("end", function() {
+                    numTransitions++;
 
-            students.classed("noFreeCollege", function(d) { return d.currentFreeCollege === "no" ? true : false; });
+                    if(numTransitions === 100) {
+                        students.classed("noFreeCollege", function(d) { return d.currentFreeCollege === "no" ? true : false; });
 
-            // add labels for income groups and divider lines
-            var svg = d3.select("svg g");
+                        // add labels for income groups and divider lines
+                        var svg = d3.select("svg g");
 
-            svg.selectAll(".catLabel")
-                .data(yScale_race.domain())
-                .enter()
-                .append("text")
-                .attr("class", "catLabel")
-                .attr("x", width / 2)
-                .attr("y", function(d) { return yScale_race(d); })
-                .text(function(d) { return d; })
-                .style("opacity", 1);
+                        svg.selectAll(".catLabel")
+                            .data(yScale_race.domain())
+                            .enter()
+                            .append("text")
+                            .attr("class", "catLabel")
+                            .attr("x", width / 2)
+                            .attr("y", function(d) { return yScale_race(d); })
+                            .text(function(d) { return d; })
+                            .style("opacity", 0);
 
-            svg.selectAll(".dividerLine")
-                .data(yScale_race.domain().slice(0, 4))
-                .enter()
-                .append("line")
-                .attr("class", "dividerLine")
-                .attr("x1", 0)
-                .attr("x2", width)
-                .attr("y1", function(d) { return yScale_race(d) + yScale_race.step()/2; })
-                .attr("y2", function(d) { return yScale_race(d) + yScale_race.step()/2; })
-                .style("opacity", 1);
+                        svg.selectAll(".dividerLine")
+                            .data(yScale_race.domain().slice(0, 4))
+                            .enter()
+                            .append("line")
+                            .attr("class", "dividerLine")
+                            .attr("x1", 0)
+                            .attr("x2", width)
+                            .attr("y1", function(d) { return yScale_race(d) + yScale_race.step()/2; })
+                            .attr("y2", function(d) { return yScale_race(d) + yScale_race.step()/2; })
+                            .style("opacity", 0);
 
-            // add labels with group totals
-            var sums = groupBySums("freeCollege400FPLPublic", yScale_race.domain(), "race");
-            var leftmostDot = d3.min(students.data(), function(d) { return d.x; });
-            var rightmostDot = d3.max(students.data(), function(d) { return d.x; });
-            // console.log(sums)
+                        d3.selectAll(".catLabel")
+                            .transition(1000)
+                            .style("opacity", 1);
 
-            svg.selectAll(".dotLabel")
-                .data(sums)
-                .enter()
-                .append("text")
-                .attr("class", function(d) { return d.freecollege === "yes" ? "dotLabel" : "dotLabel noFreeCollege"; })
-                .attr("x", function(d) { return d.freecollege === "yes" ? rightmostDot + margin*4.5 : leftmostDot - margin*2; })
-                .attr("y", function(d) { return yScale_race(d.group); })
-                .text(function(d) { return d.sum + " students"; })
-                .style("text-anchor", "end");
+                        d3.selectAll(".dividerLine")
+                            .transition(1000)
+                            .style("opacity", 1);
+
+                        // add labels with group totals
+                        var sums = groupBySums("freeCollege400FPLPublic", yScale_race.domain(), "race");
+                        var leftmostDot = d3.min(students.data(), function(d) { return d.x; });
+                        var rightmostDot = d3.max(students.data(), function(d) { return d.x; });
+                        // console.log(sums)
+
+                        svg.selectAll(".dotLabel")
+                            .data(sums)
+                            .enter()
+                            .append("text")
+                            .attr("class", function(d) { return d.freecollege === "yes" ? "dotLabel" : "dotLabel noFreeCollege"; })
+                            .attr("x", function(d) { return d.freecollege === "yes" ? rightmostDot + margin*4.5 : leftmostDot - margin*2; })
+                            .attr("y", function(d) { return yScale_race(d.group); })
+                            .text(function(d) { return d.sum + " students"; })
+                            .style("text-anchor", "end")
+                            .style("opacity", 0);
+
+                        d3.selectAll(".dotLabel")
+                            .transition(1000)
+                            .style("opacity", 1);
+                    }
+                });
         });
     }
 
