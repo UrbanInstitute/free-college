@@ -423,6 +423,26 @@ window.createGraphic = function(graphicSelector) {
                         // add labels for income groups and divider lines
                         var svg = d3.select("svg g");
 
+                        if(d3.selectAll(".columnLabel").nodes().length !== 2) {
+                            svg.append("text")
+                                .attr("class", "columnLabel")
+                                .attr("x", xScale("yes"))
+                                .attr("y", margin)
+                                .text("Free college")
+                                .style("opacity", 0);
+
+                            svg.append("text")
+                                .attr("class", "columnLabel")
+                                .attr("x", xScale("no"))
+                                .attr("y", margin)
+                                .text("No free college")
+                                .style("opacity", 0);
+
+                            d3.selectAll(".columnLabel")
+                                .transition(800)
+                                .style("opacity", 1);
+                        }
+
                         svg.selectAll(".catLabel")
                             .data(yScale_inc.domain())
                             .enter()
@@ -828,6 +848,26 @@ window.createGraphic = function(graphicSelector) {
                         // add labels for income groups and divider lines
                         var svg = d3.select("svg g");
 
+                        if(d3.selectAll(".columnLabel").nodes().length !== 2) {
+                            svg.append("text")
+                                .attr("class", "columnLabel")
+                                .attr("x", xScale("yes"))
+                                .attr("y", margin)
+                                .text("Free college")
+                                .style("opacity", 0);
+
+                            svg.append("text")
+                                .attr("class", "columnLabel")
+                                .attr("x", xScale("no"))
+                                .attr("y", margin)
+                                .text("No free college")
+                                .style("opacity", 0);
+
+                            d3.selectAll(".columnLabel")
+                                .transition(800)
+                                .style("opacity", 1);
+                        }
+
                         svg.selectAll(".catLabel")
                             .data(yScale_race.domain())
                             .enter()
@@ -928,6 +968,26 @@ window.createGraphic = function(graphicSelector) {
 
                         // add labels for income groups and divider lines
                         var svg = d3.select("svg g");
+
+                        if(d3.selectAll(".columnLabel").nodes().length !== 2) {
+                            svg.append("text")
+                                .attr("class", "columnLabel")
+                                .attr("x", xScale("yes"))
+                                .attr("y", margin)
+                                .text("Free college")
+                                .style("opacity", 0);
+
+                            svg.append("text")
+                                .attr("class", "columnLabel")
+                                .attr("x", xScale("no"))
+                                .attr("y", margin)
+                                .text("No free college")
+                                .style("opacity", 0);
+
+                            d3.selectAll(".columnLabel")
+                                .transition(800)
+                                .style("opacity", 1);
+                        }
 
                         svg.selectAll(".catLabel")
                             .data(yScale_loan.domain())
