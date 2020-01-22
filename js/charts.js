@@ -363,36 +363,8 @@ window.createGraphic = function(graphicSelector) {
 
                         if(d3.selectAll(".columnLabel").nodes().length !== 2) showColumnLabels(svg);
 
-                        svg.selectAll(".catLabel")
-                            .data(yScale_inc.domain())
-                            .enter()
-                            .append("text")
-                            .attr("class", "catLabel")
-                            .attr("x", width / 2)
-                            .attr("y", function(d) { return yScale_inc(d); })
-                            .attr("dy", 0)
-                            .text(function(d) { return d; })
-                            .style("opacity", 0)
-                            .call(wrap, 185);
-
-                        svg.selectAll(".dividerLine")
-                            .data(yScale_inc.domain().slice(0, 5))
-                            .enter()
-                            .append("line")
-                            .attr("class", "dividerLine")
-                            .attr("x1", 0)
-                            .attr("x2", width)
-                            .attr("y1", function(d) { return yScale_inc(d) + yScale_inc.step()/2; })
-                            .attr("y2", function(d) { return yScale_inc(d) + yScale_inc.step()/2; })
-                            .style("opacity", 0);
-
-                        d3.selectAll(".catLabel")
-                            .transition(1000)
-                            .style("opacity", 1);
-
-                        d3.selectAll(".dividerLine")
-                            .transition(1000)
-                            .style("opacity", 1);
+                        showCategoryLabels(svg, yScale_inc);
+                        showDividerLines(svg, yScale_inc);
 
                         // add labels with group totals
                         var sums = groupBySums("currentFreeCollege", yScale_inc.domain(), "incomegroup");
@@ -570,30 +542,8 @@ window.createGraphic = function(graphicSelector) {
                         // add labels for income groups and divider lines
                         var svg = d3.select("svg g");
 
-                        if(svg.selectAll(".catLabel").nodes().length < 6) {
-                            svg.selectAll(".catLabel")
-                                .data(yScale_inc.domain())
-                                .enter()
-                                .append("text")
-                                .attr("class", "catLabel")
-                                .attr("x", width / 2)
-                                .attr("y", function(d) { return yScale_inc(d); })
-                                .attr("dy", 0)
-                                .text(function(d) { return d; })
-                                .call(wrap, 180);
-                        }
-
-                        if(svg.selectAll(".dividerLine").nodes().length < 5) {
-                            svg.selectAll(".dividerLine")
-                                .data(yScale_inc.domain().slice(0, 5))
-                                .enter()
-                                .append("line")
-                                .attr("class", "dividerLine")
-                                .attr("x1", 0)
-                                .attr("x2", width)
-                                .attr("y1", function(d) { return yScale_inc(d) + yScale_inc.step()/2; })
-                                .attr("y2", function(d) { return yScale_inc(d) + yScale_inc.step()/2; });
-                        }
+                        if(svg.selectAll(".catLabel").nodes().length < 6) showCategoryLabels(svg, yScale_inc);
+                        if(svg.selectAll(".dividerLine").nodes().length < 5) showDividerLines(svg, yScale_inc);
 
                         // add labels with group totals
                         var sums = groupBySums("freeCollege400FPLPublic", yScale_inc.domain(), "incomegroup");
@@ -731,41 +681,13 @@ window.createGraphic = function(graphicSelector) {
 
                         if(d3.selectAll(".columnLabel").nodes().length !== 2) showColumnLabels(svg);
 
-                        svg.selectAll(".catLabel")
-                            .data(yScale_race.domain())
-                            .enter()
-                            .append("text")
-                            .attr("class", "catLabel")
-                            .attr("x", width / 2)
-                            .attr("y", function(d) { return yScale_race(d); })
-                            .text(function(d) { return d; })
-                            .style("opacity", 0);
-
-                        svg.selectAll(".dividerLine")
-                            .data(yScale_race.domain().slice(0, 4))
-                            .enter()
-                            .append("line")
-                            .attr("class", "dividerLine")
-                            .attr("x1", 0)
-                            .attr("x2", width)
-                            .attr("y1", function(d) { return yScale_race(d) + yScale_race.step()/2; })
-                            .attr("y2", function(d) { return yScale_race(d) + yScale_race.step()/2; })
-                            .style("opacity", 0);
-
-                        d3.selectAll(".catLabel")
-                            .transition(1000)
-                            .style("opacity", 1);
-
-                        d3.selectAll(".dividerLine")
-                            .transition(1000)
-                            .style("opacity", 1);
+                        showCategoryLabels(svg, yScale_race);
+                        showDividerLines(svg, yScale_race);
 
                         // add labels with group totals
                         var sums = groupBySums("freeCollege400FPLPublic", yScale_race.domain(), "race");
                         var leftmostDot = d3.min(students.data(), function(d) { return d.x; });
                         var rightmostDot = d3.max(students.data(), function(d) { return d.x; });
-                        // console.log(sums)
-
                         showDotLabels(svg, sums, leftmostDot, rightmostDot, yScale_race);
                     }
                 });
@@ -821,41 +743,13 @@ window.createGraphic = function(graphicSelector) {
 
                         if(d3.selectAll(".columnLabel").nodes().length !== 2) showColumnLabels(svg);
 
-                        svg.selectAll(".catLabel")
-                            .data(yScale_loan.domain())
-                            .enter()
-                            .append("text")
-                            .attr("class", "catLabel")
-                            .attr("x", width / 2)
-                            .attr("y", function(d) { return yScale_loan(d); })
-                            .text(function(d) { return d; })
-                            .style("opacity", 0);
-
-                        svg.selectAll(".dividerLine")
-                            .data(yScale_loan.domain().slice(0, 1))
-                            .enter()
-                            .append("line")
-                            .attr("class", "dividerLine")
-                            .attr("x1", 0)
-                            .attr("x2", width)
-                            .attr("y1", function(d) { return yScale_loan(d) + yScale_loan.step()/2; })
-                            .attr("y2", function(d) { return yScale_loan(d) + yScale_loan.step()/2; })
-                            .style("opacity", 0);
-
-                        d3.selectAll(".catLabel")
-                            .transition(1000)
-                            .style("opacity", 1);
-
-                        d3.selectAll(".dividerLine")
-                            .transition(1000)
-                            .style("opacity", 1);
+                        showCategoryLabels(svg, yScale_loan);
+                        showDividerLines(svg, yScale_loan);
 
                         // add labels with group totals
                         var sums = groupBySums("freeCollege400FPLPublic", yScale_loan.domain(), "loan");
                         var leftmostDot = d3.min(students.data(), function(d) { return d.x; });
                         var rightmostDot = d3.max(students.data(), function(d) { return d.x; });
-                        // console.log(sums)
-
                         showDotLabels(svg, sums, leftmostDot, rightmostDot, yScale_loan);
                     }
                 });
@@ -986,28 +880,28 @@ window.createGraphic = function(graphicSelector) {
     }
 
     function wrap(text, width) {
-      text.each(function() {
-        var text = d3.select(this),
-            words = text.text().split(/\s+/).reverse(),
-            word,
-            line = [],
-            lineNumber = 0,
-            lineHeight = 1.1, // ems
-            x = text.attr("x"),
-            y = text.attr("y"),
-            dy = parseFloat(text.attr("dy")),
-            tspan = text.text(null).append("tspan").attr("x", x).attr("y", y).attr("dy", dy + "em");
-        while (word = words.pop()) {
-          line.push(word);
-          tspan.text(line.join(" "));
-          if (tspan.node().getComputedTextLength() > width) {
-            line.pop();
-            tspan.text(line.join(" "));
-            line = [word];
-            tspan = text.append("tspan").attr("x", x).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
-          }
-        }
-      });
+        text.each(function() {
+            var text = d3.select(this),
+                words = text.text().split(/\s+/).reverse(),
+                word,
+                line = [],
+                lineNumber = 0,
+                lineHeight = 1.1, // ems
+                x = text.attr("x"),
+                y = text.attr("y"),
+                dy = parseFloat(text.attr("dy")),
+                tspan = text.text(null).append("tspan").attr("x", x).attr("y", y).attr("dy", dy + "em");
+            while (word = words.pop()) {
+                line.push(word);
+                tspan.text(line.join(" "));
+                if (tspan.node().getComputedTextLength() > width) {
+                    line.pop();
+                    tspan.text(line.join(" "));
+                    line = [word];
+                    tspan = text.append("tspan").attr("x", x).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
+                }
+            }
+        });
     }
 
     function showTooltip(d) {
@@ -1066,6 +960,54 @@ window.createGraphic = function(graphicSelector) {
 
         d3.selectAll(".columnLabel")
             .transition(800)
+            .style("opacity", 1);
+    }
+
+    function showCategoryLabels(svg, yScale) {
+        if(yScale == yScale_inc) {
+          svg.selectAll(".catLabel")
+                .data(yScale.domain())
+                .enter()
+                .append("text")
+                .attr("class", "catLabel")
+                .attr("x", width / 2)
+                .attr("y", function(d) { return yScale_inc(d); })
+                .attr("dy", 0)
+                .text(function(d) { return d; })
+                .style("opacity", 0)
+                .call(wrap, 185);
+        }
+        else {
+            svg.selectAll(".catLabel")
+                .data(yScale.domain())
+                .enter()
+                .append("text")
+                .attr("class", "catLabel")
+                .attr("x", width / 2)
+                .attr("y", function(d) { return yScale(d); })
+                .text(function(d) { return d; })
+                .style("opacity", 0);
+        }
+
+        d3.selectAll(".catLabel")
+            .transition(1000)
+            .style("opacity", 1);
+    }
+
+    function showDividerLines(svg, yScale) {
+        svg.selectAll(".dividerLine")
+            .data(yScale.domain().slice(0, yScale.domain().length - 1))
+            .enter()
+            .append("line")
+            .attr("class", "dividerLine")
+            .attr("x1", 0)
+            .attr("x2", width)
+            .attr("y1", function(d) { return yScale(d) + yScale.step()/2; })
+            .attr("y2", function(d) { return yScale(d) + yScale.step()/2; })
+            .style("opacity", 0);
+
+        d3.selectAll(".dividerLine")
+            .transition(1000)
             .style("opacity", 1);
     }
 
