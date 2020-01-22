@@ -111,9 +111,9 @@ window.createGraphic = function(graphicSelector) {
         function step23() {
             splitFreeCollege400FPLPublic();
             if(scrollDirection === "up") d3.select(".chartTitle").text("Who gets free tuition and fees under this plan, by student loan status?");
-        },       // step 23
+        },                                  // step 23
         switchToPublic,                     // step 24
-        moreDotsJoin                       // step 25
+        moreDotsJoin                        // step 25
     ]
 
     // update our chart
@@ -167,52 +167,6 @@ window.createGraphic = function(graphicSelector) {
                 .on("mouseout", hideTooltip);
         });
     }
-
-    function showTooltip(d) {
-        // populate tooltip
-        if(d.name !== "NA") {
-            d3.select(".tooltip img")
-                .attr("src", "img/" + d.name.toLowerCase() + ".png");
-            d3.select(".tooltip .studentPic").classed("hidden", false);
-            d3.select(".tooltip .studentName").text(d.name);
-        }
-        else {
-            d3.select(".tooltip .studentPic").classed("hidden", true);
-            d3.select(".tooltip .studentName").text("");
-        }
-        d3.select(".tooltip .studentIncome span").text(d3.format("$,.0f")(d.income));
-        d3.select(".tooltip .studentIncGroup").text(d.incomegroup_tooltip);
-        d3.select(".tooltip .studentRace").text(d.race);
-        d3.select(".tooltip .studentInstitutionType").text(d.sector);
-        d3.select(".tooltip .studentLoanStatus").text(d.loan);
-
-        // position and show tooltip
-        if(((d.name !== "NA") && (height - d.y < 310)) || ((d.name === "NA") && (height - d.y < 145))) {  // if tooltip won't fit above the bottom of the screen, shift it upwards
-            d3.select(".tooltip")
-                .style("top", "auto")
-                .style("bottom", "50px")
-                .style("left", (d.x + r * 2) + "px")
-                .classed("hidden", false);
-        }
-        else {
-            d3.select(".tooltip")
-                .style("top", (d.y + 51 + r * 2) + "px")
-                .style("bottom", "auto")
-                .style("left", (d.x + r * 2) + "px")
-                .classed("hidden", false);
-        }
-
-        // console.log(d);
-    }
-
-    function hideTooltip() {
-        d3.select(".tooltip").classed("hidden", true);
-    }
-    // function setupProse() {
-    //     var height = window.innerHeight * 0.5
-    //     graphicProseEl.selectAll('.step')
-    //         .style('height', height + 'px')
-    // }
 
     function allDotsCentered() {
         d3.selectAll(".dotLabel").remove();
@@ -331,23 +285,7 @@ window.createGraphic = function(graphicSelector) {
                         // label "Free College" and "No free college" columns
                         var svg = d3.select("svg g");
 
-                        svg.append("text")
-                            .attr("class", "columnLabel")
-                            .attr("x", xScale("yes"))
-                            .attr("y", margin)
-                            .text("Free college")
-                            .style("opacity", 0);
-
-                        svg.append("text")
-                            .attr("class", "columnLabel")
-                            .attr("x", xScale("no"))
-                            .attr("y", margin)
-                            .text("No free college")
-                            .style("opacity", 0);
-
-                        d3.selectAll(".columnLabel")
-                            .transition(800)
-                            .style("opacity", 1);
+                        showColumnLabels(svg);
 
                         // update labels below dots
                         if(d3.selectAll(".dotLabel").nodes().length !== 2) {
@@ -423,25 +361,7 @@ window.createGraphic = function(graphicSelector) {
                         // add labels for income groups and divider lines
                         var svg = d3.select("svg g");
 
-                        if(d3.selectAll(".columnLabel").nodes().length !== 2) {
-                            svg.append("text")
-                                .attr("class", "columnLabel")
-                                .attr("x", xScale("yes"))
-                                .attr("y", margin)
-                                .text("Free college")
-                                .style("opacity", 0);
-
-                            svg.append("text")
-                                .attr("class", "columnLabel")
-                                .attr("x", xScale("no"))
-                                .attr("y", margin)
-                                .text("No free college")
-                                .style("opacity", 0);
-
-                            d3.selectAll(".columnLabel")
-                                .transition(800)
-                                .style("opacity", 1);
-                        }
+                        if(d3.selectAll(".columnLabel").nodes().length !== 2) showColumnLabels(svg);
 
                         svg.selectAll(".catLabel")
                             .data(yScale_inc.domain())
@@ -719,20 +639,6 @@ window.createGraphic = function(graphicSelector) {
         });
     }
 
-    // function fadeOut() {
-    //     d3.selectAll(".catLabel")
-    //         .transition(5000)
-    //         .style("opacity", 0);
-
-    //     d3.selectAll(".dividerLine")
-    //         .transition(5000)
-    //         .style("opacity", 0);
-
-    //     d3.selectAll(".dotLabel")
-    //         .transition(5000)
-    //         .style("opacity", 0);
-    // }
-
     function splitFreeCollege400FPLPublic() {
         // Plan: free college for < 400% FPL and attending public school
         // Split: two groups (free college/no free college)
@@ -848,25 +754,7 @@ window.createGraphic = function(graphicSelector) {
                         // add labels for income groups and divider lines
                         var svg = d3.select("svg g");
 
-                        if(d3.selectAll(".columnLabel").nodes().length !== 2) {
-                            svg.append("text")
-                                .attr("class", "columnLabel")
-                                .attr("x", xScale("yes"))
-                                .attr("y", margin)
-                                .text("Free college")
-                                .style("opacity", 0);
-
-                            svg.append("text")
-                                .attr("class", "columnLabel")
-                                .attr("x", xScale("no"))
-                                .attr("y", margin)
-                                .text("No free college")
-                                .style("opacity", 0);
-
-                            d3.selectAll(".columnLabel")
-                                .transition(800)
-                                .style("opacity", 1);
-                        }
+                        if(d3.selectAll(".columnLabel").nodes().length !== 2) showColumnLabels(svg);
 
                         svg.selectAll(".catLabel")
                             .data(yScale_race.domain())
@@ -969,25 +857,7 @@ window.createGraphic = function(graphicSelector) {
                         // add labels for income groups and divider lines
                         var svg = d3.select("svg g");
 
-                        if(d3.selectAll(".columnLabel").nodes().length !== 2) {
-                            svg.append("text")
-                                .attr("class", "columnLabel")
-                                .attr("x", xScale("yes"))
-                                .attr("y", margin)
-                                .text("Free college")
-                                .style("opacity", 0);
-
-                            svg.append("text")
-                                .attr("class", "columnLabel")
-                                .attr("x", xScale("no"))
-                                .attr("y", margin)
-                                .text("No free college")
-                                .style("opacity", 0);
-
-                            d3.selectAll(".columnLabel")
-                                .transition(800)
-                                .style("opacity", 1);
-                        }
+                        if(d3.selectAll(".columnLabel").nodes().length !== 2) showColumnLabels(svg);
 
                         svg.selectAll(".catLabel")
                             .data(yScale_loan.domain())
@@ -1189,6 +1059,65 @@ window.createGraphic = function(graphicSelector) {
           }
         }
       });
+    }
+
+    function showTooltip(d) {
+        // populate tooltip
+        if(d.name !== "NA") {
+            d3.select(".tooltip img")
+                .attr("src", "img/" + d.name.toLowerCase() + ".png");
+            d3.select(".tooltip .studentPic").classed("hidden", false);
+            d3.select(".tooltip .studentName").text(d.name);
+        }
+        else {
+            d3.select(".tooltip .studentPic").classed("hidden", true);
+            d3.select(".tooltip .studentName").text("");
+        }
+        d3.select(".tooltip .studentIncome span").text(d3.format("$,.0f")(d.income));
+        d3.select(".tooltip .studentIncGroup").text(d.incomegroup_tooltip);
+        d3.select(".tooltip .studentRace").text(d.race);
+        d3.select(".tooltip .studentInstitutionType").text(d.sector);
+        d3.select(".tooltip .studentLoanStatus").text(d.loan);
+
+        // position and show tooltip
+        if(((d.name !== "NA") && (height - d.y < 310)) || ((d.name === "NA") && (height - d.y < 145))) {  // if tooltip won't fit above the bottom of the screen, shift it upwards
+            d3.select(".tooltip")
+                .style("top", "auto")
+                .style("bottom", "50px")
+                .style("left", (d.x + r * 2) + "px")
+                .classed("hidden", false);
+        }
+        else {
+            d3.select(".tooltip")
+                .style("top", (d.y + 51 + r * 2) + "px")
+                .style("bottom", "auto")
+                .style("left", (d.x + r * 2) + "px")
+                .classed("hidden", false);
+        }
+    }
+
+    function hideTooltip() {
+        d3.select(".tooltip").classed("hidden", true);
+    }
+
+    function showColumnLabels(svg) {
+        svg.append("text")
+            .attr("class", "columnLabel")
+            .attr("x", xScale("yes"))
+            .attr("y", margin)
+            .text("Free college")
+            .style("opacity", 0);
+
+        svg.append("text")
+            .attr("class", "columnLabel")
+            .attr("x", xScale("no"))
+            .attr("y", margin)
+            .text("No free college")
+            .style("opacity", 0);
+
+        d3.selectAll(".columnLabel")
+            .transition(800)
+            .style("opacity", 1);
     }
 
     function init() {
