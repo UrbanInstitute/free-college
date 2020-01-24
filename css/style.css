@@ -161,11 +161,13 @@ hr {
 .personaTextHighlight {
     background-color: rgba(253, 191, 17, 0.7);
     padding: 1px 4px;
+    border-radius: 4px;
 }
 
 .stipendTextHighlight {
     background-color: rgba(236, 0, 139, 0.3);
     padding: 1px 4px;
+    border-radius: 4px;
 }
 
 
