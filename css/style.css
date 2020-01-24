@@ -80,6 +80,13 @@ hr {
     visibility: hidden;
 }
 
+@media screen and (max-width: 900px) {
+    .main {
+        padding-left: 20px;
+        padding-right: 36px;
+    }
+}
+
 
 /*********** STRUCTURE ***********/
 .content {
@@ -170,6 +177,18 @@ hr {
     border-radius: 4px;
 }
 
+@media screen and (max-width: 900px) {
+    .step {
+        margin-left: 0;
+        margin-bottom: 50vh;
+    }
+
+    .step p {
+        background: rgba(255, 255, 255, 0.85);
+        padding: 20px;
+    }
+}
+
 
 /********** NAV DOT STYLES ***************/
 #navDots {
@@ -191,6 +210,12 @@ hr {
 
 .navDot.is-selected {
     background-color: #353535;
+}
+
+@media screen and (max-width: 900px) {
+    #navDots {
+        right: 14px;
+    }
 }
 
 
@@ -430,4 +455,19 @@ footer p {
 
 .githubLink {
     margin-top: 24px;
+}
+
+@media screen and (max-width: 900px) {
+    footer {
+        padding-left: 20px;
+        padding-right: 36px;
+    }
+
+    footer h4 {
+        font-size: 26px;
+    }
+
+    .job {
+        font-size: 15px;
+    }
 }
