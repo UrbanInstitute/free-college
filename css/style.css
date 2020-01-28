@@ -80,7 +80,7 @@ hr {
     visibility: hidden;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1099px) {
     .main {
         padding-left: 20px;
         padding-right: 36px;
@@ -93,6 +93,10 @@ hr {
     margin: 0 auto;
     /*padding: 0px 30px;*/
 
+}
+
+.content.intro {
+    margin-bottom: 25vh;
 }
 
 .date {
@@ -108,6 +112,10 @@ hr {
 @media screen and (max-width: 1099px) {
     .afterScroll {
         padding-top: 0;
+    }
+
+    .content.intro {
+        margin-bottom: 0;
     }
 }
 
@@ -137,7 +145,7 @@ hr {
     position: absolute;
     top: 0;
     height: calc(100vh - 50px);
-    /*width: 626px;*/
+    /*max-width: 626px;*/
     /*border: 1px solid #d2d2d2;*/
     /*background-color: #d2d2d2;*/
 }
@@ -186,6 +194,10 @@ hr {
 @media screen and (max-width: 1099px) {
     #vis {
         width: 100%;
+    }
+
+    #vis.sticky {
+        width: calc(100% - 58px);
     }
 
     #visInnerDiv {
