@@ -87,7 +87,6 @@ hr {
     }
 }
 
-
 /*********** STRUCTURE ***********/
 .content {
     max-width: 726px;
@@ -105,6 +104,13 @@ hr {
 .afterScroll {
     padding-top: 100px;
 }
+
+@media screen and (max-width: 1099px) {
+    .afterScroll {
+        padding-top: 0;
+    }
+}
+
 
 /********** SCROLLYTELLING STYLES ************/
 #graphic {
@@ -177,15 +183,33 @@ hr {
     border-radius: 4px;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1099px) {
+    #vis {
+        width: 100%;
+    }
+
+    #visInnerDiv {
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
     .step {
-        margin-left: 0;
+        margin: 0 auto;
         margin-bottom: 50vh;
+        max-width: 500px;
+    }
+
+    .step:last-child {
+        margin-bottom: 10vh;
+    }
+
+    .scrollyTextContainer {
+        background: rgba(255, 255, 255, 0.9);
     }
 
     .step p {
-        background: rgba(255, 255, 255, 0.85);
-        padding: 20px;
+        margin-bottom: 0;
+        padding: 10px 20px;
     }
 }
 
@@ -212,7 +236,7 @@ hr {
     background-color: #353535;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1099px) {
     #navDots {
         right: 14px;
     }
@@ -277,6 +301,16 @@ hr {
 .highlighted2 {
     stroke: #000;
     stroke-width: 3px;
+}
+
+@media screen and (max-width: 1099px) {
+    #chart {
+        padding-right: 0;
+    }
+
+    .student {
+        pointer-events: none;
+    }
 }
 
 
@@ -457,7 +491,7 @@ footer p {
     margin-top: 24px;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1099px) {
     footer {
         padding-left: 20px;
         padding-right: 36px;
