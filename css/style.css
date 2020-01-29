@@ -80,10 +80,43 @@ hr {
     visibility: hidden;
 }
 
+#isMobile,
+#isPhoneSm {
+    display: none;
+}
+
 @media screen and (max-width: 1099px) {
     .main {
         padding-left: 20px;
         padding-right: 36px;
+    }
+}
+
+@media screen and (max-width: 659px) {
+    #isMobile {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 499px) {
+    #isPhoneSm {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 428px) {
+    h1 {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    body {
+        font-size: 14px;
     }
 }
 
@@ -325,11 +358,32 @@ hr {
     }
 }
 
+@media screen and (max-width: 659px) {
+    .chartTitle {
+        font-size: 16px;
+        height: 50px;
+    }
+
+    .dotLabel {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 399px) {
+    .chartTitle {
+        height: 72px;
+    }
+
+    .catLabel,
+    .columnLabel {
+        font-size: 12px;
+    }
+}
 
 /********** LEGEND STYLES **************/
 .legend {
     width: 100%;
-    /*height: 30px;*/
+    height: 65px;
     padding: 10px 20px;
 }
 
@@ -380,6 +434,20 @@ hr {
     border-color: #ec008b;
 }
 
+@media screen and (max-width: 659px) {
+    .legend {
+        padding: 0;
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 399px) {
+    .legend p,
+    .legendText {
+        font-size: 12px;
+    }
+}
+
 
 /*********** PERSONA STYLES ***********/
 .personaDiv {
@@ -428,6 +496,29 @@ hr {
     display: inline-block;
     vertical-align: top;
     padding-left: 8px;
+}
+
+@media screen and (max-width: 659px) {
+    .persona.image {
+        float: none;
+        width: 100%;
+    }
+
+    .persona.image img {
+        display: block;
+        margin: 0 auto;
+        width: 100px;
+    }
+
+    .persona.bio {
+        float: none;
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .persona.topRow {
+        padding-left: 20px;
+    }
 }
 
 
@@ -515,5 +606,15 @@ footer p {
 
     .job {
         font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 428px) {
+    footer p {
+        font-size: 14px;
+    }
+
+    .job {
+        font-size: 13px;
     }
 }

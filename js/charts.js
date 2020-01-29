@@ -11,17 +11,26 @@ window.createGraphic = function(graphicSelector) {
     var graphicProseEl = graphicEl.select('#sections');
     var chartTitle = graphicEl.select(".chartTitle");
 
-    var margin = 20;
-    var width = 600,
-        height = 550;
-    var r = 5;
-    // var chartSize = size - margin * 2
     var titleHeight = d3.select(".chartTitle").node().getBoundingClientRect().height;
+    var legendHeight = d3.select(".legend").node().getBoundingClientRect().height;
+
+    var isMobile = d3.select("#isMobile").style("display") === "block";
+    var isSmallMobile = d3.select("#isPhoneSm").style("display") === "block";
+    var windowHeight = window.innerHeight - titleHeight - legendHeight;
+
+    var margin = 20;
+    var width = isMobile ? document.querySelector("#isMobile").clientWidth : 600,  // if window.innerWidth < 660, have to get rid of category labels
+        height = (windowHeight < 550) ? windowHeight : 550;  // if window.innerHeight < ___, have to make chart shorter
+    var r = isMobile ? 4 : 5;
+
+    var forceStrengthFactor = isMobile ? -5 : -10;
     var dotsData;
 
     var xScale = d3.scaleOrdinal()
         .domain(["no", "yes"])
         .range([0.25*width, 0.75*width]);
+
+    if(isSmallMobile) xScale.range([0.2*width, 0.8*width]);
 
     var yScale_inc = d3.scaleBand()
         .domain(["Higher-income dependent (more than $80,000)",
@@ -197,7 +206,7 @@ window.createGraphic = function(graphicSelector) {
             .ease(d3.easeQuadInOut)
 
         var simulation = d3.forceSimulation(dotsData)
-            .force('charge', d3.forceManyBody().strength(-10))
+            .force('charge', d3.forceManyBody().strength(forceStrengthFactor))
             .force('center', d3.forceCenter(width / 2, (height - titleHeight)/2))
             .force('x', d3.forceX().x(width / 2))
             .force('y', d3.forceY().y((height - titleHeight) / 2))
@@ -254,7 +263,7 @@ window.createGraphic = function(graphicSelector) {
             .ease(d3.easeQuadInOut)
 
         var simulation = d3.forceSimulation(dotsData)
-            .force('charge', d3.forceManyBody().strength(-10))
+            .force('charge', d3.forceManyBody().strength(forceStrengthFactor))
             .force('x', d3.forceX().x(function(d) { return xScale(d.currentFreeCollege); }).strength(0.15))  // seem to need to add an adjustment factor here
             .force('y', d3.forceY().y((height - titleHeight) / 2).strength(0.15))
             .force('collision', d3.forceCollide().radius(r))
@@ -332,7 +341,7 @@ window.createGraphic = function(graphicSelector) {
             .ease(d3.easeQuadInOut)
 
         var simulation = d3.forceSimulation(dotsData)
-            .force('charge', d3.forceManyBody().strength(-10))
+            .force('charge', d3.forceManyBody().strength(forceStrengthFactor))
             .force('x', d3.forceX().x(function(d) { return xScale(d.currentFreeCollege); }).strength(0.2))  // seem to need to add an adjustment factor here
             .force('y', d3.forceY().y(function(d) { return yScale_inc(d.incomegroup); }).strength(0.2))
             .force('collision', d3.forceCollide().radius(r))
@@ -408,7 +417,7 @@ window.createGraphic = function(graphicSelector) {
             .ease(d3.easeQuadInOut)
 
         var simulation = d3.forceSimulation(dotsData)
-            .force('charge', d3.forceManyBody().strength(-10))
+            .force('charge', d3.forceManyBody().strength(forceStrengthFactor))
             .force('x', d3.forceX().x(function(d) { return xScale("yes"); }).strength(0.2))  // seem to need to add an adjustment factor here
             .force('y', d3.forceY().y(function(d) { return yScale_inc(d.incomegroup); }).strength(0.2))
             .force('collision', d3.forceCollide().radius(r))
@@ -462,7 +471,7 @@ window.createGraphic = function(graphicSelector) {
             .ease(d3.easeQuadInOut)
 
         var simulation = d3.forceSimulation(dotsData)
-            .force('charge', d3.forceManyBody().strength(-10))
+            .force('charge', d3.forceManyBody().strength(forceStrengthFactor))
             .force('x', d3.forceX().x(function(d) { return xScale(d.freeCollege400FPL); }).strength(0.2))  // seem to need to add an adjustment factor here
             .force('y', d3.forceY().y(function(d) { return yScale_inc(d.incomegroup); }).strength(0.2))
             .force('collision', d3.forceCollide().radius(r))
@@ -515,7 +524,7 @@ window.createGraphic = function(graphicSelector) {
             .ease(d3.easeQuadInOut)
 
         var simulation = d3.forceSimulation(dotsData)
-            .force('charge', d3.forceManyBody().strength(-10))
+            .force('charge', d3.forceManyBody().strength(forceStrengthFactor))
             .force('x', d3.forceX().x(function(d) { return xScale(d.freeCollege400FPLPublic); }).strength(0.2))  // seem to need to add an adjustment factor here
             .force('y', d3.forceY().y(function(d) { return yScale_inc(d.incomegroup); }).strength(0.2))
             .force('collision', d3.forceCollide().radius(r))
@@ -580,7 +589,7 @@ window.createGraphic = function(graphicSelector) {
             .ease(d3.easeQuadInOut)
 
         var simulation = d3.forceSimulation(dotsData)
-            .force('charge', d3.forceManyBody().strength(-10))
+            .force('charge', d3.forceManyBody().strength(forceStrengthFactor))
             .force('x', d3.forceX().x(function(d) { return xScale(d.freeCollege400FPLPublic); }).strength(0.15))  // seem to need to add an adjustment factor here
             .force('y', d3.forceY().y((height - titleHeight) / 2).strength(0.15))
             .force('collision', d3.forceCollide().radius(r))
@@ -649,7 +658,7 @@ window.createGraphic = function(graphicSelector) {
             .ease(d3.easeQuadInOut)
 
         var simulation = d3.forceSimulation(dotsData)
-            .force('charge', d3.forceManyBody().strength(-10))
+            .force('charge', d3.forceManyBody().strength(forceStrengthFactor))
             .force('x', d3.forceX().x(function(d) { return xScale(d.freeCollege400FPLPublic); }).strength(0.2))  // seem to need to add an adjustment factor here
             .force('y', d3.forceY().y(function(d) { return yScale_race(d.race); }).strength(0.2))
             .force('collision', d3.forceCollide().radius(r))
@@ -711,7 +720,7 @@ window.createGraphic = function(graphicSelector) {
             .ease(d3.easeQuadInOut)
 
         var simulation = d3.forceSimulation(dotsData)
-            .force('charge', d3.forceManyBody().strength(-10))
+            .force('charge', d3.forceManyBody().strength(forceStrengthFactor))
             .force('x', d3.forceX().x(function(d) { return xScale(d.freeCollege400FPLPublic); }).strength(0.2))  // seem to need to add an adjustment factor here
             .force('y', d3.forceY().y(function(d) { return yScale_loan(d.loan); }).strength(0.2))
             .force('collision', d3.forceCollide().radius(r))
@@ -771,7 +780,7 @@ window.createGraphic = function(graphicSelector) {
         d3.select(".chartTitle").text("Who moves to a public institution to get free college?");
 
         var simulation = d3.forceSimulation(dotsData)
-            .force('charge', d3.forceManyBody().strength(-10))
+            .force('charge', d3.forceManyBody().strength(forceStrengthFactor))
             .force('x', d3.forceX().x(function(d) { return xScale(d.switchToPublic); }).strength(0.15))  // seem to need to add an adjustment factor here
             .force('y', d3.forceY().y((height - titleHeight) / 2).strength(0.15))
             .force('collision', d3.forceCollide().radius(r))
@@ -835,7 +844,7 @@ window.createGraphic = function(graphicSelector) {
 
         // update chart
         var simulation = d3.forceSimulation(dotsData.concat(newStudentsData))
-            .force('charge', d3.forceManyBody().strength(-10))
+            .force('charge', d3.forceManyBody().strength(forceStrengthFactor))
             .force('x', d3.forceX().x(function(d) { return xScale(d.switchToPublic); }).strength(0.15))  // seem to need to add an adjustment factor here
             .force('y', d3.forceY().y((height - titleHeight) / 2).strength(0.15))
             .force('collision', d3.forceCollide().radius(r))
@@ -975,7 +984,7 @@ window.createGraphic = function(graphicSelector) {
                 .attr("dy", 0)
                 .text(function(d) { return d; })
                 .style("opacity", 0)
-                .call(wrap, 185);
+                .call(wrap, isMobile ? 150 : 185);
         }
         else {
             svg.selectAll(".catLabel")
