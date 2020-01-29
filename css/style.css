@@ -370,15 +370,18 @@ hr {
 }
 
 @media screen and (max-width: 399px) {
-    .chartTitle {
-        height: 72px;
-    }
-
     .catLabel,
     .columnLabel {
         font-size: 12px;
     }
 }
+
+@media screen and (max-width: 375px) {
+    .chartTitle {
+        height: 72px;
+    }
+}
+
 
 /********** LEGEND STYLES **************/
 .legend {
