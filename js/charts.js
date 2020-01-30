@@ -10,17 +10,18 @@ window.createGraphic = function(graphicSelector) {
     var graphicVisEl = graphicEl.select('#chart');
     var graphicProseEl = graphicEl.select('#sections');
     var chartTitle = graphicEl.select(".chartTitle");
+    var currentStep;  // need this for figuring out which yScale to use when resizing chart
 
     var titleHeight = d3.select(".chartTitle").node().getBoundingClientRect().height;
     var legendHeight = d3.select(".legend").node().getBoundingClientRect().height;
 
     var isMobile = d3.select("#isMobile").style("display") === "block";
     var isSmallMobile = d3.select("#isPhoneSm").style("display") === "block";
-    var windowHeight = window.innerHeight - titleHeight - legendHeight;
+    var windowHeight = window.innerHeight - titleHeight - legendHeight - 52;
 
     var margin = 20;
-    var width = isMobile ? document.querySelector("#isMobile").clientWidth : 600,  // if window.innerWidth < 660, have to get rid of category labels
-        height = (windowHeight < 550) ? windowHeight : 550;  // if window.innerHeight < ___, have to make chart shorter
+    var width = isMobile ? document.querySelector("#isMobile").clientWidth : 600,
+        height = (windowHeight < 550) ? windowHeight : 550;
     var r = isMobile ? 4 : 5;
 
     var forceStrengthFactor = isMobile ? -5 : -10;
@@ -39,7 +40,6 @@ window.createGraphic = function(graphicSelector) {
                  "Higher-income independent (more than $30,000)",
                  "Middle-income independent ($15,001 to $30,000)",
                  "Lower-income independent (less than $15,000)"])
-        // .range([50, 150, 250, 350, 450, 550]);
         .rangeRound([margin, height - margin])
         .padding(margin);
 
@@ -129,6 +129,7 @@ window.createGraphic = function(graphicSelector) {
     function update(step, direction) {
         scrollDirection = direction;
         steps[step].call()
+        currentStep = step;
         // console.log(direction);
     }
 
@@ -157,6 +158,8 @@ window.createGraphic = function(graphicSelector) {
             // console.log(data);
             dotsData = data;
 
+            // window.addEventListener("resize", redraw);
+
             var svg = graphicVisEl.append('svg')
                 .attr('width', width)
                 .attr('height', height)
@@ -176,6 +179,66 @@ window.createGraphic = function(graphicSelector) {
                 .on("mouseout", hideTooltip);
         });
     }
+
+    // function redraw() {
+    //     console.log("redraw chart!");
+    //     console.log(currentStep);
+    //     // get new width and height
+    //     isMobile = d3.select("#isMobile").style("display") === "block";
+    //     isSmallMobile = d3.select("#isPhoneSm").style("display") === "block";
+    //     windowHeight = window.innerHeight - titleHeight - legendHeight;
+
+    //     // update svg dimensions and circle size
+    //     width = isMobile ? document.querySelector("#isMobile").clientWidth : 600;
+    //     height = (windowHeight < 550) ? windowHeight : 550;
+    //     r = isMobile ? 4 : 5;
+
+    //     forceStrengthFactor = isMobile ? -5 : -10;
+
+    //     // update scales
+    //     xScale.range([0.25*width, 0.75*width]);
+    //     if(isSmallMobile) xScale.range([0.2*width, 0.8*width]);
+
+    //     yScale_inc.rangeRound([margin, height - margin]);
+    //     yScale_race.rangeRound([margin, height - margin]);
+    //     yScale_loan.rangeRound([margin, height - margin]);
+
+    //     var svg = d3.select("svg")
+    //         .attr("width", width)
+    //         .attr("heigth", height);
+
+    //     // update circle positions
+    //     d3.selectAll(".student")
+    //         .attr("r", r);
+
+    //     // update label positions (if any)
+    //     if(d3.selectAll(".columnLabel").nodes().length === 2) {
+    //         d3.select(".columnLabel.yesFree").attr("x", xScale("yes"));
+    //         d3.select(".columnLabel.noFree").attr("x", xScale("no"))
+    //     }
+
+    //     // if(d3.selectAll(".catLabel").nodes().length > 0) {
+    //     //     if(yScale == yScale_inc) {
+    //     //       d3.selectAll(".catLabel")
+    //     //             .attr("x", width / 2)
+    //     //             .attr("y", function(d) { return yScale_inc(d); })
+    //     //             .call(wrap, isMobile ? 150 : 185);
+    //     //     }
+    //     //     else {
+    //     //         d3.selectAll(".catLabel")
+    //     //             .attr("x", width / 2)
+    //     //             .attr("y", function(d) { return yScale(d); });
+    //     //     }
+    //     // }
+
+    //     // // update divider line positions and lengths (if any)
+    //     // if(d3.selectAll(".dividerLine").nodes().length > 0) {
+    //     //     d3.selectAll(".dividerLine")
+    //     //         .attr("x2", width)
+    //     //         .attr("y1", function(d) { return yScale(d) + yScale.step()/2; })
+    //     //         .attr("y2", function(d) { return yScale(d) + yScale.step()/2; });
+    //     // }
+    // }
 
     function allDotsCentered() {
         d3.selectAll(".dotLabel").remove();
@@ -954,14 +1017,14 @@ window.createGraphic = function(graphicSelector) {
 
     function showColumnLabels(svg) {
         svg.append("text")
-            .attr("class", "columnLabel")
+            .attr("class", "columnLabel yesFree")
             .attr("x", xScale("yes"))
             .attr("y", margin)
             .text("Free college")
             .style("opacity", 0);
 
         svg.append("text")
-            .attr("class", "columnLabel")
+            .attr("class", "columnLabel noFree")
             .attr("x", xScale("no"))
             .attr("y", margin)
             .text("No free college")
