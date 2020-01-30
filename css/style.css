@@ -364,15 +364,13 @@ hr {
         height: 50px;
     }
 
-    .dotLabel {
-        display: none;
-    }
-}
-
-@media screen and (max-width: 399px) {
     .catLabel,
     .columnLabel {
         font-size: 12px;
+    }
+
+    .dotLabel {
+        display: none;
     }
 }
 
