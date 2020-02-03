@@ -163,7 +163,6 @@ hr {
 #sections {
     position: relative;
     width: 100%;
-    pointer-events: none;
     /*top: 0;*/
 }
 
