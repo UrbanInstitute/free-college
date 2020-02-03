@@ -158,7 +158,7 @@ window.createGraphic = function(graphicSelector) {
             // console.log(data);
             dotsData = data;
 
-            // window.addEventListener("resize", redraw);
+            window.addEventListener("resize", redraw);
 
             var svg = graphicVisEl.append('svg')
                 .attr('width', width)
@@ -180,65 +180,72 @@ window.createGraphic = function(graphicSelector) {
         });
     }
 
-    // function redraw() {
-    //     console.log("redraw chart!");
-    //     console.log(currentStep);
-    //     // get new width and height
-    //     isMobile = d3.select("#isMobile").style("display") === "block";
-    //     isSmallMobile = d3.select("#isPhoneSm").style("display") === "block";
-    //     windowHeight = window.innerHeight - titleHeight - legendHeight;
+    function redraw() {
+        console.log("redraw chart!");
+        console.log(currentStep);
+        // get new width and height
+        isMobile = d3.select("#isMobile").style("display") === "block";
+        isSmallMobile = d3.select("#isPhoneSm").style("display") === "block";
+        windowHeight = window.innerHeight - titleHeight - legendHeight;
 
-    //     // update svg dimensions and circle size
-    //     width = isMobile ? document.querySelector("#isMobile").clientWidth : 600;
-    //     height = (windowHeight < 550) ? windowHeight : 550;
-    //     r = isMobile ? 4 : 5;
+        // update svg dimensions and circle size
+        width = isMobile ? document.querySelector("#isMobile").clientWidth : 600;
+        height = (windowHeight < 550) ? windowHeight : 550;
+        r = isMobile ? 4 : 5;
 
-    //     forceStrengthFactor = isMobile ? -5 : -10;
+        forceStrengthFactor = isMobile ? -5 : -10;
 
-    //     // update scales
-    //     xScale.range([0.25*width, 0.75*width]);
-    //     if(isSmallMobile) xScale.range([0.2*width, 0.8*width]);
+        // update scales
+        xScale.range([0.25*width, 0.75*width]);
+        if(isSmallMobile) xScale.range([0.2*width, 0.8*width]);
 
-    //     yScale_inc.rangeRound([margin, height - margin]);
-    //     yScale_race.rangeRound([margin, height - margin]);
-    //     yScale_loan.rangeRound([margin, height - margin]);
+        yScale_inc.rangeRound([margin, height - margin]);
+        yScale_race.rangeRound([margin, height - margin]);
+        yScale_loan.rangeRound([margin, height - margin]);
 
-    //     var svg = d3.select("svg")
-    //         .attr("width", width)
-    //         .attr("heigth", height);
+        // need to figure out appropriate yScale that the story is currently using when screen was resized
+        var yScale = yScale_inc;
+        if(currentStep >= 13 && currentStep <= 15) yScale = yScale_race;
+        if(currentStep >= 16) yScale = yScale_loan;
 
-    //     // update circle positions
-    //     d3.selectAll(".student")
-    //         .attr("r", r);
+        var svg = d3.select("#chart svg")
+            .attr("width", width)
+            .attr("heigth", height);
 
-    //     // update label positions (if any)
-    //     if(d3.selectAll(".columnLabel").nodes().length === 2) {
-    //         d3.select(".columnLabel.yesFree").attr("x", xScale("yes"));
-    //         d3.select(".columnLabel.noFree").attr("x", xScale("no"))
-    //     }
+        // update circle positions
+        d3.selectAll(".student")
+            .attr("r", r);
 
-    //     // if(d3.selectAll(".catLabel").nodes().length > 0) {
-    //     //     if(yScale == yScale_inc) {
-    //     //       d3.selectAll(".catLabel")
-    //     //             .attr("x", width / 2)
-    //     //             .attr("y", function(d) { return yScale_inc(d); })
-    //     //             .call(wrap, isMobile ? 150 : 185);
-    //     //     }
-    //     //     else {
-    //     //         d3.selectAll(".catLabel")
-    //     //             .attr("x", width / 2)
-    //     //             .attr("y", function(d) { return yScale(d); });
-    //     //     }
-    //     // }
+        // steps[currentStep].call();
 
-    //     // // update divider line positions and lengths (if any)
-    //     // if(d3.selectAll(".dividerLine").nodes().length > 0) {
-    //     //     d3.selectAll(".dividerLine")
-    //     //         .attr("x2", width)
-    //     //         .attr("y1", function(d) { return yScale(d) + yScale.step()/2; })
-    //     //         .attr("y2", function(d) { return yScale(d) + yScale.step()/2; });
-    //     // }
-    // }
+        // update label positions (if any)
+        if(d3.selectAll(".columnLabel").nodes().length === 2) {
+            d3.select(".columnLabel.yesFree").attr("x", xScale("yes"));
+            d3.select(".columnLabel.noFree").attr("x", xScale("no"))
+        }
+
+        if(d3.selectAll(".catLabel").nodes().length > 0) {
+            if(yScale == yScale_inc) {
+              d3.selectAll(".catLabel")
+                    .attr("x", width / 2)
+                    .attr("y", function(d) { return yScale_inc(d); })
+                    .call(wrap, isMobile ? 150 : 185);
+            }
+            else {
+                d3.selectAll(".catLabel")
+                    .attr("x", width / 2)
+                    .attr("y", function(d) { return yScale(d); });
+            }
+        }
+
+        // update divider line positions and lengths (if any)
+        if(d3.selectAll(".dividerLine").nodes().length > 0) {
+            d3.selectAll(".dividerLine")
+                .attr("x2", width)
+                .attr("y1", function(d) { return yScale(d) + yScale.step()/2; })
+                .attr("y2", function(d) { return yScale(d) + yScale.step()/2; });
+        }
+    }
 
     function allDotsCentered() {
         d3.selectAll(".dotLabel").remove();
@@ -396,8 +403,6 @@ window.createGraphic = function(graphicSelector) {
         (d3.selectAll(".dotLabel").nodes().length < 6) && d3.selectAll(".dotLabel").remove();
         removeHighlighting();
         d3.select(".chartTitle").text("Who has free college now?");
-
-        // d3.select(".chartTitle").text("Who has free college now?");
 
         var t = d3.transition()
             .duration(800)
