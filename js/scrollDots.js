@@ -9,7 +9,7 @@ $(document).ready(function($){
     contentSections.each(function() {
         contentSectionTops.push($(this).offset().top - $(window).height());
     });
-    console.log(contentSectionTops);
+    // console.log(contentSectionTops);
     // update which navigation dot is selected
     // updateNavigation();
     $(window).on('scroll', function(){

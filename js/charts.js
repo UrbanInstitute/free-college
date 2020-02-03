@@ -208,43 +208,27 @@ window.createGraphic = function(graphicSelector) {
         if(currentStep >= 13 && currentStep <= 15) yScale = yScale_race;
         if(currentStep >= 16) yScale = yScale_loan;
 
-        var svg = d3.select("#chart svg")
+        // update chart
+        $("#chart").empty();
+
+        var svg = graphicVisEl.append("svg")
             .attr("width", width)
-            .attr("heigth", height);
+            .attr("height", height);
 
-        // update circle positions
-        d3.selectAll(".student")
-            .attr("r", r);
+        var chart = svg.append("g");
 
-        // steps[currentStep].call();
+        var student = chart.selectAll('.student')
+                .data(dotsData)
+                .enter()
+                .append('circle')
+                .attr("class", function(d) { return d.name !== "NA" ? d.name + " student" : "student"; })
+                .attr("cx", width / 2)
+                .attr("cy", height / 2)
+                .attr("r", r)
+                .on("mouseover", showTooltip)
+                .on("mouseout", hideTooltip);
 
-        // update label positions (if any)
-        if(d3.selectAll(".columnLabel").nodes().length === 2) {
-            d3.select(".columnLabel.yesFree").attr("x", xScale("yes"));
-            d3.select(".columnLabel.noFree").attr("x", xScale("no"))
-        }
-
-        if(d3.selectAll(".catLabel").nodes().length > 0) {
-            if(yScale == yScale_inc) {
-              d3.selectAll(".catLabel")
-                    .attr("x", width / 2)
-                    .attr("y", function(d) { return yScale_inc(d); })
-                    .call(wrap, isMobile ? 150 : 185);
-            }
-            else {
-                d3.selectAll(".catLabel")
-                    .attr("x", width / 2)
-                    .attr("y", function(d) { return yScale(d); });
-            }
-        }
-
-        // update divider line positions and lengths (if any)
-        if(d3.selectAll(".dividerLine").nodes().length > 0) {
-            d3.selectAll(".dividerLine")
-                .attr("x2", width)
-                .attr("y1", function(d) { return yScale(d) + yScale.step()/2; })
-                .attr("y2", function(d) { return yScale(d) + yScale.step()/2; });
-        }
+        steps[currentStep].call();
     }
 
     function allDotsCentered() {

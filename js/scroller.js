@@ -39,7 +39,7 @@
                     // if the direction is down then we use that number,
                     // else, we want to trigger the previous one
                     var nextStep = direction === 'down' ? step : Math.max(0, step - 1)
-console.log(step);
+
                     // tell our graphic to update with a specific step and pass in direction of scroll
                     graphic.update(nextStep, direction)
                 },
