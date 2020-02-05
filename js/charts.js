@@ -849,7 +849,8 @@ window.createGraphic = function(graphicSelector) {
                 .attr("cx", function(d) { return d.x; })
                 .attr("cy", function(d) { return d.y; })
                 .on("start", function(d) { if(studentsWhoSwitch.indexOf(d.char_id) > -1) d3.select(this).classed("animation-target", true); })
-                .on("end", function() { d3.select(this).classed("animation-target", false); });
+                .on("end", function() { d3.select(this).classed("animation-target", false); })
+                .on("interrupt", function() { d3.selectAll(".student").classed("animation-target", false); });
 
             students.classed("noFreeCollege", function(d) { return d.currentFreeCollege === "no" ? true : false; });
         });
@@ -862,6 +863,7 @@ window.createGraphic = function(graphicSelector) {
         d3.selectAll(".dividerLine").remove();
         (d3.selectAll(".dotLabel").nodes().length > 2) && d3.selectAll(".dotLabel").remove();
         removeHighlighting();
+        d3.selectAll(".student").classed("animation-target", false);
         d3.select(".chartTitle").text("Who moves to a public institution to get free college?");
 
         // create data for new students
