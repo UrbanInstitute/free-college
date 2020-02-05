@@ -181,8 +181,6 @@ window.createGraphic = function(graphicSelector) {
     }
 
     function redraw() {
-        console.log("redraw chart!");
-        console.log(currentStep);
         // get new width and height
         isMobile = d3.select("#isMobile").style("display") === "block";
         isSmallMobile = d3.select("#isPhoneSm").style("display") === "block";
@@ -202,11 +200,6 @@ window.createGraphic = function(graphicSelector) {
         yScale_inc.rangeRound([margin, height - margin]);
         yScale_race.rangeRound([margin, height - margin]);
         yScale_loan.rangeRound([margin, height - margin]);
-
-        // need to figure out appropriate yScale that the story is currently using when screen was resized
-        var yScale = yScale_inc;
-        if(currentStep >= 13 && currentStep <= 15) yScale = yScale_race;
-        if(currentStep >= 16) yScale = yScale_loan;
 
         // update chart
         $("#chart").empty();
@@ -831,6 +824,8 @@ window.createGraphic = function(graphicSelector) {
         d3.selectAll(".newStudent").remove();
         d3.select(".chartTitle").text("Who moves to a public institution to get free college?");
 
+        var studentsWhoSwitch = ["47", "59", "117", "128", "139"];
+
         var simulation = d3.forceSimulation(dotsData)
             .force('charge', d3.forceManyBody().strength(forceStrengthFactor))
             .force('x', d3.forceX().x(function(d) { return xScale(d.switchToPublic); }).strength(0.15))  // seem to need to add an adjustment factor here
@@ -848,11 +843,13 @@ window.createGraphic = function(graphicSelector) {
 
             students
                 .transition()
-                .delay(function(d, i) { return i * 50; })
-                .duration(1000)
+                .delay(function(d, i) { return i * 60; })
+                .duration(4000)
                 .ease(d3.easeQuadInOut)
                 .attr("cx", function(d) { return d.x; })
-                .attr("cy", function(d) { return d.y; });
+                .attr("cy", function(d) { return d.y; })
+                .on("start", function(d) { if(studentsWhoSwitch.indexOf(d.char_id) > -1) d3.select(this).classed("animation-target", true); })
+                .on("end", function() { d3.select(this).classed("animation-target", false); });
 
             students.classed("noFreeCollege", function(d) { return d.currentFreeCollege === "no" ? true : false; });
         });
