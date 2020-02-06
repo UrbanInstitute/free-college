@@ -434,7 +434,8 @@ window.createGraphic = function(graphicSelector) {
                         else {
                             d3.selectAll(".dotLabel")
                                 .data(sums)
-                                .text(function(d) { return d.sum + " students"; });
+                                .text(function(d) { return d.sum + " students"; })
+                                .style("opacity", 1);
                         }
                     }
                 });
