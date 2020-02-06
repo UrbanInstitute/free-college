@@ -883,7 +883,6 @@ window.createGraphic = function(graphicSelector) {
         ];
 
         var newData = dotsData.concat(newStudentsData);
-        var totalDots = 101;
         var svg = d3.select("#chart svg g");
 
         // initialize all new dots off screen
@@ -897,60 +896,44 @@ window.createGraphic = function(graphicSelector) {
             .attr("r", r);
 
         // immediately add one dot upon reaching this step (d3.interval only starts adding two seconds later)
-        var simulation = d3.forceSimulation(newData.filter(function(d, i) { return i < totalDots; }))
-                .force('charge', d3.forceManyBody().strength(forceStrengthFactor))
-                .force('x', d3.forceX().x(function(d) { return xScale(d.switchToPublic); }).strength(0.15))  // seem to need to add an adjustment factor here
-                .force('y', d3.forceY().y((height - titleHeight) / 2).strength(0.15))
-                .force('collision', d3.forceCollide().radius(r))
-                .stop();
+        addNewDot(newData, 101);
 
-            d3.timeout(function() {
-              for (var i = 0, n = Math.ceil(Math.log(simulation.alphaMin()) / Math.log(1 - simulation.alphaDecay())); i < n; ++i) {
-                simulation.tick();
-              }
-
-                d3.selectAll(".student")
-                    .transition()
-                    .duration(2000)
-                    .ease(d3.easeQuadInOut)
-                    .attr("cx", function(d) { return (Object.keys(d).indexOf("x") > -1) ? d.x : Math.random() * width; })
-                    .attr("cy", function(d) { return (Object.keys(d).indexOf("y") > -1) ? d.y : -15; });
-
-                d3.selectAll(".student").classed("newCircle", false);
-            });
-
-            totalDots++;
+        var totalDots = 102;
 
         // add each new dot one at a time (with 2 seconds in between) and recompute force layout each time new circle is added
         var t = d3.interval(function(elapsed) {
 
-            var simulation = d3.forceSimulation(newData.filter(function(d, i) { return i < totalDots; }))
-                .force('charge', d3.forceManyBody().strength(forceStrengthFactor))
-                .force('x', d3.forceX().x(function(d) { return xScale(d.switchToPublic); }).strength(0.15))  // seem to need to add an adjustment factor here
-                .force('y', d3.forceY().y((height - titleHeight) / 2).strength(0.15))
-                .force('collision', d3.forceCollide().radius(r))
-                .stop();
-
-            d3.timeout(function() {
-              for (var i = 0, n = Math.ceil(Math.log(simulation.alphaMin()) / Math.log(1 - simulation.alphaDecay())); i < n; ++i) {
-                simulation.tick();
-              }
-
-                d3.selectAll(".student")
-                    .transition()
-                    .duration(2000)
-                    .ease(d3.easeQuadInOut)
-                    .attr("cx", function(d) { return (Object.keys(d).indexOf("x") > -1) ? d.x : Math.random() * width; })
-                    .attr("cy", function(d) { return (Object.keys(d).indexOf("y") > -1) ? d.y : -15; });
-
-                d3.selectAll(".student").classed("newCircle", false);
-            });
+            addNewDot(newData, totalDots);
 
             totalDots++;
 
             if (elapsed > 18000) t.stop();
 
         }, 2000);
+    }
+
+    function addNewDot(newData, totalDots) {
+        var simulation = d3.forceSimulation(newData.filter(function(d, i) { return i < totalDots; }))
+            .force('charge', d3.forceManyBody().strength(forceStrengthFactor))
+            .force('x', d3.forceX().x(function(d) { return xScale(d.switchToPublic); }).strength(0.15))  // seem to need to add an adjustment factor here
+            .force('y', d3.forceY().y((height - titleHeight) / 2).strength(0.15))
+            .force('collision', d3.forceCollide().radius(r))
+            .stop();
+
+        d3.timeout(function() {
+          for (var i = 0, n = Math.ceil(Math.log(simulation.alphaMin()) / Math.log(1 - simulation.alphaDecay())); i < n; ++i) {
+            simulation.tick();
+          }
+
+            d3.selectAll(".student")
+                .transition()
+                .duration(2000)
+                .ease(d3.easeQuadInOut)
+                .attr("cx", function(d) { return (Object.keys(d).indexOf("x") > -1) ? d.x : Math.random() * width; })
+                .attr("cy", function(d) { return (Object.keys(d).indexOf("y") > -1) ? d.y : -15; });
+
+            d3.selectAll(".student").classed("newCircle", false);
+        });
     }
 
     function groupBySums(freeCollegeScenarioName, group, groupName) {
