@@ -49,7 +49,7 @@ window.createGraphic = function(graphicSelector) {
         .padding(margin);
 
     var yScale_loan = d3.scaleBand()
-        .domain(["No student loans", "Student loans"])
+        .domain(["Students without loans", "Students with loans"])
         .rangeRound([margin, height - margin])
         .padding(margin);
 
@@ -92,7 +92,7 @@ window.createGraphic = function(graphicSelector) {
         },
         function step15() {
             splitFreeCollege400FPLPublic()
-            if(scrollDirection === "up") d3.select(".chartTitle").text("Who gets free tuition and fees under this plan, by race or ethnicity?");
+            d3.select(".chartTitle").text("Who gets free tuition and fees under this plan?");
         },       // step 15
         function step16() {                 // step 16
             if(scrollDirection === "up") removeHighlighting();
@@ -119,7 +119,7 @@ window.createGraphic = function(graphicSelector) {
         },
         function step23() {
             splitFreeCollege400FPLPublic();
-            if(scrollDirection === "up") d3.select(".chartTitle").text("Who gets free tuition and fees under this plan, by student loan status?");
+            d3.select(".chartTitle").text("Who gets free tuition and fees under this plan?");
         },                                  // step 23
         switchToPublic,                     // step 24
         moreDotsJoin                        // step 25
