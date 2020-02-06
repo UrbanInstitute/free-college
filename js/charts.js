@@ -892,7 +892,7 @@ window.createGraphic = function(graphicSelector) {
             .enter()
             .append("circle")
             .attr("class", "student newStudent noFreeCollege")
-            .attr("cx", -15)
+            .attr("cx", Math.random() * width)
             .attr("cy", -15)
             .attr("r", r);
 
@@ -913,8 +913,8 @@ window.createGraphic = function(graphicSelector) {
                     .transition()
                     .duration(2000)
                     .ease(d3.easeQuadInOut)
-                    .attr("cx", function(d) { return (Object.keys(d).indexOf("x") > -1) ? d.x : -10; })
-                    .attr("cy", function(d) { return (Object.keys(d).indexOf("y") > -1) ? d.y : -10; });
+                    .attr("cx", function(d) { return (Object.keys(d).indexOf("x") > -1) ? d.x : Math.random() * width; })
+                    .attr("cy", function(d) { return (Object.keys(d).indexOf("y") > -1) ? d.y : -15; });
 
                 d3.selectAll(".student").classed("newCircle", false);
             });
@@ -940,8 +940,8 @@ window.createGraphic = function(graphicSelector) {
                     .transition()
                     .duration(2000)
                     .ease(d3.easeQuadInOut)
-                    .attr("cx", function(d) { return (Object.keys(d).indexOf("x") > -1) ? d.x : -10; })
-                    .attr("cy", function(d) { return (Object.keys(d).indexOf("y") > -1) ? d.y : -10; });
+                    .attr("cx", function(d) { return (Object.keys(d).indexOf("x") > -1) ? d.x : Math.random() * width; })
+                    .attr("cy", function(d) { return (Object.keys(d).indexOf("y") > -1) ? d.y : -15; });
 
                 d3.selectAll(".student").classed("newCircle", false);
             });
