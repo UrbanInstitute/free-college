@@ -686,6 +686,8 @@ window.createGraphic = function(graphicSelector) {
                             .style("opacity", 1);
                     }
                 });
+
+            students.classed("noFreeCollege", function(d) { return d.currentFreeCollege === "no" ? true : false; });
         });
 
     }
@@ -868,53 +870,64 @@ window.createGraphic = function(graphicSelector) {
 
         // create data for new students
         var newStudentsData = [
-            {char_id: "new", currentFreeCollege: "no", switchToPublic: "yes"},
-            {char_id: "new", currentFreeCollege: "no", switchToPublic: "yes"},
-            {char_id: "new", currentFreeCollege: "no", switchToPublic: "yes"},
-            {char_id: "new", currentFreeCollege: "no", switchToPublic: "yes"},
-            {char_id: "new", currentFreeCollege: "no", switchToPublic: "yes"},
-            {char_id: "new", currentFreeCollege: "no", switchToPublic: "yes"},
-            {char_id: "new", currentFreeCollege: "no", switchToPublic: "yes"},
-            {char_id: "new", currentFreeCollege: "no", switchToPublic: "yes"},
-            {char_id: "new", currentFreeCollege: "no", switchToPublic: "yes"},
+            // {char_id: "new", currentFreeCollege: "no", switchToPublic: "yes"},
+            // {char_id: "new", currentFreeCollege: "no", switchToPublic: "yes"},
+            // {char_id: "new", currentFreeCollege: "no", switchToPublic: "yes"},
+            // {char_id: "new", currentFreeCollege: "no", switchToPublic: "yes"},
+            // {char_id: "new", currentFreeCollege: "no", switchToPublic: "yes"},
+            // {char_id: "new", currentFreeCollege: "no", switchToPublic: "yes"},
+            // {char_id: "new", currentFreeCollege: "no", switchToPublic: "yes"},
+            // {char_id: "new", currentFreeCollege: "no", switchToPublic: "yes"},
+            // {char_id: "new", currentFreeCollege: "no", switchToPublic: "yes"},
             {char_id: "new", currentFreeCollege: "no", switchToPublic: "yes"}
         ];
 
+        var newData = dotsData.concat(newStudentsData);
+
+        var svg = d3.select("#chart svg g");
+
+        var t = d3.interval(function(elapsed) {
+            console.log(elapsed, newData.length);
+
+            svg.selectAll(".newCircle")  // need another class so that new circles can be appended one at a time, but also keep a way to identify all newly added circles so they can be removed if the user scrolls back up
+                .data(newStudentsData)
+                .enter()
+                .append("circle")
+                .attr("class", "student newStudent noFreeCollege newCircle")
+                .attr("cx", 0)
+                .attr("cy", 0)
+                .attr("r", r);
+
+            var simulation = d3.forceSimulation(newData)
+                .force('charge', d3.forceManyBody().strength(forceStrengthFactor))
+                .force('x', d3.forceX().x(function(d) { return xScale(d.switchToPublic); }).strength(0.15))  // seem to need to add an adjustment factor here
+                .force('y', d3.forceY().y((height - titleHeight) / 2).strength(0.15))
+                .force('collision', d3.forceCollide().radius(r))
+                .stop();
+
+            d3.timeout(function() {
+              for (var i = 0, n = Math.ceil(Math.log(simulation.alphaMin()) / Math.log(1 - simulation.alphaDecay())); i < n; ++i) {
+                simulation.tick();
+              }
+
+                d3.selectAll(".newCircle")
+                    .transition()
+                    .duration(2000)
+                    .ease(d3.easeQuadInOut)
+                    .attr("cx", function(d) { return d.x; })
+                    .attr("cy", function(d) { return d.y; });
+
+                d3.selectAll(".student").classed("newCircle", false);
+            });
+
+            newData = newData.concat(newStudentsData);
+
+            if (elapsed > 10000) t.stop();
+        }, 2000);
+
         // append new data to existing dataset(?)
         // prep new circles so they enter from offscreen
-        var svg = d3.select("svg g");
-
-        var newStudents = svg.selectAll(".newStudent")
-            .data(newStudentsData)
-            .enter()
-            .append("circle")
-            .attr("class", "student newStudent noFreeCollege")
-            .attr("cx", -10)
-            .attr("cy", -10)
-            .attr("r", r);
-
-        // update chart
-        var simulation = d3.forceSimulation(dotsData.concat(newStudentsData))
-            .force('charge', d3.forceManyBody().strength(forceStrengthFactor))
-            .force('x', d3.forceX().x(function(d) { return xScale(d.switchToPublic); }).strength(0.15))  // seem to need to add an adjustment factor here
-            .force('y', d3.forceY().y((height - titleHeight) / 2).strength(0.15))
-            .force('collision', d3.forceCollide().radius(r))
-            .stop();
-
-        d3.timeout(function() {
-          // See https://github.com/d3/d3-force/blob/master/README.md#simulation_tick
-          for (var i = 0, n = Math.ceil(Math.log(simulation.alphaMin()) / Math.log(1 - simulation.alphaDecay())); i < n; ++i) {
-            simulation.tick();
-          }
-
-            d3.selectAll(".student")
-                .transition()
-                // .delay(function(d, i) { return i * 30; })
-                .duration(2000)
-                .ease(d3.easeQuadInOut)
-                .attr("cx", function(d) { return d.x; })
-                .attr("cy", function(d) { return d.y; });
-        });
+        // var svg = d3.select("svg g");
     }
 
     function groupBySums(freeCollegeScenarioName, group, groupName) {
