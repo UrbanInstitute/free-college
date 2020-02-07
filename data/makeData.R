@@ -57,6 +57,7 @@ final_dat2 <- final_dat %>%
   ) %>%
   select(char_id, race2, incomegroup_tooltip, incomegroup2, loan2, sector, freecollege, fpl, name,
          income, currentFreeCollege, allFreeCollege, freeCollege400FPL, freeCollege400FPLPublic, switchToPublic) %>%
-  rename(race = race2, loan = loan2, incomegroup = incomegroup2)
+  rename(race = race2, loan = loan2, incomegroup = incomegroup2, orig_id = char_id) %>%
+  mutate(char_id = row_number())
 
 write_csv(final_dat2, "final_data.csv")

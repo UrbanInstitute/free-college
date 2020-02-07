@@ -137,7 +137,7 @@ window.createGraphic = function(graphicSelector) {
     function setupCharts() {
         d3.csv("data/final_data.csv", function(d) {
             return {
-                char_id: d.char_id,
+                orig_id: d.orig_id,
                 race: d.race,
                 incomegroup_tooltip: d.incomegroup_tooltip,
                 incomegroup: d.incomegroup,
@@ -151,7 +151,8 @@ window.createGraphic = function(graphicSelector) {
                 allFreeCollege: d.allFreeCollege,
                 freeCollege400FPL: d.freeCollege400FPL,
                 freeCollege400FPLPublic: d.freeCollege400FPLPublic,
-                switchToPublic: d.switchToPublic
+                switchToPublic: d.switchToPublic,
+                char_id: d.char_id
             };
         }, function(error, data) {
             if (error) throw error;
@@ -171,7 +172,7 @@ window.createGraphic = function(graphicSelector) {
                 .data(data)
                 .enter()
                 .append('circle')
-                .attr("class", function(d) { return d.name !== "NA" ? d.name + " student" : "student"; })
+                .attr("class", function(d) { return d.name !== "NA" ? d.name + " student id_" + d.char_id : "student id_" + d.char_id; })
                 .attr("cx", width / 2)
                 .attr("cy", (height - titleHeight) / 2)
                 .attr("r", r)
@@ -1017,10 +1018,14 @@ window.createGraphic = function(graphicSelector) {
                 .style("left", (d.x + r * 2) + "px")
                 .classed("hidden", false);
         }
+
+        // make dot larger and bring to front in case it overlaps
+        makeDotsBigger(".student.id_" + d.char_id);
     }
 
-    function hideTooltip() {
+    function hideTooltip(d) {
         d3.select(".tooltip").classed("hidden", true);
+        makeDotsSmaller(".student.id_" + d.char_id);
     }
 
     function showColumnLabels(svg) {
