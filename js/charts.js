@@ -1120,7 +1120,7 @@ window.createGraphic = function(graphicSelector) {
         d3.selectAll(dotClass).moveToFront();
 
         // make the dots bigger
-        d3.selectAll(dotClass).attr("r", r * 2);
+        d3.selectAll(dotClass).attr("r", r * 1.5);
     }
 
     function makeDotsSmaller(dotClass) {
