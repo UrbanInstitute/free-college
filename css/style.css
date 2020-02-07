@@ -251,6 +251,10 @@ hr {
         max-width: 500px;
     }
 
+    .step:first-child {
+        min-height: 40vh;
+    }
+
     .step:last-child {
         margin-bottom: 10vh;
         height: 140vh;
