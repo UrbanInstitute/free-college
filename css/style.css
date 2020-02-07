@@ -218,11 +218,20 @@ hr {
     cursor: pointer;
 }
 
+.personaTextHighlight:hover {
+    background-color: #fdbf11;
+}
+
 .stipendTextHighlight {
     background-color: rgba(236, 0, 139, 0.3);
     padding: 1px 4px;
     border-radius: 4px;
     cursor: pointer;
+}
+
+.stipendTextHighlight:hover {
+    background-color: #ec008b;
+    color: #fff;
 }
 
 @media screen and (max-width: 1099px) {
