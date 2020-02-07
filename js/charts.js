@@ -852,7 +852,7 @@ window.createGraphic = function(graphicSelector) {
                 .ease(d3.easeQuadInOut)
                 .attr("cx", function(d) { return d.x; })
                 .attr("cy", function(d) { return d.y; })
-                .on("start", function(d) { if(studentsWhoSwitch.indexOf(d.char_id) > -1) d3.select(this).classed("animation-target", true); })
+                .on("start", function(d) { if(studentsWhoSwitch.indexOf(d.orig_id) > -1) d3.select(this).classed("animation-target", true); })
                 .on("end", function() { d3.select(this).classed("animation-target", false); })
                 .on("interrupt", function() { d3.selectAll(".student").classed("animation-target", false); });
 
