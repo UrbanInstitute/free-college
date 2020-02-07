@@ -115,9 +115,9 @@ hr {
         line-height: 20px;
     }
 
-    body {
+/*    body {
         font-size: 14px;
-    }
+    }*/
 }
 
 /*********** STRUCTURE ***********/
@@ -260,7 +260,8 @@ hr {
     }
 
     .scrollyTextContainer {
-        background: rgba(255, 255, 255, 0.9);
+        background: rgba(245, 245, 245, 0.95);
+        padding: 40px 0;
     }
 
     .step p {
