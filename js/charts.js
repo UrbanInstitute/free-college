@@ -1108,6 +1108,31 @@ window.createGraphic = function(graphicSelector) {
             .style("opacity", 1);
     }
 
+    // functions for interactivity on text highlights
+    d3.selectAll(".personaTextHighlight").on("mouseover", function() { makeDotsBigger(".Justina"); });
+    d3.selectAll(".personaTextHighlight").on("mouseout", function() { makeDotsSmaller(".Justina"); });
+
+    d3.selectAll(".stipendTextHighlight").on("mouseover", function() { makeDotsBigger(".student.hasStipend"); });
+    d3.selectAll(".stipendTextHighlight").on("mouseout", function() { makeDotsSmaller(".student.hasStipend"); });
+
+    function makeDotsBigger(dotClass) {
+        // move dot(s) to front
+        d3.selectAll(dotClass).moveToFront();
+
+        // make the dots bigger
+        d3.selectAll(dotClass).attr("r", r * 2);
+    }
+
+    function makeDotsSmaller(dotClass) {
+        d3.selectAll(dotClass).attr("r", r);
+    }
+
+    d3.selection.prototype.moveToFront = function() {
+            return this.each(function(){
+                this.parentNode.appendChild(this);
+        });
+    };
+
     function init() {
         setupCharts()
         update(0)
