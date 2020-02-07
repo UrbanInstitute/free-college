@@ -967,7 +967,7 @@ window.createGraphic = function(graphicSelector) {
                 word,
                 line = [],
                 lineNumber = 0,
-                lineHeight = 1.1, // ems
+                lineHeight = 1.3, // ems
                 x = text.attr("x"),
                 y = text.attr("y"),
                 dy = parseFloat(text.attr("dy")),
