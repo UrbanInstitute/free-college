@@ -247,12 +247,13 @@ hr {
 
     .step {
         margin: 0 auto;
-        margin-bottom: 50vh;
+        margin-bottom: 90vh;
         max-width: 500px;
     }
 
     .step:last-child {
         margin-bottom: 10vh;
+        height: 140vh;
     }
 
     .scrollyTextContainer {
