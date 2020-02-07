@@ -994,7 +994,7 @@ window.createGraphic = function(graphicSelector) {
         }
         else {
             d3.select(".tooltip .studentPic").classed("hidden", true);
-            d3.select(".tooltip .studentName").text("");
+            d3.select(".tooltip .studentName").text("Student profile");
         }
         d3.select(".tooltip .studentIncome span").text(d3.format("$,.0f")(d.income));
         d3.select(".tooltip .studentIncGroup").text(d.incomegroup_tooltip);
