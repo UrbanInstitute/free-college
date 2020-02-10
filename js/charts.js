@@ -49,7 +49,7 @@ window.createGraphic = function(graphicSelector) {
         .padding(margin);
 
     var yScale_loan = d3.scaleBand()
-        .domain(["Students without loans", "Students with loans"])
+        .domain(["Does not have student loans", "Has student loans"])
         .rangeRound([margin, height - margin])
         .padding(margin);
 
@@ -1056,11 +1056,24 @@ window.createGraphic = function(graphicSelector) {
                 .append("text")
                 .attr("class", "catLabel")
                 .attr("x", width / 2)
-                .attr("y", function(d) { return yScale_inc(d); })
+                .attr("y", function(d) { return yScale(d); })
                 .attr("dy", 0)
                 .text(function(d) { return d; })
                 .style("opacity", 0)
                 .call(wrap, isMobile ? 150 : 185);
+        }
+        else if(yScale == yScale_loan & isSmallMobile) {
+            svg.selectAll(".catLabel")
+                .data(yScale.domain())
+                .enter()
+                .append("text")
+                .attr("class", "catLabel")
+                .attr("x", width / 2)
+                .attr("y", function(d) { return yScale(d); })
+                .attr("dy", 0)
+                .text(function(d) { return d; })
+                .style("opacity", 0)
+                .call(wrap, 100);
         }
         else {
             svg.selectAll(".catLabel")
