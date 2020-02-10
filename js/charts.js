@@ -21,7 +21,7 @@ window.createGraphic = function(graphicSelector) {
 
     var margin = 20;
     var width = isMobile ? document.querySelector("#isMobile").clientWidth : 600,
-        height = (windowHeight < 550) ? windowHeight : 550;
+        height = (windowHeight < 500) ? windowHeight : 500;
     var r = isMobile ? 4 : 5;
 
     var forceStrengthFactor = isMobile ? -5 : -10;
@@ -40,17 +40,17 @@ window.createGraphic = function(graphicSelector) {
                  "Higher-income independent (more than $30,000)",
                  "Middle-income independent ($15,001 to $30,000)",
                  "Lower-income independent (less than $15,000)"])
-        .rangeRound([margin, height - margin])
+        .rangeRound([margin, height])
         .padding(margin);
 
     var yScale_race = d3.scaleBand()
         .domain(["White", "Black", "Asian", "Latino", "Other race or ethnicity"])
-        .rangeRound([margin, height - margin])
+        .rangeRound([margin, height])
         .padding(margin);
 
     var yScale_loan = d3.scaleBand()
         .domain(["Does not have student loans", "Has student loans"])
-        .rangeRound([margin, height - margin])
+        .rangeRound([margin, height])
         .padding(margin);
 
     var scrollDirection;
