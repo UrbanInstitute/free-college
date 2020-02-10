@@ -59,7 +59,9 @@ window.createGraphic = function(graphicSelector) {
     var steps = [
         allDotsCentered,            // step 0
         spreadOut100Dots,           // step 1
-        splitCurrentFreeCollege,    // step 2
+        function step2() {          // step 2
+            (scrollDirection === "down") && splitCurrentFreeCollege();
+        },
         function step3() {          // step 3
             (scrollDirection === "up") && splitCurrentFreeCollege();
         },
