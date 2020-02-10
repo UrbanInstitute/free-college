@@ -352,12 +352,12 @@ hr {
 }
 
 .highlighted1 {
-    stroke: #fdbf11;
+    stroke: #000;
     stroke-width: 3px;
 }
 
 .highlighted2 {
-    stroke: #000;
+    stroke: #fdbf11;
     stroke-width: 3px;
 }
 

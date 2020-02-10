@@ -753,7 +753,7 @@ window.createGraphic = function(graphicSelector) {
     }
 
     function highlightJustina() {
-        d3.select(".student.Justina").classed("highlighted1", true);
+        d3.select(".student.Justina").classed("highlighted2", true);
         // show Justina's tooltip
     }
 
@@ -824,7 +824,7 @@ window.createGraphic = function(graphicSelector) {
 
     function switchToPublic() {
         // show some dots moving from no free college to free college group, representing them changing the type of school they went to
-        d3.select(".student.Justina").classed("highlighted1", true);
+        d3.select(".student.Justina").classed("highlighted2", true);
         d3.selectAll(".newStudent").remove();
         d3.select(".chartTitle").text("Who moves to a public institution to get free college?");
 
