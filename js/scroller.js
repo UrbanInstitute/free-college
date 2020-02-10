@@ -43,7 +43,7 @@
                     // tell our graphic to update with a specific step and pass in direction of scroll
                     graphic.update(nextStep, direction)
                 },
-                offset: '90%',  // trigger halfway up the viewport
+                offset: '75%',  // trigger halfway up the viewport
             })
         })
         // enter (top) / exit (bottom) graphic (toggle fixed position)
