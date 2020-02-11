@@ -277,35 +277,6 @@ hr {
 }
 
 
-/********** NAV DOT STYLES ***************/
-#navDots {
-    width: 10px;
-    position: fixed;
-    right: 25px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.navDot {
-    height: 10px;
-    width: 10px;
-    background-color: #c4c4c4;
-    border-radius: 50%;
-    display: inline-block;
-    margin: 10px 0;
-}
-
-.navDot.is-selected {
-    background-color: #353535;
-}
-
-@media screen and (max-width: 1099px) {
-    #navDots {
-        right: 14px;
-    }
-}
-
-
 /********** CHART STYLES ***************/
 .chartTitle {
     text-align: center;

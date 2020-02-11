@@ -87,15 +87,7 @@
             <div id="isMobile"></div>
             <!-- <div id="isPhone"></div> -->
             <div id="isPhoneSm"></div>
-            <div id="navDots">
-                <a href="#intro"><span class="navDot is-selected"></span></a> <!-- intro -->
-                <a href="#hundredDots"><span class="navDot"></span></a> <!-- start of scrollytelling (step 0) -->
-                <a href="#splitCurrentByIncome"><span class="navDot"></span></a> <!-- split current by income (step 4) -->
-                <a href="#splitByRace"><span class="navDot"></span></a> <!-- split plan by race (step 13) -->
-                <a href="#splitByLoan"><span class="navDot"></span></a> <!-- split plan by loan status (step 16) -->
-                <a href="#studentsMove"><span class="navDot"></span></a> <!-- one step before students move around (step 23) -->
-                <a href="#conclusion"><span class="navDot"></span></a> <!-- conclusion and credits -->
-            </div>
+
             <div class="content intro">
                 <h1>Free for All?</h1>
                 <h2>Investigating Who Would Get Free College</h2>
@@ -110,7 +102,7 @@
             <div id="graphic">
                 <div id="sections">
                     <section class="step" data-step="0"></section>
-                    <section class="step navDotStep" data-step="1" id="hundredDots">
+                    <section class="step navDotStep" data-step="1">
                         <div class="scrollyTextContainer">
                             <p>These hundred dots represent undergraduate students at private and public institutions in the United States. Hover over the dots to learn more about each student.</p>
                             <p>This 100-student world, which is representative of a <a href="https://nces.ed.gov/surveys/npsas/" target="_blank">national survey</a> of more than 80,000 students, allows us to predict the broad effects of different policy choices.</p>
@@ -126,7 +118,7 @@
                             <p>About 27 percent of students (i.e., 27 students in our world) attending US colleges currently have free college. These students receive merit-based grants (such as <a href="https://www.osfa.la.gov/tops_mainlink.html" target="_blank">Louisiana’s Taylor Opportunity Program for Students, or TOPS, awards</a>), or need-based grants (such as the <a href="https://www2.ed.gov/programs/fpg/index.html" target="_blank">federal Pell grant</a>), and these grants cover tuition and fees.</p>
                         </div>
                     </section>
-                    <section class="step navDotStep" data-step="4" id="splitCurrentByIncome">
+                    <section class="step navDotStep" data-step="4">
                         <div class="scrollyTextContainer">
                             <p>Free college is often proposed to “level the playing field” by making college more affordable for low- and middle-income students.</p>
                             <p>Looking at the share of students receiving free college by income, we see that some high-income students get free college, and some low-income students—especially independent students, <a href="https://studentaid.gov/apply-for-aid/fafsa/filling-out/dependency" target="_blank">who tend to be older and often have families of their own</a>—don’t.</p>
@@ -234,7 +226,7 @@
                     <section class="step" data-step="12">
                         <!-- <p></p> -->
                     </section>
-                    <section class="step navDotStep" data-step="13" id="splitByRace">
+                    <section class="step navDotStep" data-step="13">
                         <div class="scrollyTextContainer">
                             <p>We can also see the effects of free college plans on students of different races and ethnicities.</p>
                             <p>The plan described here is more likely to benefit students of color. Sixty-eight percent of currently enrolled Black students and 80 percent of Hispanic students would get free college under our plan. A smaller share of current white students would get free college; 62 percent of white students would receive free college under the plan.</p>
@@ -250,7 +242,7 @@
                             <p>Free college is sometimes touted as a means to help students reduce, or even eliminate, their need for student loans. If we provide eligible students with full tuition and fees, how might this affect the share of students who need to take on debt to attend college?</p>
                         </div>
                     </section>
-                    <section class="step navDotStep" data-step="16" id="splitByLoan">
+                    <section class="step navDotStep" data-step="16">
                         <div class="scrollyTextContainer">
                             <p>Even without tuition and fees, student debt won’t go away. Nearly a quarter of students who already have free college also have student loans. And many of those who would receive free college under the plan described here may continue to rely on student loans, though their debt burden might decrease.</p>
                             <p>Beyond tuition and fees, students also need to pay for housing, food, transportation, and, in some cases, child care while in school. Some students, particularly those in four-year schools, cover these costs with federal student loans.</p>
@@ -349,7 +341,7 @@
                             </div>
                         </div>
                     </section>
-                    <section class="step" data-step="23" id="studentsMove">
+                    <section class="step" data-step="23">
                         <div class="scrollyTextContainer">
                             <p>We’ve assumed that students will stay in the institutions they’re currently attending, but free college could encourage many students to switch schools.</p>
                         </div>
@@ -434,7 +426,6 @@
         <script src="js/noframework.waypoints.min.js"></script>
         <script src="js/charts.js"></script>
         <script src="js/scroller.js"></script>
-        <script src="js/scrollDots.js"></script>
 
 
 <!--        <script>
