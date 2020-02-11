@@ -106,6 +106,7 @@ window.createGraphic = function(graphicSelector) {
         function step18() {                 // step 18
             removeHighlighting();
             d3.selectAll(".student").classed("hasStipend", false);
+            d3.selectAll(".student").attr("r", r);
             d3.select(".legendEntry.stipend").classed("invisible", true);
             d3.select(".chartTitle").text("Who gets free tuition and fees under this plan, by student loan status?");
         },
