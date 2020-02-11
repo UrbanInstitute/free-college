@@ -50,12 +50,14 @@ final_dat2 <- final_dat %>%
     incomegroup == "Ind15k-30k" ~ "Middle-income independent ($15,001 to $30,000)",
     incomegroup == "Ind<=15k" ~ "Lower-income independent (less than $15,000)"
   ),
-  loan2 = case_when(loan == "no loans" ~ "Does not have student loans",
+  loan2 = case_when(loan == "no loans" ~ "Students without loans",
+                    loan == "loans" ~ "Students with loans"),
+  loan_tooltip = case_when(loan == "no loans" ~ "Does not have student loans",
                     loan == "loans" ~ "Has student loans"),
   sector = case_when(public == "2/4 yr pub" ~ "Public institution",
                      public == "not 2/4 yr pub" ~ "Private institution")
   ) %>%
-  select(char_id, race2, incomegroup_tooltip, incomegroup2, loan2, sector, freecollege, fpl, name,
+  select(char_id, race2, incomegroup_tooltip, incomegroup2, loan_tooltip, loan2, sector, freecollege, fpl, name,
          income, currentFreeCollege, allFreeCollege, freeCollege400FPL, freeCollege400FPLPublic, switchToPublic) %>%
   rename(race = race2, loan = loan2, incomegroup = incomegroup2, orig_id = char_id) %>%
   mutate(char_id = row_number())

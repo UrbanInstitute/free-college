@@ -49,7 +49,7 @@ window.createGraphic = function(graphicSelector) {
         .padding(margin);
 
     var yScale_loan = d3.scaleBand()
-        .domain(["Does not have student loans", "Has student loans"])
+        .domain(["Students without loans", "Students with loans"])
         .rangeRound([margin, height])
         .padding(margin);
 
@@ -143,6 +143,7 @@ window.createGraphic = function(graphicSelector) {
                 race: d.race,
                 incomegroup_tooltip: d.incomegroup_tooltip,
                 incomegroup: d.incomegroup,
+                loan_tooltip: d.loan_tooltip,
                 loan: d.loan,
                 sector: d.sector,
                 freecollege: d.freecollege,
@@ -1003,7 +1004,7 @@ window.createGraphic = function(graphicSelector) {
         d3.select(".tooltip .studentIncGroup").text(d.incomegroup_tooltip);
         d3.select(".tooltip .studentRace").text(d.race);
         d3.select(".tooltip .studentInstitutionType").text(d.sector);
-        d3.select(".tooltip .studentLoanStatus").text(d.loan);
+        d3.select(".tooltip .studentLoanStatus").text(d.loan_tooltip);
 
         // position and show tooltip
         if(((d.name !== "NA") && (height - d.y < 310)) || ((d.name === "NA") && (height - d.y < 145))) {  // if tooltip won't fit above the bottom of the screen, shift it upwards
