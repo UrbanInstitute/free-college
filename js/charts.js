@@ -85,7 +85,7 @@ window.createGraphic = function(graphicSelector) {
         },
         function step12() {
             splitFreeCollege400FPLPublic();
-            if(scrollDirection === "up") d3.select(".chartTitle").text("Free tuition and fees, at public institutions and capped for family finances");
+            // if(scrollDirection === "up") d3.select(".chartTitle").text("Who gets free tuition and fees under this plan?");
         },       // step 12
         splitFreeCollege400FPLPublicByRace, // step 13
         function step14() {                 // step 14
@@ -94,7 +94,7 @@ window.createGraphic = function(graphicSelector) {
         },
         function step15() {
             splitFreeCollege400FPLPublic()
-            d3.select(".chartTitle").text("Who gets free tuition and fees under this plan?");
+            // d3.select(".chartTitle").text("Who gets free tuition and fees under this plan?");
         },       // step 15
         function step16() {                 // step 16
             if(scrollDirection === "up") removeHighlighting();
@@ -122,7 +122,7 @@ window.createGraphic = function(graphicSelector) {
         },
         function step23() {
             splitFreeCollege400FPLPublic();
-            d3.select(".chartTitle").text("Who gets free tuition and fees under this plan?");
+            // d3.select(".chartTitle").text("Who gets free tuition and fees under this plan?");
         },                                  // step 23
         switchToPublic,                     // step 24
         moreDotsJoin                        // step 25
@@ -638,6 +638,8 @@ window.createGraphic = function(graphicSelector) {
         removeHighlighting();
         d3.selectAll(".student").classed("hasStipend", false);
         d3.select(".legendEntry.stipend").classed("invisible", true);
+
+        d3.select(".chartTitle").text("Who gets free tuition and fees under this plan?");
 
         var t = d3.transition()
             .duration(800)
