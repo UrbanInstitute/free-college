@@ -33,23 +33,17 @@
 
             // get the step, cast as number
             var step = +el.getAttribute('data-step')
-            return new Waypoint.Inview({
+            return new Waypoint({
                 element: el, // our trigger element
-                enter: function(direction) {
+                handler: function(direction) {
                     // if the direction is down then we use that number,
                     // else, we want to trigger the previous one
                     var nextStep = direction === 'down' ? step : Math.max(0, step - 1)
 
                     // tell our graphic to update with a specific step and pass in direction of scroll
                     graphic.update(nextStep, direction)
-
-                    // set opacity to 1
-                    this.element.classList.add("inView");
                 },
-                exit: function(direction) {
-                    this.element.classList.remove("inView");
-                },
-                offset: '75%',  // trigger halfway up the viewport
+                offset: '75%',  // when to trigger waypoint
             })
         })
         // enter (top) / exit (bottom) graphic (toggle fixed position)

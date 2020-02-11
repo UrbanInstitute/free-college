@@ -132,6 +132,10 @@ window.createGraphic = function(graphicSelector) {
         scrollDirection = direction;
         steps[step].call()
         currentStep = step;
+
+        // change opacity of selected text
+        d3.selectAll(".step").classed("inView", false);
+        d3.select(".step[data-step='" + step + "']").classed("inView", true);
         // console.log(direction);
     }
 
