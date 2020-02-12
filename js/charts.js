@@ -60,20 +60,28 @@ window.createGraphic = function(graphicSelector) {
         allDotsCentered,            // step 0
         spreadOut100Dots,           // step 1
         splitCurrentFreeCollege,    // step 2
-        splitCurrentByIncome,       // step 3
-        function highlightElleAbed() {  // step 4
+        function step3() {          // step 3
+            (scrollDirection === "down") && splitCurrentByIncome();
+        },
+        function step4() {  // step 4
+            (scrollDirection === "up") && splitCurrentByIncome();
             highlightPersonas("Elle", "Abed");
         },
         function step5() {          // step 5
-            if(scrollDirection === "down") removeHighlighting();
-            else splitCurrentByIncome();
+                removeHighlighting();
+                freeCollegeForAll();
         },
-        freeCollegeForAll,        // step 6
-        freeCollegeBelow400FPL,   // step 7
-        function step8() {        // step 8
+        function step6() {          // step 6
+            (scrollDirection === "down") && freeCollegeBelow400FPL();
+        },
+        function step7() { },       // step 7
+        function step8() {          // step 8
             (scrollDirection === "up") && freeCollegeBelow400FPL();
         },
-        freeCollegeBelow400FPLPublic,      // step 9
+        function step9() {          // step 9
+            (scrollDirection === "down") && freeCollegeBelow400FPLPublic();
+            (scrollDirection === "up") && removeHighlighting();
+        },
         function highlightDevonJustina() { // step 10
             (scrollDirection === "up") && freeCollegeBelow400FPLPublic();
             highlightPersonas("Devon", "Justina");
