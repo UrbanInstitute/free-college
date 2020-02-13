@@ -245,11 +245,6 @@ hr {
         width: calc(100% - 58px);
     }
 
-/*    #visInnerDiv {
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }*/
-
     .step {
         margin: 0 auto;
         margin-bottom: 90vh;
@@ -273,6 +268,13 @@ hr {
     .step p {
         margin-bottom: 0;
         padding: 10px 20px;
+    }
+}
+
+@media screen and (min-width: 700px) and (max-width: 1099px) {
+    #visInnerDiv {
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 }
 
