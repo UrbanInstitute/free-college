@@ -412,6 +412,13 @@
             </div>
         </footer>
 
+        <script>
+            window.onbeforeunload = function() {
+                if(window.scrollTo) window.scrollTo(0, 0);
+                if(history && history.scrollRestoration) history.scrollRestoration = "manual";
+            }
+        </script>
+
         <script src="js/jquery.2.1.4.min.js"></script>
      	<script src="js/d3.v4.min.js"></script>
         <script src="js/noframework.waypoints.min.js"></script>
