@@ -25,6 +25,7 @@ window.createGraphic = function(graphicSelector) {
     var r = isMobile ? 4 : 5;
 
     var forceStrengthFactor = isMobile ? -5 : -10;
+    var heightFactor = isMobile ? 4 : 3;  // controls where to vertically center dots for steps that only have dots separated into 2 groups
     var dotsData;
 
     var xScale = d3.scaleOrdinal()
@@ -50,7 +51,7 @@ window.createGraphic = function(graphicSelector) {
 
     var yScale_loan = d3.scaleBand()
         .domain(["Students without loans", "Students with loans"])
-        .rangeRound([margin, height])
+        .rangeRound([margin, height * 0.6])
         .padding(margin);
 
     var scrollDirection;
@@ -177,7 +178,7 @@ window.createGraphic = function(graphicSelector) {
                 .append('circle')
                 .attr("class", function(d) { return d.name !== "NA" ? d.name + " student id_" + d.char_id : "student id_" + d.char_id; })
                 .attr("cx", width / 2)
-                .attr("cy", (height - titleHeight) / 2)
+                .attr("cy", (height - titleHeight) / heightFactor)
                 .attr("r", r)
                 .on("mouseover", showTooltip)
                 .on("mouseout", hideTooltip);
@@ -220,7 +221,7 @@ window.createGraphic = function(graphicSelector) {
                 .append('circle')
                 .attr("class", function(d) { return d.name !== "NA" ? d.name + " student" : "student"; })
                 .attr("cx", width / 2)
-                .attr("cy", height / 2)
+                .attr("cy", height / heightFactor)
                 .attr("r", r)
                 .on("mouseover", showTooltip)
                 .on("mouseout", hideTooltip);
@@ -240,7 +241,7 @@ window.createGraphic = function(graphicSelector) {
         d3.selectAll(".student")
             .transition()
             .attr("cx", width / 2)
-            .attr("cy", (height - titleHeight) / 2);
+            .attr("cy", (height - titleHeight) / 4);
     }
 
     function spreadOut100Dots() {
@@ -258,9 +259,9 @@ window.createGraphic = function(graphicSelector) {
 
         var simulation = d3.forceSimulation(dotsData)
             .force('charge', d3.forceManyBody().strength(forceStrengthFactor))
-            .force('center', d3.forceCenter(width / 2, (height - titleHeight)/2))
+            .force('center', d3.forceCenter(width / 2, (height - titleHeight)/3))
             .force('x', d3.forceX().x(width / 2))
-            .force('y', d3.forceY().y((height - titleHeight) / 2))
+            .force('y', d3.forceY().y((height - titleHeight) / heightFactor))
             .force('collision', d3.forceCollide().radius(r))
             .stop();
             // .on('tick', ticked);
@@ -316,7 +317,7 @@ window.createGraphic = function(graphicSelector) {
         var simulation = d3.forceSimulation(dotsData)
             .force('charge', d3.forceManyBody().strength(forceStrengthFactor))
             .force('x', d3.forceX().x(function(d) { return xScale(d.currentFreeCollege); }).strength(0.15))  // seem to need to add an adjustment factor here
-            .force('y', d3.forceY().y((height - titleHeight) / 2).strength(0.15))
+            .force('y', d3.forceY().y((height - titleHeight) / heightFactor).strength(0.15))
             .force('collision', d3.forceCollide().radius(r))
             .stop();
 
@@ -643,7 +644,7 @@ window.createGraphic = function(graphicSelector) {
         var simulation = d3.forceSimulation(dotsData)
             .force('charge', d3.forceManyBody().strength(forceStrengthFactor))
             .force('x', d3.forceX().x(function(d) { return xScale(d.freeCollege400FPLPublic); }).strength(0.15))  // seem to need to add an adjustment factor here
-            .force('y', d3.forceY().y((height - titleHeight) / 2).strength(0.15))
+            .force('y', d3.forceY().y((height - titleHeight) / heightFactor).strength(0.15))
             .force('collision', d3.forceCollide().radius(r))
             .stop();
 
@@ -838,7 +839,7 @@ window.createGraphic = function(graphicSelector) {
         var simulation = d3.forceSimulation(dotsData)
             .force('charge', d3.forceManyBody().strength(forceStrengthFactor))
             .force('x', d3.forceX().x(function(d) { return xScale(d.switchToPublic); }).strength(0.15))  // seem to need to add an adjustment factor here
-            .force('y', d3.forceY().y((height - titleHeight) / 2).strength(0.15))
+            .force('y', d3.forceY().y((height - titleHeight) / heightFactor).strength(0.15))
             .force('collision', d3.forceCollide().radius(r))
             .stop();
 
@@ -923,7 +924,7 @@ window.createGraphic = function(graphicSelector) {
         var simulation = d3.forceSimulation(newData.filter(function(d, i) { return i < totalDots; }))
             .force('charge', d3.forceManyBody().strength(forceStrengthFactor))
             .force('x', d3.forceX().x(function(d) { return xScale(d.switchToPublic); }).strength(0.15))  // seem to need to add an adjustment factor here
-            .force('y', d3.forceY().y((height - titleHeight) / 2).strength(0.15))
+            .force('y', d3.forceY().y((height - titleHeight) / heightFactor).strength(0.15))
             .force('collision', d3.forceCollide().radius(r))
             .stop();
 
