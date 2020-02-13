@@ -88,7 +88,7 @@ hr {
 @media screen and (max-width: 1099px) {
     .main {
         padding-left: 20px;
-        padding-right: 36px;
+        padding-right: 20px;
     }
 }
 
@@ -245,10 +245,10 @@ hr {
         width: calc(100% - 58px);
     }
 
-    #visInnerDiv {
+/*    #visInnerDiv {
         left: 50%;
         transform: translate(-50%, -50%);
-    }
+    }*/
 
     .step {
         margin: 0 auto;
