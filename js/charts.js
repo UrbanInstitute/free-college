@@ -75,53 +75,52 @@ window.createGraphic = function(graphicSelector) {
         function step6() {          // step 6
             (scrollDirection === "down") && freeCollegeBelow400FPL();
         },
-        function step7() { },       // step 7
-        function step8() {          // step 8
+        function step7() {          // step 7
             (scrollDirection === "up") && freeCollegeBelow400FPL();
         },
-        function step9() {          // step 9
+        function step8() {          // step 8
             (scrollDirection === "down") && freeCollegeBelow400FPLPublic();
             (scrollDirection === "up") && removeHighlighting();
         },
-        function highlightDevonJustina() { // step 10
+        function highlightDevonJustina() { // step 9
             (scrollDirection === "up") && freeCollegeBelow400FPLPublic();
             highlightPersonas("Devon", "Justina");
         },
-        function step11() {                // step 11
+        function step10() {                // step 10
             splitFreeCollege400FPLPublic();
         },
-        splitFreeCollege400FPLPublicByRace, // step 12
-        function step13() {                 // step 13
+        splitFreeCollege400FPLPublicByRace, // step 11
+        function step12() {                 // step 12
             if(scrollDirection === "up") splitFreeCollege400FPLPublicByRace();
             highlightJustina();
         },
-        splitFreeCollege400FPLPublic,       // step 14
-        function step15() {                 // step 15
+        splitFreeCollege400FPLPublic,       // step 13
+        function step14() {                 // step 14
             if(scrollDirection === "up") removeHighlighting();
             else splitFreeCollege400FPLPublicByLoan();
         },
-        function highlightAnaDenise() {     // step 16
+        function highlightAnaDenise() {     // step 15
             highlightPersonas("Ana", "Denise");
         },
-        function step18() {                 // step 17
+        function step16() {                 // step 16
             removeHighlighting();
             d3.selectAll(".student").classed("hasStipend", false);
             d3.selectAll(".student").attr("r", r);
             d3.select(".legendEntry.stipend").classed("invisible", true);
             d3.select(".chartTitle").text("Who gets free tuition and fees under this plan, by student loan status?");
         },
-        showStipend,                        // step 18
-        removeHighlighting,                 // step 19
-        function highlightStephenSally() {  // step 20
+        showStipend,                        // step 17
+        removeHighlighting,                 // step 18
+        function highlightStephenSally() {  // step 19
             if(scrollDirection === "up") {
                 splitFreeCollege400FPLPublicByLoan();
                 showStipend();
             }
             highlightPersonas("Stephen", "Sally");
         },
-        splitFreeCollege400FPLPublic,       // step 21
-        switchToPublic,                     // step 22
-        moreDotsJoin                        // step 23
+        splitFreeCollege400FPLPublic,       // step 20
+        switchToPublic,                     // step 21
+        moreDotsJoin                        // step 21
     ]
 
     // update our chart
