@@ -21,7 +21,7 @@ window.createGraphic = function(graphicSelector) {
 
     var margin = 20;
     var width = isMobile ? document.querySelector("#isMobile").clientWidth : 600,
-        height = (windowHeight < 500) ? windowHeight : 500;
+        height = (windowHeight < 550) ? windowHeight : 550;
     var r = isMobile ? 4 : 5;
 
     var forceStrengthFactor = isMobile ? -5 : -10;
