@@ -35,12 +35,12 @@ final_dat2 <- final_dat %>%
     TRUE ~ race 
   ),
   incomegroup_tooltip = case_when(
-    incomegroup == "Dep+80k" ~ "Dependent (>400% federal poverty level)",
-    incomegroup == "Dep40k-80k" ~ "Dependent (200%–400% federal poverty level)",
-    incomegroup == "Dep<=40k" ~ "Dependent (<200% federal poverty level)",
-    incomegroup == "Ind+30k" ~ "Independent (>400% federal poverty level)",
-    incomegroup == "Ind15k-30k" ~ "Independent (200%–400% federal poverty level)",
-    incomegroup == "Ind<=15k" ~ "Independent (<200% federal poverty level)"
+    str_detect(incomegroup, "Dep") & (fpl == "400%") ~ "Dependent (>400% federal poverty level)",
+    str_detect(incomegroup, "Dep") & (fpl == "200%-400%") ~ "Dependent (200%–400% federal poverty level)",
+    str_detect(incomegroup, "Dep") & (fpl == "<200%") ~ "Dependent (<200% federal poverty level)",
+    str_detect(incomegroup, "Ind") & (fpl == "400%") ~ "Independent (>400% federal poverty level)",
+    str_detect(incomegroup, "Ind") & (fpl == "200%-400%") ~ "Independent (200%–400% federal poverty level)",
+    str_detect(incomegroup, "Ind") & (fpl == "<200%") ~ "Independent (<200% federal poverty level)"
   ), 
   incomegroup2 = case_when(
     incomegroup == "Dep+80k" ~ "Higher-income dependent (more than $80,000)",
