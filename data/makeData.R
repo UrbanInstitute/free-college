@@ -45,10 +45,10 @@ final_dat2 <- final_dat %>%
   incomegroup2 = case_when(
     incomegroup == "Dep+80k" ~ "Higher-income dependent (more than $80,000)",
     incomegroup == "Dep40k-80k" ~ "Middle-income dependent ($40,001 to $80,000)",
-    incomegroup == "Dep<=40k" ~ "Lower-income dependent (less than $40,000)",
+    incomegroup == "Dep<=40k" ~ "Lower-income dependent (up to $40,000)",
     incomegroup == "Ind+30k" ~ "Higher-income independent (more than $30,000)",
     incomegroup == "Ind15k-30k" ~ "Middle-income independent ($15,001 to $30,000)",
-    incomegroup == "Ind<=15k" ~ "Lower-income independent (less than $15,000)"
+    incomegroup == "Ind<=15k" ~ "Lower-income independent (up to $15,000)"
   ),
   loan2 = case_when(loan == "no loans" ~ "Students without loans",
                     loan == "loans" ~ "Students with loans"),

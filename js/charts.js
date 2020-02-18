@@ -37,10 +37,10 @@ window.createGraphic = function(graphicSelector) {
     var yScale_inc = d3.scaleBand()
         .domain(["Higher-income dependent (more than $80,000)",
                  "Middle-income dependent ($40,001 to $80,000)",
-                 "Lower-income dependent (less than $40,000)",
+                 "Lower-income dependent (up to $40,000)",
                  "Higher-income independent (more than $30,000)",
                  "Middle-income independent ($15,001 to $30,000)",
-                 "Lower-income independent (less than $15,000)"])
+                 "Lower-income independent (up to $15,000)"])
         .rangeRound([margin, height])
         .padding(margin);
 
@@ -820,7 +820,7 @@ window.createGraphic = function(graphicSelector) {
     }
 
     function showStipend() {
-        d3.select(".chartTitle").text("Who gets free tuition, fees, and a stipend under this plan, by student loan status?");
+        d3.select(".chartTitle").text("Who gets free tuition, fees and a stipend under this plan, by student loan status?");
 
         // highlight students currently receiving a stipend in pink
         d3.selectAll(".legendEntry").classed("invisible", false);
@@ -1065,7 +1065,7 @@ window.createGraphic = function(graphicSelector) {
                 .attr("dy", 0)
                 .text(function(d) { return d; })
                 .style("opacity", 0)
-                .call(wrap, isMobile ? 150 : 185);
+                .call(wrap, isMobile ? 150 : 175);
         }
         else if(yScale == yScale_loan & isSmallMobile) {
             svg.selectAll(".catLabel")
